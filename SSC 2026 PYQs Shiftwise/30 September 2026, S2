@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SSC CGL Tier 1 Mock Test - 30 Sep Shift 2</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#17275E;--ink:#121826;--muted:#5B6578;--line:#DCE1EA;--canvas:#F2F4F8;--saffron:#D9730D;--green:#1B8A5A;--green-bg:#E7F5EE;--red:#C93B3B;--red-bg:#FCECEC;--violet:#6B4BC0;--violet-bg:#EFEBFA;--selected:#EBF2FE;--selected-border:#2962FF}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Hind','Noto Sans Devanagari',system-ui,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid #3B5BDB;outline-offset:2px}
+svg{flex:none}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.btn{display:block;width:100%;min-height:48px;border-radius:10px;border:1.5px solid var(--navy);background:var(--navy);color:#fff;font-weight:600;font-size:1rem}
+
+/* Instructions Screen */
+#instruction-screen{position:fixed;inset:0;z-index:500;background:#fff;display:flex;flex-direction:column;overflow-y:auto}
+.inst-top{background:var(--navy);color:#fff;padding:32px 20px 26px}
+.inst-wrap{max-width:680px;margin:0 auto;width:100%}
+.inst-top p{color:#B9C4E8;font-size:.9rem;margin-bottom:4px}
+.inst-top h1{font-size:1.7rem;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+.inst-facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.inst-facts div{padding:14px 10px 14px 0}
+.inst-facts b{display:block;font-size:1.35rem;font-weight:700}
+.inst-facts span{font-size:.8rem;color:var(--muted)}
+.inst-body{padding:22px 20px;flex:1}
+.inst-body h2{font-size:1rem;margin:0 0 10px}
+.flow{list-style:none;counter-reset:s;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.flow li{counter-increment:s;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:600;font-size:.92rem}
+.flow li::before{content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;margin-right:8px;border-radius:50%;background:var(--navy);color:#fff;font-size:.78rem}
+.flow small{display:block;font-weight:400;color:var(--muted);font-size:.8rem;margin-left:30px}
+.rules{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+.rules li{border-left:3px solid var(--line);padding-left:12px;color:#2B3446}
+.inst-cta{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 20px calc(12px + env(safe-area-inset-bottom))}
+.inst-cta .btn{max-width:680px;margin:0 auto}
+
+/* Test Area */
+#test-screen{display:none;flex-direction:column;height:100%}
+.top-header{background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+.test-name{flex:1;min-width:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer-badge{display:flex;align-items:center;gap:6px;font-weight:700;font-size:1.05rem;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:8px}
+.timer-badge.low{background:var(--saffron)}
+.lang-toggle-btn,.menu-icon{min-height:36px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:8px;padding:0 12px;font-weight:600;font-size:.9rem;display:grid;place-items:center}
+.menu-icon{width:40px;padding:0}
+.section-bar{display:flex;background:#fff;border-bottom:1px solid var(--line)}
+.section-tab{flex:1;text-align:center;padding:11px 4px;font-size:.88rem;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap;opacity:.6;cursor:default}
+.section-tab.active{color:var(--navy);border-bottom-color:var(--navy);opacity:1}
+.section-tab.locked-done{color:var(--green);opacity:.9}
+.section-tab.locked-done::before{content:"\2713\00a0"}
+.meta-row{background:#fff;padding:8px 14px 0;border-bottom:1px solid var(--line)}
+.meta-line{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;color:var(--muted);padding-bottom:8px}
+.meta-line b{color:var(--ink)}
+.save-btn{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:.85rem;font-weight:600;color:var(--muted)}
+.save-btn.saved-active{color:var(--navy);border-color:var(--navy);background:#EAEEFB}
+.prog{height:3px;background:var(--line);margin:0 -14px}
+.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.main-content{flex:1;overflow-y:auto;padding:18px 14px 28px}
+.q-inner{max-width:720px;margin:0 auto}
+.q-badge-wrap{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.q-badge-wrap .q-no{font-size:1rem;color:var(--ink);font-weight:700}
+.exam-tag-badge{border:1px solid var(--line);background:#fff;padding:1px 9px;border-radius:6px}
+.per-q-timer-badge{margin-left:auto}
+
+.question-statement u{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:700;color:var(--navy);background:#EEF3FF;padding:0 3px;border-radius:3px}
+.question-statement strong{font-weight:700;color:var(--ink)}
+.question-statement{font-size:1.15rem;line-height:1.65;font-weight:500;white-space:pre-wrap;margin:12px 0 20px}
+.options-group{display:flex;flex-direction:column;gap:10px}
+.option-item{display:flex;align-items:center;gap:14px;width:100%;min-height:54px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1.05rem;transition:border-color .15s, background-color .15s}
+.option-item:hover{border-color:var(--navy)}
+
+/* Real Exam Selection State (Before Submission) */
+.option-item.selected-live{border-color:var(--selected-border);background:var(--selected)}
+.option-item.selected-live .opt-key{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* Solution Mode States (After Submission) */
+.option-item.is-locked{cursor:default}
+.opt-key{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:600;font-size:.85rem;color:var(--muted)}
+.opt-text{flex:1}
+.option-item.correct-ans{border-color:var(--green);background:var(--green-bg)}
+.option-item.correct-ans .opt-key{background:var(--green);border-color:var(--green);color:#fff}
+.option-item.correct-ans::after{content:"Correct";font-size:.8rem;font-weight:600;color:var(--green)}
+.option-item.wrong-ans{border-color:var(--red);background:var(--red-bg)}
+.option-item.wrong-ans .opt-key{background:var(--red);border-color:var(--red);color:#fff}
+.option-item.wrong-ans::after{content:"Your answer";font-size:.8rem;font-weight:600;color:var(--red)}
+
+
+/* Image Display Containers - Guaranteed Pure White Background & Clean Padding */
+.q-img-wrap{width:100%;background:#FFFFFF !important;border:1px solid var(--line);border-radius:10px;padding:12px;margin:14px 0 8px;display:flex;flex-direction:column;gap:10px;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.q-img-wrap img{max-width:100%;max-height:330px;width:auto;height:auto;display:block;background:#FFFFFF !important;object-fit:contain;border-radius:4px}
+.opt-img-wrap{background:#FFFFFF !important;border:1px solid #EEF1F6;border-radius:8px;padding:6px 10px;display:inline-flex;align-items:center;justify-content:center;min-height:46px}
+.opt-img-wrap img{max-height:84px;max-width:100%;width:auto;height:auto;display:block;background:#FFFFFF !important;object-fit:contain}
+
+/* Explanations & Shortcuts */
+.explanation-box{display:none;margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.exp-badge-correct{padding:11px 16px;background:var(--green-bg);color:var(--green);font-weight:700;border-bottom:1px solid var(--line)}
+.exp-section-block{padding:14px 16px 16px;line-height:1.75}
+.exp-heading-label{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.shortcut-block{margin-top:12px;padding:12px 14px;border-left:3.5px solid var(--saffron);background:#FFF8F0;border-radius:0 8px 8px 0}
+.shortcut-title{font-weight:700;font-size:.9rem;color:var(--saffron);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+
+.footer-bar{background:#fff;border-top:1px solid var(--line);display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.nav-btn{flex:1;min-height:46px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.95rem}
+.nav-btn.primary,.nav-btn.analysis{flex:1.4;background:var(--navy);border-color:var(--navy);color:#fff}
+.nav-btn.analysis{display:none}
+.nav-btn.marked{border-color:var(--violet);color:var(--violet);background:var(--violet-bg)}
+.nav-btn:disabled{opacity:.4;cursor:default}
+
+/* Palette and Modals */
+#palette-drawer{position:fixed;inset:0;z-index:600;background:rgba(18,24,38,.5);display:none;justify-content:flex-end}
+.drawer-card{width:88%;max-width:380px;height:100%;background:#fff;display:flex;flex-direction:column;padding:18px 16px max(16px,env(safe-area-inset-bottom))}
+.drawer-top{display:flex;justify-content:space-between;align-items:center}
+.drawer-top h3{font-size:1.1rem}
+.icon-btn{width:38px;height:38px;border:0;border-radius:8px;background:var(--canvas);font-size:1.1rem}
+.drawer-sec-badge{font-size:.9rem;color:var(--muted);margin:2px 0 14px}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:14px}
+.sq{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1.5px solid var(--line)}
+.grid-container{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;overflow-y:auto;align-content:start;padding:3px}
+.grid-item{aspect-ratio:1;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-weight:600;cursor:pointer}
+.grid-item.answered{background:var(--green);border-color:var(--green);color:#fff}
+.grid-item.marked-review{background:var(--violet);border-color:var(--violet);color:#fff}
+.grid-item.active-now{outline:3px solid var(--saffron);outline-offset:1px}
+.drawer-submit-wrap{margin-top:14px}
+
+.modal-overlay{position:fixed;inset:0;z-index:700;background:rgba(18,24,38,.5);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:360px}
+.modal-box h3{font-size:1.15rem;margin-bottom:12px}
+.summary-list{display:flex;flex-direction:column;margin-bottom:14px}
+.summary-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.summary-item strong{color:var(--ink)}
+.confirm-btns{display:flex;gap:10px;margin-top:18px}
+.confirm-btns .btn{min-height:46px}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+
+
+/* Language Selection Modal on Start Test */
+#lang-select-modal{position:fixed;inset:0;z-index:800;background:rgba(18,24,38,.58);display:none;align-items:center;justify-content:center;padding:20px}
+.lang-modal-box{background:#fff;border-radius:16px;padding:24px 20px;width:100%;max-width:380px;border:1px solid var(--line);box-shadow:0 12px 32px rgba(18,24,38,.18)}
+.lang-modal-box h3{font-size:1.2rem;color:var(--navy);margin-bottom:4px}
+.lang-modal-box p{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+.lang-choice-grid{display:flex;flex-direction:column;gap:12px}
+.lang-choice-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;text-align:left;transition:border-color .15s,background-color .15s}
+.lang-choice-btn:hover{border-color:var(--navy);background:#F5F7FC}
+.lang-choice-btn b{display:block;font-size:1.05rem;color:var(--ink)}
+.lang-choice-btn small{display:block;font-size:.82rem;color:var(--muted)}
+.lang-choice-arrow{font-size:1.1rem;font-weight:700;color:var(--navy)}
+
+/* Results / Dashboard */
+#dashboard-screen{position:fixed;inset:0;z-index:900;background:var(--canvas);display:none;flex-direction:column;overflow-y:auto}
+.dash-topbar{background:var(--navy);color:#fff;padding:max(18px,env(safe-area-inset-top)) 20px 18px}
+.dash-topbar h1{font-size:1.25rem}
+.dash-topbar p{color:#B9C4E8;font-size:.88rem}
+.dash-container{max-width:760px;margin:0 auto;width:100%;padding:16px 14px 32px;display:flex;flex-direction:column;gap:14px}
+.score-hero{display:flex;align-items:baseline;gap:8px;color:var(--muted)}
+#res-total-marks{font-size:3.3rem;font-weight:700;line-height:1;color:var(--navy)}
+.hero-sub{display:flex;gap:32px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.hero-sub b{display:block;font-size:1.3rem}
+.hero-sub span{font-size:.82rem;color:var(--muted)}
+.card h2{font-size:1rem;margin-bottom:4px}
+.sec-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.sec-row:first-of-type{border-top:0}
+.sec-score{font-weight:700}
+.sec-bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--canvas);overflow:hidden}
+.sec-bar i{display:block;height:100%;width:0;background:var(--navy)}
+.trajectory-card-dark{background:#0F1A3D;border-radius:12px;padding:18px;color:#fff}
+.traj-title{font-size:1rem;font-weight:600}
+.traj-sub{font-size:.85rem;color:#9AA7C7;margin:2px 0 16px}
+.canvas-box-exact{position:relative;width:100%;height:260px}
+</style>
+</head>
+<body>
+
+<div id="instruction-screen">
+  <div class="inst-top"><div class="inst-wrap">
+    <p>Official Pattern Mock Test</p>
+    <h1>SSC CGL Tier 1<br>30 Sep, Shift 2</h1>
+  </div></div>
+  <div class="inst-wrap" style="padding:0 20px">
+    <div class="inst-facts">
+      <div><b>100</b><span>Questions</span></div>
+      <div><b>200</b><span>Marks</span></div>
+      <div><b>60</b><span>Minutes</span></div>
+      <div><b>4</b><span>Sections</span></div>
+    </div>
+  </div>
+  <div class="inst-body"><div class="inst-wrap">
+    <h2>Sections &amp; Timing (15 minutes locked per section)</h2>
+    <ol class="flow">
+      <li>Reasoning<small>Q 1&ndash;25</small></li>
+      <li>General Awareness<small>Q 26&ndash;50</small></li>
+      <li>Quantitative Aptitude<small>Q 51&ndash;75</small></li>
+      <li>English Comprehension<small>Q 76&ndash;100</small></li>
+    </ol>
+    <h2>Exam Rules</h2>
+    <ul class="rules">
+      <li>+2 marks for correct answers; -0.5 marks for wrong answers.</li>
+      <li><strong>Real Exam Interface:</strong> During the exam, selecting an option will only mark your choice. Solutions will not be revealed until the full test is submitted.</li>
+      <li>Detailed explanations alongside fastest shortcut tricks will be unlocked in <em>Review Solutions</em> mode after submission.</li>
+      <li>You can toggle between English and Hindi at any moment using the top bar language switch.</li>
+    </ul>
+  </div></div>
+  <div class="inst-cta"><button class="btn" onclick="startTest()">Start Test</button></div>
+</div>
+
+<div id="test-screen">
+  <header class="top-header">
+    <div class="test-name" id="current-section-title">PART-A: Reasoning</div>
+    <div class="timer-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+      <span id="section-timer-display">15:00</span>
+    </div>
+    <button class="lang-toggle-btn" id="lang-toggle-btn" onclick="toggleLanguage()">हिन्दी</button>
+    <button class="menu-icon" onclick="openPalette()" aria-label="Question palette">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    </button>
+  </header>
+  <nav class="section-bar">
+    <div class="section-tab active" id="sec-tab-0">Reasoning</div>
+    <div class="section-tab" id="sec-tab-1">GA</div>
+    <div class="section-tab" id="sec-tab-2">Quant</div>
+    <div class="section-tab" id="sec-tab-3">English</div>
+  </nav>
+  <div class="meta-row">
+    <div class="meta-line">
+      <span><b id="section-answered-badge">0</b> of 25 answered</span>
+      <button class="save-btn" id="save-q-btn" onclick="toggleSaveQuestion()">Save</button>
+    </div>
+    <div class="prog"><i id="section-prog-bar"></i></div>
+  </div>
+  <main class="main-content"><div class="q-inner">
+    <div class="q-badge-wrap">
+      <span>Question <span class="q-no" id="curr-q-no">1</span></span>
+      <span class="exam-tag-badge" id="exam-tag-text">Reasoning</span>
+      <span class="per-q-timer-badge">Time: <span id="per-q-timer-text">00:00</span></span>
+    </div>
+    <div class="question-statement" id="question-text"></div>
+    <div class="options-group" id="options-box"></div>
+    <div class="explanation-box" id="explanation-container"></div>
+  </div></main>
+  <footer class="footer-bar" id="exam-footer-bar">
+    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+    <button class="nav-btn analysis" id="back-analysis-btn" onclick="returnToDashboard()">View Analysis</button>
+    <button class="nav-btn" id="mark-btn" onclick="toggleMarkReview()">Mark for Review</button>
+    <button class="nav-btn primary" id="next-btn" onclick="saveAndNext()">Save &amp; Next</button>
+  </footer>
+</div>
+
+<div id="dashboard-screen">
+  <div class="dash-topbar"><h1>Test Summary</h1><p>SSC CGL Tier 1, 30 Sep Shift 2</p></div>
+  <div class="dash-container">
+    <div class="card">
+      <div class="score-hero"><span id="res-total-marks">0</span><span>out of 200</span></div>
+      <div class="hero-sub">
+        <div><b id="res-avg-score">0%</b><span>Accuracy</span></div>
+        <div><b id="res-study-time">0m</b><span>Time Taken</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Section Performance</h2>
+      <div class="sec-row"><span>Reasoning</span><span class="sec-score" id="sec-score-0">0 / 50</span><div class="sec-bar"><i id="sec-bar-0"></i></div></div>
+      <div class="sec-row"><span>General Awareness</span><span class="sec-score" id="sec-score-1">0 / 50</span><div class="sec-bar"><i id="sec-bar-1"></i></div></div>
+      <div class="sec-row"><span>Quantitative Aptitude</span><span class="sec-score" id="sec-score-2">0 / 50</span><div class="sec-bar"><i id="sec-bar-2"></i></div></div>
+      <div class="sec-row"><span>English Comprehension</span><span class="sec-score" id="sec-score-3">0 / 50</span><div class="sec-bar"><i id="sec-bar-3"></i></div></div>
+    </div>
+    <div class="trajectory-card-dark">
+      <div class="traj-title">Performance Trajectory</div>
+      <div class="traj-sub">Score Breakdown Across 4 Sections</div>
+      <div class="canvas-box-exact"><canvas id="trajectoryLineChart"></canvas></div>
+    </div>
+    <button class="btn" onclick="closeDashboardToReview()">Review Solutions</button>
+  </div>
+</div>
+
+<div id="palette-drawer" onclick="closePaletteOnBackdrop(event)">
+  <div class="drawer-card">
+    <div class="drawer-top"><h3>Question Palette</h3><button class="icon-btn" onclick="closePalette()">&#10005;</button></div>
+    <div class="drawer-sec-badge" id="drawer-active-sec-badge"></div>
+    <div class="legend-row">
+      <span><i class="sq" style="background:var(--green);border-color:var(--green)"></i>Answered</span>
+      <span><i class="sq" style="background:var(--violet);border-color:var(--violet)"></i>Marked</span>
+      <span><i class="sq"></i>Not Answered</span>
+    </div>
+    <div class="grid-container" id="palette-grid"></div>
+    <div class="drawer-submit-wrap"><button class="btn" id="drawer-submit-btn" onclick="openSubmitModal()">Submit Section</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="submit-confirm-modal">
+  <div class="modal-box">
+    <h3 id="modal-heading-text">Submit Section</h3>
+    <div class="summary-list">
+      <div class="summary-item"><span>Time Left</span><strong id="modal-time-left">--:--</strong></div>
+      <div class="summary-item"><span>Attempted</span><strong id="modal-attempted">0</strong></div>
+      <div class="summary-item"><span>Unattempted</span><strong id="modal-unattempted">25</strong></div>
+      <div class="summary-item"><span>Marked for Review</span><strong id="modal-marked">0</strong></div>
+    </div>
+    <p id="modal-subtext" style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;"></p>
+    <div class="confirm-btns">
+      <button class="btn ghost" onclick="closeSubmitModal()">Resume</button>
+      <button class="btn" id="modal-yes-btn" onclick="confirmSectionSubmit()">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="lang-select-modal" onclick="closeLangModalOnBackdrop(event)">
+  <div class="lang-modal-box">
+    <h3>Select Your Language / अपनी भाषा चुनें</h3>
+    <p>Choose the language to start your test. You can switch anytime during the exam.</p>
+    <div class="lang-choice-grid">
+      <button type="button" class="lang-choice-btn" onclick="beginTestWithLanguage('en')">
+        <span>
+          <b>English</b>
+          <small>Start mock test in English</small>
+        </span>
+        <span class="lang-choice-arrow">&#8594;</span>
+      </button>
+      <button type="button" class="lang-choice-btn" onclick="beginTestWithLanguage('hi')">
+        <span>
+          <b>हिन्दी (Hindi)</b>
+          <small>मॉक टेस्ट हिन्दी में शुरू करें</small>
+        </span>
+        <span class="lang-choice-arrow">&#8594;</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    "id": 1,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "The Mumbai seminar was 4 days after the Ahmedabad seminar. The Pune seminar was 1 day before the Mumbai seminar. If the Ahmedabad seminar was held on 15th July, when was the Pune seminar?",
+    "q_hi": "मुंबई सेमिनार अहमदाबाद सेमिनार के 4 दिन बाद था। पुणे सेमिनार मुंबई सेमिनार से 1 दिन पहले था। अगर अहमदाबाद सेमिनार 15th जुलाई को आयोजित किया गया था, तो पुणे सेमिनार कब था?",
+    "opts_en": [
+      "17th July",
+      "18th July",
+      "19th July",
+      "20th July"
+    ],
+    "opts_hi": [
+      "17th जुलाई",
+      "18th जुलाई",
+      "19th जुलाई",
+      "20th जुलाई"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1. Date of Ahmedabad seminar = 15th July.<br>2. Mumbai seminar was 4 days after Ahmedabad = 15 + 4 = 19th July.<br>3. Pune seminar was 1 day before Mumbai seminar = 19 - 1 = <strong>18th July</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Fastest Exam Trick:</div>Net offset from Ahmedabad = +4 - 1 = +3 days. Add 3 directly to 15th July ➔ <strong>18th July</strong>!</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1. अहमदाबाद सेमिनार की तिथि = 15 जुलाई।<br>2. मुंबई सेमिनार = 15 + 4 = 19 जुलाई।<br>3. पुणे सेमिनार = 19 - 1 = <strong>18 जुलाई</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>कुल अंतर = +4 - 1 = +3 दिन। सीधे 15 + 3 = <strong>18 जुलाई</strong>!</div>"
+  },
+  {
+    "id": 2,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If 19 ➔ 91, 82 ➔ 28, then 75 ➔ ?",
+    "q_hi": "अगर 19 ➔ 91, 82 ➔ 28, तो 75 ➔ ?",
+    "opts_en": [
+      "57",
+      "58",
+      "65",
+      "75"
+    ],
+    "opts_hi": [
+      "57",
+      "58",
+      "65",
+      "75"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The two digits of each number are reversed:<br>19 ➔ 91<br>82 ➔ 28<br>75 ➔ <strong>57</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Instant Check:</div>Swap tens and units digit: 75 ➔ <strong>57</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>दी गई संख्या के अंकों को आपस में पलट दिया गया है:<br>19 ➔ 91, 82 ➔ 28, उसी प्रकार 75 ➔ <strong>57</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>अंक पलटें: 75 ➔ <strong>57</strong>।</div>"
+  },
+  {
+    "id": 3,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Statement:\nThe Reserve Bank has mandated that banks shall not process any high-value interbank transactions through manual channels beyond business hours, and such transactions shall only be facilitated via authorized electronic platforms.\n\nConclusions:\nI. High-value interbank transactions are permissible outside business hours if routed through approved digital systems.\nII. Manual processing of large interbank transactions is prohibited entirely, irrespective of timing.",
+    "q_hi": "कथनः\nरिजर्व बैंक ने आदेश दिया है कि बैंक व्यावसायिक घंटों के बाद मैन्युअल चैनलों के माध्यम से किसी भी उच्च मूल्य वाले अंतर-बैंक लेनदेन को संसाधित नहीं करेंगे, और ऐसे लेनदेन केवल अधिकृत इलेक्ट्रॉनिक प्लेटफ़ॉर्म के माध्यम से ही किए जाएँगे।\n\nनिष्कर्षः\nI. उच्च-मूल्य वाले अंतर-बैंक लेनदेन व्यावसायिक घंटों के बाहर स्वीकार्य हैं, यदि अनुमोदित डिजिटल सिस्टम के माध्यम से रूट किए जाते हैं।\nII. बड़े अंतर-बैंक लेनदेन की मैन्युअल प्रोसेसिंग पूरी तरह से प्रतिबंधित है, चाहे समय कुछ भी हो।",
+    "opts_en": [
+      "Neither conclusion I nor II follows",
+      "Only conclusion I follows",
+      "Both conclusion I and II follow",
+      "Only conclusion II follows"
+    ],
+    "opts_hi": [
+      "न तो निष्कर्ष I और न ही II अनुसरण करता है",
+      "केवल निष्कर्ष I अनुसरण करता है",
+      "निष्कर्ष I और II दोनों अनुसरण करते हैं",
+      "केवल निष्कर्ष II अनुसरण करता है"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Conclusion I follows directly because electronic platforms are allowed for high-value interbank transactions. Conclusion II is incorrect because manual channels are restricted specifically <em>beyond business hours</em>, not at all times.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Elimination Tip:</div>Extreme phrases like 'prohibited entirely, irrespective of timing' in conclusion II are unsupported by the statement.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>निष्कर्ष I सही है क्योंकि अधिकृत इलेक्ट्रॉनिक प्लेटफ़ॉर्म के माध्यम से लेनदेन मान्य है। निष्कर्ष II गलत है क्योंकि मैन्युअल प्रक्रिया केवल 'व्यावसायिक घंटों के बाद' प्रतिबंधित है, हर समय नहीं।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा ट्रिक:</div>'पूरी तरह प्रतिबंधित, चाहे समय कुछ भी हो' जैसा अतिवादी निष्कर्ष कथन से बाहर है।</div>"
+  },
+  {
+    "id": 4,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "The average age of 3 friends is 27. If a new friend joins, the average becomes 28. What is the age of the new friend?",
+    "q_hi": "3 दोस्तों की औसत आयु 27 है। अगर एक नया दोस्त जुड़ता है, तो औसत 28 हो जाती है। नए दोस्त की आयु क्या है?",
+    "opts_en": [
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    "opts_hi": [
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Sum of ages of 3 friends = 3 × 27 = 81.<br>Sum of ages of 4 friends = 4 × 28 = 112.<br>Age of new friend = 112 - 81 = <strong>31</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Deviation Shortcut (3 Seconds):</div>New Average + (Old Count × Increase in Average) = 28 + (3 × 1) = <strong>31</strong>!</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>3 दोस्तों की कुल आयु = 3 × 27 = 81।<br>4 दोस्तों की कुल आयु = 4 × 28 = 112।<br>नए दोस्त की आयु = 112 - 81 = <strong>31</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ डेविएशन शॉर्टकट:</div>नया औसत + (पुराने सदस्य × औसत में वृद्धि) = 28 + (3 × 1) = <strong>31</strong>!</div>"
+  },
+  {
+    "id": 5,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "3 people can do a job in 12 days. How many people are needed to finish it in 4 days?",
+    "q_hi": "3 लोग एक काम को 12 दिनों में कर सकते हैं। इसे 4 दिनों में पूरा करने के लिए कितने लोगों की ज़रूरत होगी?",
+    "opts_en": [
+      "6",
+      "8",
+      "9",
+      "12"
+    ],
+    "opts_hi": [
+      "6",
+      "8",
+      "9",
+      "12"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Using M<sub>1</sub> × D<sub>1</sub> = M<sub>2</sub> × D<sub>2</sub>:<br>3 × 12 = M<sub>2</sub> × 4 ➔ M<sub>2</sub> = 36 / 4 = <strong>9</strong> people.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Inverse Ratio Trick:</div>Days reduced from 12 to 4 (divided by 3), so people must increase by 3 times: 3 × 3 = <strong>9</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>M<sub>1</sub> × D<sub>1</sub> = M<sub>2</sub> × D<sub>2</sub> सूत्र से:<br>3 × 12 = M<sub>2</sub> × 4 ➔ M<sub>2</sub> = 36 / 4 = <strong>9</strong> लोग।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>दिन 1/3 हो गए हैं, इसलिए लोग 3 गुना होंगे: 3 × 3 = <strong>9</strong>।</div>"
+  },
+  {
+    "id": 6,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Complete the pattern: 24, 16, 48, 32, 96, ?",
+    "q_hi": "इस क्रम को पूरा करें: 24, 16, 48, 32, 96, ?",
+    "opts_en": [
+      "100",
+      "64",
+      "78",
+      "36"
+    ],
+    "opts_hi": [
+      "100",
+      "64",
+      "78",
+      "36"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>There are two alternating series:<br>• 1st, 3rd, 5th terms: 24 × 2 = 48, 48 × 2 = 96.<br>• 2nd, 4th, 6th terms: 16 × 2 = 32, 32 × 2 = <strong>64</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Alternating Pair Trick:</div>16 ➔ 32 (×2), so next even term is 32 × 2 = <strong>64</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>यहाँ दो एकांतर (Alternate) क्रम चल रहे हैं:<br>• 24 × 2 = 48, 48 × 2 = 96<br>• 16 × 2 = 32, 32 × 2 = <strong>64</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>16 से 32 (दोगुना), इसलिए 32 का दोगुना = <strong>64</strong>।</div>"
+  },
+  {
+    "id": 7,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Statement: More young people are addicted to social media.\nCourse of Action:\n1. Promote awareness about digital wellness.\n2. Ban all social media platforms.",
+    "q_hi": "कथनः ज्यादा युवा सोशल मीडिया के आदी हो रहे हैं।\nकार्रवाई:\n1. डिजिटल स्वास्थ्य के बारे में जागरूकता बढ़ाएँ।\n2. सभी सोशल मीडिया प्लेटफ़ॉर्म पर प्रतिबंध लगाएँ।",
+    "opts_en": [
+      "Only 1",
+      "Only 2",
+      "Both follow",
+      "Neither follows"
+    ],
+    "opts_hi": [
+      "केवल 1",
+      "केवल 2",
+      "दोनों अनुसरण करते हैं",
+      "कोई भी अनुसरण नहीं करता है"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Course of action 1 is constructive and practical. Course of action 2 is an extreme blanket ban that is impractical.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Course of Action Rule:</div>Extreme measures ('ban all') are generally not a practical administrative action.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>कार्रवाई 1 जागरूकता बढ़ाने का रचनात्मक कदम है। कार्रवाई 2 में सभी प्लेटफ़ॉर्म पर पूर्ण प्रतिबंध लगाना अव्यावहारिक और अत्यधिक कठोर है।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा ट्रिक:</div>'सभी पर प्रतिबंध' जैसे चरम विकल्प आमतौर पर सही कार्रवाई नहीं होते।</div>"
+  },
+  {
+    "id": 8,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "How many centres were there if the roll numbers are: 223456, 223478, 224123, 225987, 223999?",
+    "q_hi": "यदि रोल नंबर इस प्रकार हैं तो कितने केंद्र थे: 223456, 223478, 224123, 225987, 223999?",
+    "opts_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "opts_hi": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Checking the first three digits (centre code) of each roll number:<br>• 223 (in 223456, 223478, 223999)<br>• 224 (in 224123)<br>• 225 (in 225987)<br>Total distinct centre prefixes = <strong>3</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>रोल नंबरों के शुरुआती 3 अंकों (केंद्र कोड) को देखने पर:<br>• 223 (223456, 223478, 223999)<br>• 224 (224123)<br>• 225 (225987)<br>कुल अलग-अलग केंद्र = <strong>3</strong>।"
+  },
+  {
+    "id": 9,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Identify the number that does not belong to the group: 1441, 2197, 2744, 3375",
+    "q_hi": "उस संख्या को पहचानें जो समूह से संबंधित नहीं है: 1441, 2197, 2744, 3375",
+    "opts_en": [
+      "1441",
+      "2197",
+      "2744",
+      "3375"
+    ],
+    "opts_hi": [
+      "1441",
+      "2197",
+      "2744",
+      "3375"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>2197 = 13³<br>2744 = 14³<br>3375 = 15³<br>All three are cubes of consecutive integers, whereas <strong>1441</strong> is not a cube.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Cube Check Trick:</div>13³, 14³, 15³ are classic SSC cubes; 1441 stands out immediately.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>2197 = 13³, 2744 = 14³, और 3375 = 15³ सभी पूर्ण घन (Cubes) हैं, जबकि <strong>1441</strong> पूर्ण घन नहीं है।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>13³, 14³, 15³ के घनों को याद रखें; 1441 अलग है।</div>"
+  },
+  {
+    "id": 10,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In a soft toy shop, eight boxes are kept in a stack. The boxes are numbered in ascending order from 1 to 8 such that the topmost box is numbered as 1 while the bottom-most box is numbered as 8. Each box contains different soft toys - Mickey Mouse, Dog, Rabbit, Teddy Bear, Whale, Tiger, Monkey, and Duck.\nThe box of Teddy bear is kept at the top. There are four boxes between the box of Teddy bear and the box of Duck. The box of Monkey is kept between the box of Rabbit and box number 6. Neither the box of Dog nor the box of Rabbit is kept at the bottom. The box of Whale is kept above the box of Tiger, which is kept above the box of Rabbit.\nWhich soft toy does box number 2 contain?",
+    "q_hi": "एक सॉफ्ट टॉय की दुकान में, आठ डिब्बे एक ढेर में रखे हैं। डिब्बों को 1 से 8 तक बढ़ते क्रम में इस प्रकार क्रमांकित किया गया है कि सबसे ऊपर वाले डिब्बे का क्रमांक 1 है जबकि सबसे नीचे वाले डिब्बे का क्रमांक 8 है। प्रत्येक डिब्बे में अलग-अलग सॉफ्ट टॉय हैं मिकी माउस, कुत्ता, खरगोश, टेडी बियर, व्हेल, बाघ, बंदर और बत्तख। टेडी बियर का डिब्बा सबसे ऊपर रखा है। टेडी बियर के डिब्बे और बत्तख के डिब्बे के बीच चार डिब्बे हैं। बंदर का डिब्बा खरगोश के डिब्बे और डिब्बा संख्या 6 के बीच रखा है। न तो कुत्ते का डिब्बा और न ही खरगोश का डिब्बा सबसे नीचे रखा है। व्हेल का डिब्बा बाघ के डिब्बे के ऊपर रखा है, जो खरगोश के डिब्बे के ऊपर रखा है।\nडिब्बा संख्या 2 में कौन सा सॉफ्ट टॉय है?",
+    "opts_en": [
+      "Whale",
+      "Rabbit",
+      "Tiger",
+      "Monkey"
+    ],
+    "opts_hi": [
+      "व्हेल",
+      "खरगोश",
+      "बाघ",
+      "बंदर"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1. Box 1 = Teddy Bear.<br>2. 4 boxes between Box 1 and Duck ➔ Duck is at Box 6.<br>3. Whale > Tiger > Rabbit (above Box 6, i.e., in boxes 2, 3, 4, 5). Monkey is between Rabbit and Box 6 ➔ Monkey = 5, Rabbit = 4, Tiger = 3, Whale = <strong>2</strong>.<br>4. Bottom (Box 8) = Mickey Mouse, Box 7 = Dog.<br>Box 2 contains <strong>Whale</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1. डिब्बा 1 = टेडी बियर।<br>2. टेडी बियर (1) और बत्तख के बीच 4 डिब्बे हैं ➔ बत्तख = डिब्बा 6।<br>3. व्हेल > बाघ > खरगोश तथा बंदर, खरगोश और डिब्बा 6 के बीच है ➔ बंदर = 5, खरगोश = 4, बाघ = 3, व्हेल = <strong>2</strong>।<br>अतः डिब्बा संख्या 2 में <strong>व्हेल</strong> है।"
+  },
+  {
+    "id": 11,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If 'A @ B' means 'B is a brother of A'\nIf 'A # B' means 'B is the mother of A'\nIf 'A % B' means 'B is the father of A'\nIf 'A & B' means 'B is a sister of A'\nIf 'R # C % V & X' is given, then who among the following is a child of C?",
+    "q_hi": "यदि 'A @ B' का अर्थ है 'B, A का भाई है'\nयदि 'A # B' का अर्थ है 'B, A की माता है'\nयदि 'A % B' का अर्थ है 'B, A का पिता है'\nयदि 'A & B' का अर्थ है 'B, A की बहन है'\nयदि 'R # C % V & X' है, तो C की संतान निम्नलिखित में से कौन है?",
+    "opts_en": [
+      "R",
+      "V",
+      "X",
+      "Both R and X"
+    ],
+    "opts_hi": [
+      "R",
+      "V",
+      "X",
+      "R और X दोनों"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'R # C' means C is the mother of R. Therefore, <strong>R</strong> is a child of C.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Direct Pair Check:</div>In 'X # Y', Y is the mother of X, so X is Y's child. Here 'R # C' immediately gives <strong>R</strong>!</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'R # C' का अर्थ है कि C, R की माता है। इसलिए <strong>R</strong>, C की संतान है।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>'A # B' में B माता है और A संतान। 'R # C' से सीधा उत्तर <strong>R</strong> मिलता है।</div>"
+  },
+  {
+    "id": 12,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Rearrange the letters of that word, written in capital letters, to form the correct word.\nThe chef decided to NTERAIMA the succulent steak for several hours to enhance its flavor.",
+    "q_hi": "उस शब्द के अक्षरों को, जो बड़े अक्षरों में लिखे हैं, पुनर्व्यवस्थित करके सही शब्द बनाएँ।\nशेफ ने रसीले स्टेक का स्वाद बढ़ाने के लिए उसे कई घंटों तक NTERAIMA में पकाने का फैसला किया।",
+    "opts_en": [
+      "MARTINE",
+      "REMINAT",
+      "MARINATE",
+      "RAIMENT"
+    ],
+    "opts_hi": [
+      "MARTINE",
+      "REMINAT",
+      "MARINATE",
+      "RAIMENT"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The letters N, T, E, R, A, I, M, A rearrange to form <strong>MARINATE</strong> (to soak food in a seasoned liquid before cooking).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>NTERAIMA के अक्षरों को व्यवस्थित करने पर सही शब्द <strong>MARINATE</strong> बनता है।"
+  },
+  {
+    "id": 13,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Find the number that best completes the analogy. D: 32 :: J:?",
+    "q_hi": "वह संख्या ज्ञात कीजिए जो सादृश्य को सर्वोत्तम रूप से पूरा करती है। D : 32 :: J : ?",
+    "opts_en": [
+      "70",
+      "72",
+      "80",
+      "76"
+    ],
+    "opts_hi": [
+      "70",
+      "72",
+      "80",
+      "76"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Alphabetical position of D = 4 ➔ 4 × 8 = 32.<br>Alphabetical position of J = 10 ➔ 10 × 8 = <strong>80</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Positional Multiplier:</div>Multiply letter rank by 8: J is 10th letter ➔ 10 × 8 = <strong>80</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>वर्णमाला में D का स्थान 4 है ➔ 4 × 8 = 32।<br>J का स्थान 10 है ➔ 10 × 8 = <strong>80</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>अक्षर के क्रमांक को 8 से गुणा करें: 10 × 8 = <strong>80</strong>।</div>"
+  },
+  {
+    "id": 14,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Choose the correct option to complete the series.\nDay: Night :: Victory:?",
+    "q_hi": "श्रृंखला को पूरा करने के लिए सही विकल्प चुनें।\nदिन : रात :: विजय : ?",
+    "opts_en": [
+      "Success",
+      "Celebration",
+      "Triumph",
+      "Defeat"
+    ],
+    "opts_hi": [
+      "सफलता",
+      "उत्सव",
+      "विजयोल्लास",
+      "पराजय"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Night is the antonym (opposite) of Day. Similarly, <strong>Defeat</strong> is the antonym of Victory.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>जिस प्रकार 'दिन' का विलोम 'रात' है, उसी प्रकार 'विजय' का विलोम <strong>पराजय</strong> है।"
+  },
+  {
+    "id": 15,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Choose the correct option to complete the series.\nCitrus: Lemon :: Rosaceae: ?",
+    "q_hi": "निम्नलिखित श्रृंखला को पूरा करने के लिए सही विकल्प चुनें।\nसाइट्रस : नींबू :: रोसेसीः ?",
+    "opts_en": [
+      "Hibiscus",
+      "Mango",
+      "Pear",
+      "Cleopatra"
+    ],
+    "opts_hi": [
+      "जावा",
+      "आम",
+      "नाशपाती",
+      "क्लियोपेट्रा"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Lemon belongs to the Citrus genus/family; similarly, <strong>Pear</strong> belongs to the Rosaceae family.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>नींबू साइट्रस वर्ग से संबंधित है, उसी प्रकार <strong>नाशपाती</strong> रोसेसी (Rosaceae) कुल से संबंधित है।"
+  },
+  {
+    "id": 16,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In the following question, select the related word from the given alternatives.\nWORD: ULMW:: PLAY: ?",
+    "q_hi": "निम्नलिखित प्रश्न में दिए गए विकल्पों में से संबंधित शब्द का चयन कीजिए।\nWORD: ULMW:: PLAY: ?",
+    "opts_en": [
+      "NOUB",
+      "BOGVR",
+      "CMIU",
+      "NIVR"
+    ],
+    "opts_hi": [
+      "NOUB",
+      "BOGVR",
+      "CMIU",
+      "NIVR"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Subtracting consecutive prime numbers (2, 3, 5, 7) from letter positions:<br>P(16) - 2 = N(14)<br>L(12) - 3 = I(9)<br>A(1 ➔ 27) - 5 = V(22)<br>Y(25) - 7 = R(18)<br>Result = <strong>NIVR</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अक्षरों के क्रमांक में क्रमिक अभाज्य संख्याएँ (-2, -3, -5, -7) घटाने पर:<br>P - 2 = N, L - 3 = I, A(27) - 5 = V, Y - 7 = R ➔ <strong>NIVR</strong>।"
+  },
+  {
+    "id": 17,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Which of the following is different from the rest?\n4, 16, 25, 36",
+    "q_hi": "निम्नलिखित में से कौन सा बाकी से अलग है?\n4, 16, 25, 36",
+    "opts_en": [
+      "4",
+      "16",
+      "25",
+      "36"
+    ],
+    "opts_hi": [
+      "4",
+      "16",
+      "25",
+      "36"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>4 = 2², 16 = 4², 36 = 6² are squares of even numbers, whereas <strong>25</strong> = 5² is the square of an odd number.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>4 (2²), 16 (4²), और 36 (6²) सम संख्याओं के वर्ग हैं, जबकि <strong>25</strong> (5²) विषम संख्या का वर्ग है।"
+  },
+  {
+    "id": 18,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Which meaningful word can be formed from the letters \"NOMRECEY\"?",
+    "q_hi": "\"NOMRECEY\" शब्द के अक्षरों से कौन सा सार्थक शब्द बनाया जा सकता है?",
+    "opts_en": [
+      "NOMERCY",
+      "CEROMNY",
+      "CEREMONY",
+      "NOMERECY"
+    ],
+    "opts_hi": [
+      "NOMERCY",
+      "CEROMNY",
+      "CEREMONY",
+      "NOMERECY"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Arranging the letters C, E, R, E, M, O, N, Y forms the meaningful English word <strong>CEREMONY</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>दिए गए अक्षरों से सार्थक शब्द <strong>CEREMONY</strong> बनता है।"
+  },
+  {
+    "id": 19,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Find the 10th term of the AP.\n2.5, 3.0, 3.5, ...",
+    "q_hi": "समांतर श्रेणी का 10वाँ पद ज्ञात कीजिए।\n2.5, 3.0, 3.5, ...",
+    "opts_en": [
+      "6.5",
+      "7.0",
+      "6.0",
+      "5.5"
+    ],
+    "opts_hi": [
+      "6.5",
+      "7.0",
+      "6.0",
+      "5.5"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>First term a = 2.5, common difference d = 0.5.<br>10th term T<sub>10</sub> = a + 9d = 2.5 + 9(0.5) = 2.5 + 4.5 = <strong>7.0</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ AP Shortcut:</div>Add 9 × 0.5 = 4.5 to first term 2.5 ➔ <strong>7.0</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>प्रथम पद a = 2.5, सार्व अंतर d = 0.5।<br>10वाँ पद = a + 9d = 2.5 + 9(0.5) = 2.5 + 4.5 = <strong>7.0</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>2.5 + (9 × 0.5) = 2.5 + 4.5 = <strong>7.0</strong>।</div>"
+  },
+  {
+    "id": 20,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If PLANT is coded as QMBOU, how is QMBOU coded?",
+    "q_hi": "यदि PLANT को QMBOU के रूप में कोडित किया जाता है, तो QMBOU को किस प्रकार कोडित किया जाएगा?",
+    "opts_en": [
+      "RNCOV",
+      "RNBOU",
+      "RNCPV",
+      "QMBOV"
+    ],
+    "opts_hi": [
+      "RNCOV",
+      "RNBOU",
+      "RNCPV",
+      "QMBOV"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Each letter is shifted forward by +1:<br>Q + 1 = R, M + 1 = N, B + 1 = C, O + 1 = P, U + 1 = V ➔ <strong>RNCPV</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>प्रत्येक अक्षर में +1 जोड़ने पर:<br>Q➔R, M➔N, B➔C, O➔P, U➔V ➔ <strong>RNCPV</strong>।"
+  },
+  {
+    "id": 21,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In a certain code language, \"INDEPENDENCE\" is written as \"JNEEQEODFNDE\". How will \"REPRESENTATION\" be written?",
+    "q_hi": "एक निश्चित कूट भाषा में, \"INDEPENDENCE\" को \"JNEEQEODFNDE\" लिखा जाता है। उसी कूट भाषा में \"REPRESENTATION\" को कैसे लिखा जाएगा?",
+    "opts_en": [
+      "SEQRFSFNUAUIPN",
+      "SEQRFSNAUFUIPN",
+      "SEQRSFFNUAIUPN",
+      "SEQRSFFNUAIUPN"
+    ],
+    "opts_hi": [
+      "SEQRFSFNUAUIPN",
+      "SEQRFSNAUFUIPN",
+      "SEQRSFFNUAIUPN",
+      "SEQRSFFNUAIUPN"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Applying the exact positional/character rule of INDEPENDENCE ➔ JNEEQEODFNDE to REPRESENTATION gives <strong>SEQRFSFNUAUIPN</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>कूट भाषा के नियम को REPRESENTATION पर लागू करने पर सही कोड <strong>SEQRFSFNUAUIPN</strong> प्राप्त होता है।"
+  },
+  {
+    "id": 22,
+    "q_img": "PartA_Qno_22.png",
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In the following question, a matrix of numbers is given. These numbers follow a certain pattern either row-wise or column-wise. Identify this pattern and choose the missing number accordingly.",
+    "q_hi": "निम्नलिखित प्रश्न में, संख्याओं का एक आव्यूह दिया गया है। ये संख्याएँ या तो पंक्ति-वार अथवा स्तंभ-वार किसी निश्चित स्वरूप का पालन करती हैं। इस स्वरूप की पहचान कीजिए तथा उसके अनुसार लुप्त संख्या ज्ञात कीजिए।",
+    "opts_en": [
+      "24",
+      "34",
+      "40",
+      "48"
+    ],
+    "opts_hi": [
+      "24",
+      "34",
+      "40",
+      "48"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Look at the 3rd column (36, 24, 12, ?):<br>Each row's 3rd column value is formed by the arithmetic relation across columns:<br>Row 1: 22, 44, 36<br>Row 2: 16, 28, 24<br>Row 3: 6, 16, 12<br>Row 4: 12, 32, ? ➔ <strong>24</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>आव्यूह के स्तंभों व पंक्तियों के गणितीय संबंध का विश्लेषण करने पर लुप्त संख्या (?) = <strong>24</strong> प्राप्त होती है।"
+  },
+  {
+    "id": 23,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If M+N means M is the husband of N; M-N means M is the sister of N; M*N means M is the son of N, what does A * B - C + D mean?",
+    "q_hi": "अगर M+N का मतलब है कि M, N का पति है; M-N का मतलब है कि M, N की बहन है; M * N का मतलब है कि M, N का बेटा है, तो A * B - C + D का क्या मतलब है?",
+    "opts_en": [
+      "A is the son of C's husband.",
+      "A is the brother of C.",
+      "A is the grandson of D.",
+      "A is the nephew of C."
+    ],
+    "opts_hi": [
+      "A, C के पति का बेटा है।",
+      "A, C का भाई है।",
+      "A, D का पोता है।",
+      "A, C का भतीजा है।"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1. A * B ➔ A is the son of B.<br>2. B - C ➔ B is the sister of C.<br>3. C + D ➔ C is the husband of D.<br>Since B is C's sister and A is B's son, <strong>A is the nephew of C</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1. A * B ➔ A, B का बेटा है।<br>2. B - C ➔ B, C की बहन है।<br>3. C + D ➔ C, D का पति है।<br>चूंकि B, C की बहन है और A, B का बेटा है, इसलिए <strong>A, C का भतीजा</strong> है।"
+  },
+  {
+    "id": 24,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "You have a brilliant subordinate who produces the highest quality work in the office. However, their internal need for perfection is so high that they regularly miss project deadlines by days, causing the entire department to scramble. When you point this out, they break down, saying their self-worth is entirely tied to the \"perfection\" of their output and that any compromise feels like a \"personal failure.\" What is the most structurally sound intervention?",
+    "q_hi": "आपके पास एक बहुत काबिल कर्मचारी है जो ऑफ़िस में सबसे बेहतरीन काम करता है। लेकिन, हर चीज़ को एकदम सही (परफेक्ट) करने की उनकी चाहत इतनी ज़्यादा है कि वे अक्सर प्रोजेक्ट की डेडलाइन से कई दिन पीछे रह जाते हैं, जिससे पूरे डिपार्टमेंट में अफरा-तफरी मच जाती है। जब आप उन्हें यह बात बताते हैं, तो वे भावुक हो जाते हैं और कहते हैं कि उनकी अपनी अहमियत पूरी तरह से उनके काम की \"परफेक्शन\" पर टिकी है और किसी भी तरह का समझौता उन्हें \"अपनी व्यक्तिगत नाकामी\" जैसा लगता है। इस स्थिति में सबसे सही और असरदार कदम क्या होगा?",
+    "opts_en": [
+      "Tell them that they must stop being a perfectionist or they will be fired, as business requires speed.",
+      "Acknowledge their perfectionism and define realistic quality thresholds for each project stage.",
+      "Reduce their workload by 50% so they have more time to perfect the few tasks they do receive.",
+      "Stop giving them any deadlines so they can work at their own pace without stress."
+    ],
+    "opts_hi": [
+      "उन्हें बता दें कि उन्हें हर चीज़ में परफ़ेक्शन की चाहत छोड़नी होगी, वरना उन्हें नौकरी से निकाल दिया जाएगा, क्योंकि बिज़नेस में रफ़्तार की ज़रूरत होती है।",
+      "उनके परफेक्शनिज़्म (हर काम को एकदम सही करने की चाहत) को समझें और हर प्रोजेक्ट स्टेज के लिए क्वालिटी के ऐसे स्टैंडर्ड तय करें जो असल में हासिल किए जा सकें।",
+      "उनके काम का बोझ 50% कम करें ताकि उन्हें जो कुछ काम मिलें, उन्हें बेहतर ढंग से पूरा करने के लिए उनके पास ज़्यादा समय हो।",
+      "उन्हें कोई डेडलाइन देना बंद करें ताकि वे बिना किसी तनाव के अपनी गति से काम कर सकें।"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Validating their effort while setting clear, realistic quality milestones per stage balances high standards with timely delivery.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>कर्मचारी की मेहनत व परफेक्शनिज़्म को समझते हुए प्रत्येक चरण के लिए व्यावहारिक गुणवत्ता मानक तय करना सबसे संतुलित और प्रभावी समाधान है।"
+  },
+  {
+    "id": 25,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "To manage the increasing energy demand in the city, the local council has proposed providing substantial subsidies to residents who install solar panels on their rooftops. Which of the following assumptions underlies the argument for providing these subsidies?",
+    "q_hi": "शहर में बढ़ती ऊर्जा माँग का प्रबंधन करने के लिए स्थानीय परिषद ने उन निवासियों को पर्याप्त सब्सिडी देने का प्रस्ताव रखा है, जो अपने घरों की छतों पर सौर पैनल स्थापित करेंगे। निम्नलिखित में से कौन-सी मान्यता इस सब्सिडी प्रदान करने के पक्ष में दिए गए तर्क का आधार है?",
+    "opts_en": [
+      "Providing financial incentives for solar adoption is the only way to meet future energy demands.",
+      "The current infrastructure is entirely unable to support the city's growing energy consumption.",
+      "Financial costs are a significant barrier to residents adopting solar technology.",
+      "Solar panels installed on residential rooftops will eliminate the need for power plants."
+    ],
+    "opts_hi": [
+      "सौर ऊर्जा अपनाने के लिए वित्तीय प्रोत्साहन प्रदान करना भविष्य की ऊर्जा आवश्यकताओं को पूरा करने का एकमात्र उपाय है।",
+      "वर्तमान अवसंरचना शहर की बढ़ती ऊर्जा खपत को पूरा करने में पूरी तरह असमर्थ है।",
+      "वित्तीय लागत, निवासियों द्वारा सौर प्रौद्योगिकी अपनाने में एक महत्वपूर्ण बाधा है।",
+      "आवासीय भवनों की छतों पर स्थापित सौर पैनल विद्युत संयंत्रों की आवश्यकता को समाप्त कर देंगे।"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A subsidy is offered to lower cost hurdles when upfront financial cost prevents people from adopting a technology.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सब्सिडी देने के पीछे मूल मान्यता यही होती है कि शुरुआती लागत अधिक होने के कारण लोग तकनीक अपनाने में हिचकिचाते हैं।"
+  },
+  {
+    "id": 26,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which high-level global metric predominantly derives its evaluation of subjective well-being from data collected through the Gallup World Poll?",
+    "q_hi": "कौन सा उच्च-स्तरीय वैश्विक मीट्रिक मुख्य रूप से गैलप वर्ल्ड पोल के माध्यम से एकत्र किए गए डेटा से व्यक्तिपरक कल्याण का मूल्यांकन करता है?",
+    "opts_en": [
+      "World Happiness Index",
+      "Global Competitiveness Index",
+      "Environmental Performance Index",
+      "Human Development Index"
+    ],
+    "opts_hi": [
+      "विश्व प्रसन्नता सूचकांक",
+      "वैश्विक प्रतिस्पर्धात्मकता सूचकांक",
+      "पर्यावरण प्रदर्शन सूचकांक",
+      "मानव विकास सूचकांक"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The <strong>World Happiness Index</strong> (World Happiness Report) relies primarily on Gallup World Poll survey data measuring life evaluations.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>विश्व प्रसन्नता सूचकांक (World Happiness Index)</strong> गैलप वर्ल्ड पोल के सर्वेक्षण आंकड़ों के आधार पर व्यक्तिपरक खुशहाली का आकलन करता है।"
+  },
+  {
+    "id": 27,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What is a key goal of the Human Development Index (HDI)?",
+    "q_hi": "मानव विकास सूचकांक (एचडीआई) का प्रमुख लक्ष्य क्या है?",
+    "opts_en": [
+      "To shift the focus from solely economic development to human development.",
+      "To only measure economic growth.",
+      "To only measure military strength.",
+      "To only measure environmental impact."
+    ],
+    "opts_hi": [
+      "केवल आर्थिक विकास से हटकर मानव विकास पर ध्यान केन्द्रित करना।",
+      "केवल आर्थिक विकास को मापना।",
+      "केवल सैन्य शक्ति को मापना।",
+      "केवल पर्यावरणीय प्रभाव को मापना।"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>HDI evaluates health, education, and standard of living rather than looking at income/GDP alone.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>HDI का मुख्य उद्देश्य विकास को केवल आर्थिक आय तक सीमित न रखकर स्वास्थ्य, शिक्षा और जीवन स्तर (मानव विकास) पर केंद्रित करना है।"
+  },
+  {
+    "id": 28,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "How many categories does the USA Air Quality Index (AQI) use to classify air quality?",
+    "q_hi": "वायु गुणवत्ता को वर्गीकृत करने के लिए यूएसए वायु गुणवत्ता सूचकांक (एक्यूआई) कितनी श्रेणियों का उपयोग करता है?",
+    "opts_en": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "opts_hi": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The US EPA Air Quality Index uses <strong>6</strong> color-coded categories (Good, Moderate, Unhealthy for Sensitive Groups, Unhealthy, Very Unhealthy, Hazardous).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>यूएसए वायु गुणवत्ता सूचकांक (AQI) वायु गुणवत्ता को <strong>6</strong> श्रेणियों में वर्गीकृत करता है।"
+  },
+  {
+    "id": 29,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following satellites is launched by ISRO for disaster management and natural resource monitoring?",
+    "q_hi": "आपदा प्रबंधन और प्राकृतिक संसाधन निगरानी के लिए इसरो द्वारा निम्नलिखित में से कौन सा उपग्रह लॉन्च किया गया है?",
+    "opts_en": [
+      "Astrosat",
+      "GSAT",
+      "RISAT",
+      "Cartosat"
+    ],
+    "opts_hi": [
+      "एस्ट्रोसैट",
+      "जीसैट",
+      "रीसैट",
+      "कार्टोसैट"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>RISAT</strong> (Radar Imaging Satellite) uses radar imaging capable of observing through clouds and darkness, aiding disaster management and resource monitoring.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>रीसैट (RISAT)</strong> रडार इमेजिंग उपग्रह है, जो बादलों व रात में भी निगरानी कर आपदा प्रबंधन और संसाधन सर्वेक्षण में मदद करता है।"
+  },
+  {
+    "id": 30,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which technology is ISRO testing through the RLV-TD project?",
+    "q_hi": "आरएलवी-टीडी परियोजना के माध्यम से इसरो किस तकनीक का परीक्षण कर रहा है?",
+    "opts_en": [
+      "Robotic lunar excavation",
+      "Underwater satellite deployment",
+      "Deep space communication",
+      "Reusable space launch vehicles"
+    ],
+    "opts_hi": [
+      "रोबोटिक चंद्र उत्खनन",
+      "पानी के अंदर उपग्रह परिनियोजन",
+      "गहन अंतरिक्ष संचार",
+      "पुनः प्रयोज्य अंतरिक्ष प्रक्षेपण वाहन"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>RLV-TD stands for <strong>Reusable Launch Vehicle</strong> Technology Demonstrator.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>RLV-TD का अर्थ है <strong>पुनः प्रयोज्य अंतरिक्ष प्रक्षेपण वाहन (Reusable Launch Vehicle)</strong>।"
+  },
+  {
+    "id": 31,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The construction of Taj Mahal was completed in which year?",
+    "q_hi": "ताजमहल का निर्माण किस वर्ष पूरा हुआ?",
+    "opts_en": [
+      "1631",
+      "1643",
+      "1653",
+      "1666"
+    ],
+    "opts_hi": [
+      "1631",
+      "1643",
+      "1653",
+      "1666"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Construction began around 1631/1632 and the main complex was completed around <strong>1653</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>ताजमहल का निर्माण कार्य 1631-32 में शुरू हुआ था और मुख्य रूप से <strong>1653</strong> में पूरा हुआ।"
+  },
+  {
+    "id": 32,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What is a key aspect of the Quad's (Quadrilateral Security Dialogue) approach to regional security?",
+    "q_hi": "क्षेत्रीय सुरक्षा के लिए क्वाड (चतुर्भुज सुरक्षा वार्ता) दृष्टिकोण का एक प्रमुख पहलू क्या है?",
+    "opts_en": [
+      "Forming a formal military alliance",
+      "Isolating regional powers",
+      "Promoting multilateral cooperation",
+      "Creating exclusive trade blocs"
+    ],
+    "opts_hi": [
+      "औपचारिक सैन्य गठबंधन का गठन",
+      "क्षेत्रीय शक्तियों को अलग-थलग करना",
+      "बहुपक्षीय सहयोग को बढ़ावा देना",
+      "विशिष्ट व्यापार ब्लॉकों का निर्माण"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The Quad (India, US, Japan, Australia) focuses on <strong>multilateral cooperation</strong> for a free and open Indo-Pacific.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>क्वाड (भारत, अमेरिका, जापान, ऑस्ट्रेलिया) का मुख्य उद्देश्य स्वतंत्र व खुले हिंद-प्रशांत क्षेत्र के लिए <strong>बहुपक्षीय सहयोग</strong> को बढ़ावा देना है।"
+  },
+  {
+    "id": 33,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "How many points are awarded for a successful \"touchdown\" in American Football?",
+    "q_hi": "अमेरिकी फुटबॉल में सफल \"टचडाउन\" के लिए कितने अंक दिए जाते हैं?",
+    "opts_en": [
+      "3",
+      "5",
+      "6",
+      "7"
+    ],
+    "opts_hi": [
+      "3",
+      "5",
+      "6",
+      "7"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A touchdown in American football awards <strong>6</strong> points.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अमेरिकी फुटबॉल में एक सफल टचडाउन के लिए <strong>6</strong> अंक मिलते हैं।"
+  },
+  {
+    "id": 34,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which part of early Gandhara art shows that it was influenced by Greek art styles?",
+    "q_hi": "प्रारंभिक गांधार कला का कौन सा भाग दर्शाता है कि यह ग्रीक कला शैलियों से प्रभावित था?",
+    "opts_en": [
+      "Symbolic representation of Buddha through footprints",
+      "Use of terracotta in religious art",
+      "Depiction of the Buddha with draped robe and wavy hair",
+      "Use of floral capitals and bell-shaped domes"
+    ],
+    "opts_hi": [
+      "पदचिह्नों के माध्यम से बुद्ध का प्रतीकात्मक प्रतिनिधित्व",
+      "धार्मिक कला में टेराकोटा का उपयोग",
+      "बुद्ध का वस्त्र पहने और लहराते बालों वाला चित्रण",
+      "पुष्प शीर्ष और घंटी के आकार के गुंबदों का उपयोग"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Gandhara art combines Indian themes with Greco-Roman styling such as wavy hair and pleated draped robes.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>गांधार कला में बुद्ध की मूर्तियों के लहराते बाल और सलवटों वाले वस्त्र (draped robe) यूनानी (Greek) कला प्रभाव को दर्शाते हैं।"
+  },
+  {
+    "id": 35,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Who won the 1976 Booker Prize for \"Heat and Dust,\" a novel that juxtaposes colonial India with postcolonial experiences?",
+    "q_hi": "1976 का बुकर पुरस्कार किसने \"हीट एंड डस्ट\" के लिए जीता, यह एक उपन्यास है जो औपनिवेशिक भारत और उत्तर-औपनिवेशिक अनुभवों को जोड़ता है?",
+    "opts_en": [
+      "Salman Rushdie",
+      "J.G. Farrell",
+      "Ruth Prawer Jhabvala",
+      "Anita Desai"
+    ],
+    "opts_hi": [
+      "सलमान रुश्दी",
+      "जे.जी. फैरेल",
+      "रूथ प्रावर झबवाला",
+      "अनिता देसाई"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Ruth Prawer Jhabvala</strong> won the 1975/1976 Booker Prize for her novel <em>Heat and Dust</em>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>रूथ प्रावर झबवाला</strong> ने अपने उपन्यास <em>Heat and Dust</em> के लिए बुकर पुरस्कार जीता था।"
+  },
+  {
+    "id": 36,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which book by Vikram Chandra won the Commonwealth Writers' Prize for Best First Book in 1996?",
+    "q_hi": "विक्रम चंद्रा की किस पुस्तक ने 1996 में सर्वश्रेष्ठ प्रथम पुस्तक के लिए कॉमनवेल्थ राइटर्स पुरस्कार जीता?",
+    "opts_en": [
+      "Love and Longing in Bombay",
+      "Red Earth and Pouring Rain",
+      "Sacred Games",
+      "The Gypsy Goddess"
+    ],
+    "opts_hi": [
+      "लव एंड लॉन्डिंग इन बॉम्बे",
+      "रेड अर्थ एंड पोरिंग रेन",
+      "सेक्रेड गेम्स",
+      "द जिप्सी गॉडेस"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Vikram Chandra's debut novel <strong>Red Earth and Pouring Rain</strong> won the Commonwealth Writers' Prize for Best First Book.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>विक्रम चंद्रा के पहले उपन्यास <strong>Red Earth and Pouring Rain</strong> को सर्वश्रेष्ठ प्रथम पुस्तक का कॉमनवेल्थ राइटर्स पुरस्कार मिला था।"
+  },
+  {
+    "id": 37,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The Twenty-Point Programme (TPP), introduced during the _____ Five-Year Plan.",
+    "q_hi": "बीस सूत्री कार्यक्रम (टीपीपी) _____ पंचवर्षीय योजना के दौरान शुरू किया गया था।",
+    "opts_en": [
+      "6th",
+      "7th",
+      "8th",
+      "5th"
+    ],
+    "opts_hi": [
+      "6ठीं",
+      "7वीं",
+      "8वीं",
+      "5वीं"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The Twenty-Point Programme was launched in 1975 during the <strong>5th</strong> Five-Year Plan.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>बीस सूत्री कार्यक्रम 1975 में <strong>5वीं</strong> पंचवर्षीय योजना के दौरान शुरू किया गया था।"
+  },
+  {
+    "id": 38,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The Teej Festival marks the arrival of which season in India?",
+    "q_hi": "तीज त्यौहार भारत में किस ऋतु के आगमन का प्रतीक है?",
+    "opts_en": [
+      "Summer",
+      "Spring",
+      "Monsoon",
+      "Winter"
+    ],
+    "opts_hi": [
+      "ग्रीष्म",
+      "वसंत",
+      "मानसून",
+      "सर्दी"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Teej celebrates the arrival of the <strong>Monsoon</strong> rains.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>तीज का पर्व भारत में वर्षा ऋतु यानी <strong>मानसून</strong> के आगमन का प्रतीक है।"
+  },
+  {
+    "id": 39,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The introduction of English as the medium of instruction in Indian schools was largely a result of the recommendations made by:",
+    "q_hi": "भारतीय विद्यालयों में शिक्षा के माध्यम के रूप में अंग्रेजी की शुरूआत मुख्यतः निम्नलिखित द्वारा की गई सिफारिशों का परिणाम थीः",
+    "opts_en": [
+      "The Hunter Commission",
+      "The Wood's Despatch",
+      "The Sadler Commission",
+      "The Sargent Scheme"
+    ],
+    "opts_hi": [
+      "हंटर आयोग",
+      "द वुड्स डिस्पैच",
+      "सैडलर आयोग",
+      "सार्जेंट योजना"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Wood's Despatch</strong> (1854) significantly shaped modern school and college education and English instruction in India.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>द वुड्स डिस्पैच (1854)</strong> की सिफारिशों ने भारत में शिक्षा प्रणाली और अंग्रेजी माध्यम के विस्तार में महत्वपूर्ण भूमिका निभाई।"
+  },
+  {
+    "id": 40,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which Indian cricket stadium hosted the 2023 ICC World Cup final?",
+    "q_hi": "किस भारतीय क्रिकेट स्टेडियम ने 2023 आईसीसी विश्व कप फाइनल की मेजबानी की?",
+    "opts_en": [
+      "Wankhede Stadium",
+      "M. Chinnaswamy Stadium",
+      "Narendra Modi Stadium",
+      "Eden Gardens"
+    ],
+    "opts_hi": [
+      "वानखेड़े स्टेडियम",
+      "एम. चिन्नास्वामी स्टेडियम",
+      "नरेंद्र मोदी स्टेडियम",
+      "ईडन गार्डन्स"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The 2023 ICC Men's Cricket World Cup final was held at the <strong>Narendra Modi Stadium</strong> in Ahmedabad.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>2023 आईसीसी विश्व कप का फाइनल अहमदाबाद के <strong>नरेंद्र मोदी स्टेडियम</strong> में खेला गया था।"
+  },
+  {
+    "id": 41,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following women freedom fighters was known as the 'Agni of India'?",
+    "q_hi": "निम्नलिखित में से किस महिला स्वतंत्रता सेनानी को 'भारत की अग्नि' के रूप में जाना जाता था?",
+    "opts_en": [
+      "Durgawati Devi",
+      "Kamaladevi Chattopadhyay",
+      "Captain Lakshmi Sehgal",
+      "Usha Mehta"
+    ],
+    "opts_hi": [
+      "दुर्गावती देवी",
+      "कमलादेवी चट्टोपाध्याय",
+      "कैप्टन लक्ष्मी सहगल",
+      "उषा मेहता"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Durgawati Devi</strong> (Durga Bhabhi) was known as the 'Agni of India'.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>स्वतंत्रता सेनानी <strong>दुर्गावती देवी</strong> को 'भारत की अग्नि' के रूप में जाना जाता था।"
+  },
+  {
+    "id": 42,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Regarding pulse production in India, consider the following statements.\n1. Black gram can be cultivated as both kharif and Rabi crops.\n2. Green gram alone accounts for nearly half of pulse production.\n3. In the last three decades, while the production of Kharif pulses has increased, the production of Rabi pulses has decreased.\nWhich of the statements given above is/are CORRECT?",
+    "q_hi": "भारत में दालों के उत्पादन के संबंध में, निम्नलिखित कथनों पर विचार करें।\n1. काले चने की खेती खरीफ और रबी दोनों फसलों के रूप में की जा सकती है।\n2. दाल उत्पादन में अकेले हरे चने का योगदान लगभग आधा है।\n3. पिछले तीन दशकों में, जबकि खरीफ दालों का उत्पादन बढ़ा है, रबी दालों का उत्पादन कम हुआ है।\nऊपर दिए गए कथनों में से कौन सा सही है / हैं?",
+    "opts_en": [
+      "1 only",
+      "2 and 3 only",
+      "2 only",
+      "1 and 2 only"
+    ],
+    "opts_hi": [
+      "केवल 1",
+      "केवल 2 और 3",
+      "केवल 2",
+      "केवल 1 और 2"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Only statement <strong>1</strong> is correct; black gram (urad) can be grown in both Kharif and Rabi seasons.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>केवल कथन <strong>1</strong> सही है कि काले चने (उड़द) की खेती खरीफ और रबी दोनों मौसमों में की जा सकती है।"
+  },
+  {
+    "id": 43,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What is the major health risk associated with long-term use of anabolic steroids by athletes?",
+    "q_hi": "एथलीटों द्वारा एनाबोलिक स्टेरॉयड के दीर्घकालिक उपयोग से जुड़ा प्रमुख स्वास्थ्य जोखिम क्या है?",
+    "opts_en": [
+      "Increased bone thickness and strength",
+      "Severe dehydration and fluid loss",
+      "Hormonal imbalance and organ damage",
+      "Better immunity and faster recovery"
+    ],
+    "opts_hi": [
+      "हड्डियों की मोटाई और ताकत में वृद्धि",
+      "गंभीर निर्जलीकरण और द्रव हानि",
+      "हार्मोनल असंतुलन और अंग क्षति",
+      "बेहतर प्रतिरक्षा और तेजी से रिकवरी"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Long-term anabolic steroid abuse causes <strong>hormonal imbalance and organ damage</strong> (liver, heart, kidneys).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>एनाबोलिक स्टेरॉयड के लंबे समय तक उपयोग से <strong>हार्मोनल असंतुलन और अंग क्षति</strong> का गंभीर जोखिम होता है।"
+  },
+  {
+    "id": 44,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The doctrine of Basic Structure of the Constitution was propounded in which case and relates to which Article?",
+    "q_hi": "संविधान के मूल ढांचे का सिद्धांत किस मामले में प्रतिपादित किया गया था और यह किस अनुच्छेद से संबंधित है?",
+    "opts_en": [
+      "Kesavananda Bharati Case; Article 368",
+      "Golaknath Case; Article 21",
+      "Maneka Gandhi Case; Article 14",
+      "Minerva Mills Case; Article 356"
+    ],
+    "opts_hi": [
+      "केशवानंद भारती मामला; अनुच्छेद 368",
+      "गोलकनाथ मामला; अनुच्छेद 21",
+      "मेनका गांधी मामला; अनुच्छेद 14",
+      "मिनर्वा मिल्स मामला; अनुच्छेद 356"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The Basic Structure doctrine was propounded in the <strong>Kesavananda Bharati Case</strong> (1973) in relation to Parliament's amending power under <strong>Article 368</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>संविधान के मूल ढांचे का सिद्धांत <strong>केशवानंद भारती मामले</strong> (1973) में प्रतिपादित हुआ था और यह <strong>अनुच्छेद 368</strong> से संबंधित है।"
+  },
+  {
+    "id": 45,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Arrange the following developments in federal structure chronologically:\n1. Formation of Inter-State Council\n2. 73rd Constitutional Amendment\n3. GST Council formation",
+    "q_hi": "संघीय ढांचे में निम्नलिखित घटनाक्रमों को कालानुक्रमिक रूप से व्यवस्थित कीजिए:\n1. अंतर-राज्यीय परिषद का गठन\n2. 73वाँ संविधान संशोधन\n3. जीएसटी परिषद का गठन",
+    "opts_en": [
+      "1-2-3",
+      "3-2-1",
+      "2-3-1",
+      "1-3-2"
+    ],
+    "opts_hi": [
+      "1-2-3",
+      "3-2-1",
+      "2-3-1",
+      "1-3-2"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Inter-State Council (1990) ➔ 73rd Constitutional Amendment (1992) ➔ GST Council (2016). Correct order: <strong>1-2-3</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अंतर-राज्यीय परिषद (1990) ➔ 73वाँ संविधान संशोधन (1992) ➔ जीएसटी परिषद (2016)। सही क्रम <strong>1-2-3</strong> है।"
+  },
+  {
+    "id": 46,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What does the term \"astheno\" mean in the context of the Earth's mantle?",
+    "q_hi": "पृथ्वी के मेंटल के संदर्भ में \"अस्थेनो\" शब्द का क्या अर्थ है?",
+    "opts_en": [
+      "Strong",
+      "Weak",
+      "Solid",
+      "Molten"
+    ],
+    "opts_hi": [
+      "सशक्त",
+      "दुर्बल",
+      "ठोस",
+      "द्रवित"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>In <em>asthenosphere</em>, the Greek root 'astheno' means <strong>weak</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>एस्थेनोस्फीयर में 'अस्थेनो' शब्द का अर्थ <strong>दुर्बल (Weak)</strong> होता है।"
+  },
+  {
+    "id": 47,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Consider the following statements about the stratosphere:\n1. Temperature increases in the lower part of the stratosphere due to the presence of methane gas.\n2. The ozone layer absorbs solar radiation, leading to a rise in temperature with altitude in this layer.\nWhich of the statements above is/are correct?",
+    "q_hi": "समतापमंडल के संबंध में निम्नलिखित कथनों पर विचार कीजिए:\n1. समतापमंडल के निचले भाग में तापमान मीथेन गैस की उपस्थिति के कारण बढ़ता है।\n2. ओज़ोन परत सौर विकिरण को अवशोषित करती है, जिससे इस परत में ऊँचाई के साथ तापमान में वृद्धि होती है।\nउपरोक्त में से कौन-सा/से कथन सही है/हैं?",
+    "opts_en": [
+      "Only 1",
+      "Only 2",
+      "Both 1 and 2 are correct",
+      "Neither 1 nor 2 is correct"
+    ],
+    "opts_hi": [
+      "केवल 1",
+      "केवल 2",
+      "1 और 2 दोनों सही हैं",
+      "न तो 1 और न ही 2 सही है"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Only statement <strong>2</strong> is correct: absorption of UV/solar radiation by the ozone layer raises temperature with altitude in the stratosphere.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>केवल कथन <strong>2</strong> सही है क्योंकि ओज़ोन परत सौर पराबैंगनी विकिरण को अवशोषित करती है, जिससे समतापमंडल में ऊँचाई के साथ तापमान बढ़ता है।"
+  },
+  {
+    "id": 48,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which aspect of agriculture witnessed a decline after the economic reforms of 1991?",
+    "q_hi": "1991 के आर्थिक सुधारों के बाद कृषि के किस पहलू में गिरावट देखी गई?",
+    "opts_en": [
+      "Public investment in agricultural infrastructure",
+      "Private investment in agricultural development",
+      "Agricultural exports in international markets",
+      "Production of commercial agricultural crops"
+    ],
+    "opts_hi": [
+      "कृषि अवसंरचना में सार्वजनिक निवेश",
+      "कृषि विकास में निजी निवेश",
+      "अंतरराष्ट्रीय बाजारों में कृषि निर्यात",
+      "वाणिज्यिक कृषि फसलों का उत्पादन"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>After 1991, <strong>public investment in agricultural infrastructure</strong> saw a notable decline.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1991 के आर्थिक सुधारों के बाद <strong>कृषि अवसंरचना में सार्वजनिक निवेश</strong> में गिरावट देखी गई।"
+  },
+  {
+    "id": 49,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "One mole of an ideal gas undergoes a reversible isothermal expansion from 10 L(liter) to 20 L (liter) at a constant temperature of 300 K (kelvin). What is the work done by the gas, approximately?",
+    "q_hi": "एक आदर्श गैस का एक मोल 300 केल्विन के स्थिर ताप पर 10 लीटर से 20 लीटर तक एक उत्क्रमणीय समतापीय प्रसार से गुजरता है। गैस द्वारा किया गया कार्य लगभग कितना है?",
+    "opts_en": [
+      "0 (joule)",
+      "700 (joule)",
+      "3500 (joule)",
+      "1700 (joule)"
+    ],
+    "opts_hi": [
+      "0 (जूल)",
+      "700 (जूल)",
+      "3500 (जूल)",
+      "1700 (जूल)"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>W = nRT ln(V<sub>2</sub>/V<sub>1</sub>) = 1 × 8.314 × 300 × ln(20/10) ≈ 2494.2 × 0.693 ≈ 1728 J ≈ <strong>1700 (joule)</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>W = nRT ln(V<sub>2</sub>/V<sub>1</sub>) = 1 × 8.314 × 300 × 0.693 ≈ 1728 जूल ≈ <strong>1700 (जूल)</strong>।"
+  },
+  {
+    "id": 50,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which process is most directly responsible for the majority of cancer-related deaths?",
+    "q_hi": "कौन सी प्रक्रिया कैंसर से होने वाली अधिकांश मौतों के लिए सबसे प्रत्यक्ष रूप से जिम्मेदार है?",
+    "opts_en": [
+      "Increased local proliferation of tumor cells",
+      "Loss of cell cycle checkpoints in dividing cells",
+      "Formation of metastases in distant organs",
+      "Formation of benign tumor masses in primary tissue"
+    ],
+    "opts_hi": [
+      "अर्बुद कोशिकाओं का स्थानीय प्रवर्धन बढ़ना",
+      "विभाजित होती कोशिकाओं में कोशिका चक्र नियंत्रण बिंदुओं का नष्ट होना",
+      "दूरस्थ अंगों में मेटास्टेसिस का निर्माण",
+      "प्राथमिक ऊतक में सुदम अर्बुद पिंडों का निर्माण"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Formation of metastases in distant organs</strong> (secondary tumor spread) is the leading cause of cancer mortality.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>दूरस्थ अंगों में मेटास्टेसिस (Metastasis) का निर्माण</strong> कैंसर से होने वाली अधिकांश मौतों का मुख्य कारण है।"
+  },
+  {
+    "id": 51,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A sum of money amounts to Rs. 825 in 3 years and to Rs. 950 in 4 years at some rate of simple interest. The sum is:",
+    "q_hi": "एक धनराशि साधारण ब्याज की किसी दर पर 3 वर्षों में 825 रुपये और 4 वर्षों में 950 रुपये हो जाती है। धनराशि है:",
+    "opts_en": [
+      "400/-",
+      "410/-",
+      "450/-",
+      "550/-"
+    ],
+    "opts_hi": [
+      "400/-",
+      "410/-",
+      "450/-",
+      "550/-"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1. Simple interest for 1 year = 950 - 825 = Rs. 125.<br>2. Simple interest for 3 years = 3 × 125 = Rs. 375.<br>3. Principal (Sum) = 825 - 375 = <strong>450/-</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ 5-Second Exam Trick:</div>Principal = Amount<sub>3yr</sub> - 3 × (Amount<sub>4yr</sub> - Amount<sub>3yr</sub>) = 825 - 3(125) = 825 - 375 = <strong>450/-</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>1. 1 वर्ष का साधारण ब्याज = 950 - 825 = 125 रुपये।<br>2. 3 वर्ष का साधारण ब्याज = 3 × 125 = 375 रुपये।<br>3. मूलधन = 825 - 375 = <strong>450/-</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>मूलधन = 825 - 3 × (950 - 825) = 825 - 375 = <strong>450/-</strong> (5 सेकंड में हल)।</div>"
+  },
+  {
+    "id": 52,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A toy is in the form of a hemisphere surmounted by a cone. The radius of the hemisphere is 3 cm and the cone's height is 4 cm. Find the total volume of the toy (use π ≈ 3.14).",
+    "q_hi": "एक खिलौना एक अर्धगोले के आकार का है जिसके ऊपर एक शंकु रखा हुआ है। अर्धगोले की त्रिज्या 3 सेमी है और शंकु की ऊँचाई 4 सेमी है। खिलौने का कुल आयतन ज्ञात कीजिए (π ≈ 3.14 का प्रयोग करें)।",
+    "opts_en": [
+      "113.04 cm³",
+      "188.4 cm³",
+      "94.2 cm³",
+      "62.8 cm³"
+    ],
+    "opts_hi": [
+      "113.04 सेमी³",
+      "188.4 सेमी³",
+      "94.2 सेमी³",
+      "62.8 सेमी³"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Radius r = 3 cm, height h = 4 cm.<br>Volume of hemisphere = (2/3)πr³ = (2/3) × 3.14 × 27 = 18 × 3.14 = 56.52 cm³.<br>Volume of cone = (1/3)πr²h = (1/3) × 3.14 × 9 × 4 = 12 × 3.14 = 37.68 cm³.<br>Total volume = 56.52 + 37.68 = <strong>94.2 cm³</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Combined Formula Shortcut:</div>V = (1/3)πr²(2r + h) = (1/3) × 3.14 × 9 × (6 + 4) = 3.14 × 30 = <strong>94.2 cm³</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>त्रिज्या r = 3 सेमी, ऊँचाई h = 4 सेमी।<br>अर्धगोले का आयतन = (2/3)πr³ = (2/3) × 3.14 × 27 = 56.52 सेमी³।<br>शंकु का आयतन = (1/3)πr²h = (1/3) × 3.14 × 9 × 4 = 37.68 सेमी³।<br>कुल आयतन = 56.52 + 37.68 = <strong>94.2 सेमी³</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ शॉर्टकट सूत्र:</div>कुल आयतन = (1/3)πr²(2r + h) = 3.14 × 3 × 10 = <strong>94.2 सेमी³</strong>।</div>"
+  },
+  {
+    "id": 53,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Solve: (x + 2)² - (x - 2)²",
+    "q_hi": "हल करें : (x + 2)² - (x - 2)²",
+    "opts_en": [
+      "8x",
+      "2x + 4",
+      "10x",
+      "x²"
+    ],
+    "opts_hi": [
+      "8x",
+      "2x + 4",
+      "10x",
+      "x²"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>(x + 2)² - (x - 2)² = (x² + 4x + 4) - (x² - 4x + 4) = <strong>8x</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Identity Shortcut:</div>(a + b)² - (a - b)² = 4ab. Here 4 × x × 2 = <strong>8x</strong> directly!</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>(x + 2)² - (x - 2)² = (x² + 4x + 4) - (x² - 4x + 4) = <strong>8x</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ सर्वसमिका शॉर्टकट:</div>(a + b)² - (a - b)² = 4ab = 4 × x × 2 = <strong>8x</strong>।</div>"
+  },
+  {
+    "id": 54,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If the diameter of a circle is 28 cm, then its area is:",
+    "q_hi": "यदि किसी वृत्त का व्यास 28 सेंटीमीटर है, तो उसका क्षेत्रफल है:",
+    "opts_en": [
+      "154 cm²",
+      "616 cm²",
+      "308 cm²",
+      "484 cm²"
+    ],
+    "opts_hi": [
+      "154 वर्ग सेंटीमीटर",
+      "616 वर्ग सेंटीमीटर",
+      "308 वर्ग सेंटीमीटर",
+      "484 वर्ग सेंटीमीटर"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Diameter = 28 cm ➔ Radius r = 28 / 2 = 14 cm.<br>Area = πr² = (22/7) × 14 × 14 = 22 × 2 × 14 = <strong>616 cm²</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Radius Scaling Rule:</div>When r = 7, Area = 154. Here r = 14 (double of 7), so Area = 154 × 2² = 154 × 4 = <strong>616 cm²</strong>.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>व्यास = 28 सेमी ➔ त्रिज्या r = 14 सेमी।<br>क्षेत्रफल = πr² = (22/7) × 14 × 14 = <strong>616 वर्ग सेंटीमीटर</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>त्रिज्या 7 पर क्षेत्रफल 154 होता है; त्रिज्या दोगुनी (14) होने पर क्षेत्रफल 4 गुना = 154 × 4 = <strong>616</strong>।</div>"
+  },
+  {
+    "id": 55,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If tanA + cotA = 2 and A is an acute angle, find the value of tan⁴A + cot⁴A.",
+    "q_hi": "अगर tanA + cotA = 2 तथा A एक न्यून कोण है, तो tan⁴A + cot⁴A का मान ज्ञात कीजिए।",
+    "opts_en": [
+      "2",
+      "20",
+      "22",
+      "24"
+    ],
+    "opts_hi": [
+      "2",
+      "20",
+      "22",
+      "24"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>For acute angle A, tanA + cotA = 2 holds at A = 45°, where tan 45° = 1 and cot 45° = 1.<br>tan⁴A + cot⁴A = 1⁴ + 1⁴ = 1 + 1 = <strong>2</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Value-Putting Shortcut:</div>Whenever tanθ + cotθ = 2, put θ = 45° (value = 1). 1⁴ + 1⁴ = <strong>2</strong> in 2 seconds!</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>न्यून कोण A = 45° के लिए tan 45° = 1 और cot 45° = 1 होता है (1 + 1 = 2)।<br>अतः tan⁴A + cot⁴A = 1⁴ + 1⁴ = <strong>2</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>tanθ + cotθ = 2 होने पर सीधे θ = 45° रखें: 1⁴ + 1⁴ = <strong>2</strong>।</div>"
+  },
+  {
+    "id": 56,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A cone has a height of 8 cm and a slant height of 10 cm. What is the volume of the cone?",
+    "q_hi": "एक शंकु की ऊँचाई 8 सेंटीमीटर और तिर्यक ऊँचाई 10 सेमी है। शंकु का आयतन क्या है?",
+    "opts_en": [
+      "301.71 cm³",
+      "304 cm³",
+      "305.75 cm³",
+      "308.76 cm³"
+    ],
+    "opts_hi": [
+      "301.71 घन सेंटीमीटर",
+      "304 घन सेंटीमीटर",
+      "305.75 घन सेंटीमीटर",
+      "308.76 घन सेंटीमीटर"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Slant height l = 10 cm, height h = 8 cm.<br>Radius r = √(l² - h²) = √(10² - 8²) = √(100 - 64) = √36 = 6 cm.<br>Volume = (1/3)πr²h = (1/3) × (22/7) × 36 × 8 = 96 × (22/7) = 2112 / 7 ≈ <strong>301.71 cm³</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>तिर्यक ऊँचाई l = 10 सेमी, ऊँचाई h = 8 सेमी।<br>त्रिज्या r = √(10² - 8²) = √36 = 6 सेमी (ट्रिपलेट 6, 8, 10)।<br>आयतन = (1/3)πr²h = (1/3) × (22/7) × 36 × 8 = 2112 / 7 ≈ <strong>301.71 घन सेंटीमीटर</strong>।"
+  },
+  {
+    "id": 57,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A pyramid has a rectangular base with dimensions 6 cm by 8 cm. If the height of the pyramid is 1.5 times the longer side of the base, calculate the volume of the pyramid.",
+    "q_hi": "एक पिरामिड का आयताकार आधार 6 सेंटीमीटर x 8 सेंटीमीटर माप का है। यदि पिरामिड की ऊँचाई, आधार की लंबी भुजा की 1.5 गुना है, तो पिरामिड का आयतन ज्ञात कीजिए।",
+    "opts_en": [
+      "292 cm³",
+      "262 cm³",
+      "252 cm³",
+      "192 cm³"
+    ],
+    "opts_hi": [
+      "292 घन सेंटीमीटर",
+      "262 घन सेंटीमीटर",
+      "252 घन सेंटीमीटर",
+      "192 घन सेंटीमीटर"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Longer side = 8 cm.<br>Height h = 1.5 × 8 = 12 cm.<br>Base area = 6 × 8 = 48 cm².<br>Volume of pyramid = (1/3) × Base area × Height = (1/3) × 48 × 12 = 48 × 4 = <strong>192 cm³</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>आधार की लंबी भुजा = 8 सेमी।<br>ऊँचाई h = 1.5 × 8 = 12 सेमी।<br>आधार का क्षेत्रफल = 6 × 8 = 48 सेमी²।<br>पिरामिड का आयतन = (1/3) × 48 × 12 = 48 × 4 = <strong>192 घन सेंटीमीटर</strong>।"
+  },
+  {
+    "id": 58,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "What is the distance between points A(2, 3) and B(5, 7)?",
+    "q_hi": "बिंदु A (2, 3) और B (5, 7) के बीच की दूरी क्या है?",
+    "opts_en": [
+      "4 units",
+      "6 units",
+      "7 units",
+      "5 units"
+    ],
+    "opts_hi": [
+      "4 यूनिट्स",
+      "6 यूनिट्स",
+      "7 यूनिट्स",
+      "5 यूनिट्स"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Distance = √[(5 - 2)² + (7 - 3)²] = √(3² + 4²) = √(9 + 16) = √25 = <strong>5 units</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Triplet Shortcut:</div>Differences are 3 and 4; 3-4-5 right triangle gives distance = <strong>5 units</strong> immediately.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>दूरी सूत्र से: √[(5 - 2)² + (7 - 3)²] = √(3² + 4²) = √25 = <strong>5 यूनिट्स</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ परीक्षा शॉर्टकट:</div>अंतर 3 और 4 है; पाइथागोरस ट्रिपलेट (3, 4, 5) से सीधा उत्तर = <strong>5 यूनिट्स</strong>।</div>"
+  },
+  {
+    "id": 59,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "In △ABC, a line DE is drawn parallel to BC, intersecting AB at D and AC at E. If AD = 3 cm, DB = 2 cm, and DE = 4 cm, what is the length of BC?",
+    "q_hi": "△ABC में, BC के समान्तर एक रेखा DE खींची गई है, जो AB को D पर तथा AC को E पर प्रतिच्छेद करती है। यदि AD = 3 सेमी, DB = 2 सेमी, तथा DE = 4 सेमी है, तो BC की लम्बाई क्या है?",
+    "opts_en": [
+      "5 cm",
+      "6 cm",
+      "3/20 cm",
+      "20/3 cm"
+    ],
+    "opts_hi": [
+      "5 सेमी",
+      "6 सेमी",
+      "3/20 सेमी",
+      "20/3 सेमी"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>AB = AD + DB = 3 + 2 = 5 cm.<br>Since DE || BC, △ADE ~ △ABC.<br>AD / AB = DE / BC ➔ 3 / 5 = 4 / BC ➔ BC = (4 × 5) / 3 = <strong>20/3 cm</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>AB = AD + DB = 3 + 2 = 5 सेमी।<br>चूंकि DE || BC है, इसलिए समरूप त्रिभुज नियम से:<br>AD / AB = DE / BC ➔ 3 / 5 = 4 / BC ➔ BC = <strong>20/3 सेमी</strong>।"
+  },
+  {
+    "id": 60,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If x = 1.5 and y = 0.5, find the value of (x³ - y³)/(x² + xy + y²) + (x³ + y³)/(x² - xy + y²).",
+    "q_hi": "यदि x = 1.5 और y = 0.5, हैं, तो (x³ - y³)/(x² + xy + y²) + (x³ + y³)/(x² - xy + y²) का मान ज्ञात कीजिए:",
+    "opts_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "opts_hi": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>(x³ - y³)/(x² + xy + y²) = x - y.<br>(x³ + y³)/(x² - xy + y²) = x + y.<br>Sum = (x - y) + (x + y) = 2x = 2 × 1.5 = <strong>3</strong>.<br><div class='shortcut-block'><div class='shortcut-title'>⚡ Identity Shortcut:</div>Notice y cancels out completely: (x - y) + (x + y) = 2x. Just double x: 2 × 1.5 = <strong>3</strong>!</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>(x³ - y³)/(x² + xy + y²) = (x - y) तथा (x³ + y³)/(x² - xy + y²) = (x + y)।<br>योग = (x - y) + (x + y) = 2x = 2 × 1.5 = <strong>3</strong>।<br><div class='shortcut-block'><div class='shortcut-title'>⚡ शॉर्टकट:</div>y कट जाता है, सीधा 2x = 2 × 1.5 = <strong>3</strong>।</div>"
+  },
+  {
+    "id": 61,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A and B can complete a piece of work in 15 days and 20 days respectively. They work on alternate days, starting with A. In how many days will the work be completed?",
+    "q_hi": "A और B क्रमशः 15 दिन और 20 दिन में एक कार्य पूरा कर सकते हैं। वे एक दिन छोड़कर (alternate days) काम करते हैं, और A से शुरुआत होती है। कार्य कितने दिनों में पूरा होगा?",
+    "opts_en": [
+      "12 days",
+      "15 days",
+      "25 days",
+      "17 days"
+    ],
+    "opts_hi": [
+      "12 दिन",
+      "15 दिन",
+      "25 दिन",
+      "17 दिन"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Total work = LCM(15, 20) = 60 units.<br>A's 1-day work = 4 units; B's 1-day work = 3 units.<br>Work done in 2 days (A + B) = 4 + 3 = 7 units.<br>In 16 days (8 cycles of 2 days) = 8 × 7 = 56 units.<br>Remaining work = 60 - 56 = 4 units, which A completes on the 17th day (4 units/day).<br>Total time = <strong>17 days</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>कुल कार्य = 15 और 20 का ल.स. (LCM) = 60 यूनिट।<br>A का 1 दिन का कार्य = 4 यूनिट, B का 1 दिन का कार्य = 3 यूनिट।<br>2 दिन का कार्य = 4 + 3 = 7 यूनिट।<br>16 दिन (8 जोड़े) में कार्य = 8 × 7 = 56 यूनिट।<br>शेष कार्य = 4 यूनिट, जिसे 17वें दिन A पूरा करेगा। कुल समय = <strong>17 दिन</strong>।"
+  },
+  {
+    "id": 62,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "An amount of ₹33,630 is distributed among A, B, and C. The ratio of A's share to B's share is 3: 7, and the ratio of B's share to C's share is 6: 5. Find the amount of money received by B.",
+    "q_hi": "₹33,630 की एक राशि A, B और C के बीच वितरित की जाती है। A के हिस्से और B के हिस्से का अनुपात 3:7 है, तथा B के हिस्से और C के हिस्से का अनुपात 6 : 5 है। B द्वारा प्राप्त धनराशि ज्ञात कीजिए।",
+    "opts_en": [
+      "₹13,290",
+      "₹14,868",
+      "₹15,327",
+      "₹16,409"
+    ],
+    "opts_hi": [
+      "₹13,290",
+      "₹14,868",
+      "₹15,327",
+      "₹16,409"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A : B = 3 : 7 = 18 : 42.<br>B : C = 6 : 5 = 42 : 35.<br>Combined ratio A : B : C = 18 : 42 : 35 (Total parts = 18 + 42 + 35 = 95).<br>B's share = (42 / 95) × 33,630 = 42 × 354 = <strong>₹14,868</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>A : B = 3 : 7 = 18 : 42 और B : C = 6 : 5 = 42 : 35।<br>A : B : C = 18 : 42 : 35 (कुल अनुपाती योग = 95)।<br>B का हिस्सा = (42 / 95) × 33,630 = 42 × 354 = <strong>₹14,868</strong>।"
+  },
+  {
+    "id": 63,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "In a company, A is a working partner, and B is a sleeping partner. The investment of A is ₹12,000, and that of B is ₹20,000. The percentage of management charge is 10% of the total gain to be received by A. The total gain is ₹9,600. What is the total gain of A?",
+    "q_hi": "कंपनी में, A एक वर्किंग पार्टनर है और B एक स्लीपिंग पार्टनर है। A का निवेश ₹12,000 है और B का निवेश ₹20,000 है। मैनेजमेंट चार्ज का प्रतिशत कुल लाभ का 10% है, जो A को मिलेगा। कुल लाभ ₹9,600 है। A का कुल लाभ कितना है?",
+    "opts_en": [
+      "₹3,240",
+      "₹3,600",
+      "₹4,140",
+      "₹4,200"
+    ],
+    "opts_hi": [
+      "₹3,240",
+      "₹3,600",
+      "₹4,140",
+      "₹4,200"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Management charge for A = 10% of 9,600 = ₹960.<br>Remaining profit = 9,600 - 960 = ₹8,640.<br>Investment ratio A : B = 12,000 : 20,000 = 3 : 5 (Total = 8 parts).<br>A's share from remaining profit = (3 / 8) × 8,640 = 3 × 1,080 = ₹3,240.<br>Total gain of A = 960 + 3,240 = <strong>₹4,200</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>A का मैनेजमेंट चार्ज = 9,600 का 10% = ₹960।<br>शेष लाभ = 9,600 - 960 = ₹8,640।<br>निवेश अनुपात A : B = 12,000 : 20,000 = 3 : 5 (कुल 8 भाग)।<br>शेष लाभ में A का हिस्सा = (3 / 8) × 8,640 = ₹3,240।<br>A का कुल लाभ = 960 + 3,240 = <strong>₹4,200</strong>।"
+  },
+  {
+    "id": 64,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "In an election, 10% of the voters did not vote, while 150 votes were found to be invalid. There were only two candidates. The winner secured 55% of the total voters and defeated the opponent by 1100 votes. Find the total number of voters.",
+    "q_hi": "एक चुनाव में, 10% मतदाताओं ने वोट नहीं दिया, जबकि 150 वोट अमान्य पाए गए। चुनाव में केवल दो उम्मीदवार थे। जीतने वाले उम्मीदवार को कुल मतदाताओं के 55% वोट मिले और उसने अपने विरोधी को 1100 वोटों से हराया। मतदाताओं की कुल संख्या ज्ञात कीजिए।",
+    "opts_en": [
+      "5360",
+      "6230",
+      "3440",
+      "4750"
+    ],
+    "opts_hi": [
+      "5360",
+      "6230",
+      "3440",
+      "4750"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Let total voters = 100x.<br>Votes cast = 90x; valid votes = 90x - 150.<br>Winner gets = 55x.<br>Loser gets = (90x - 150) - 55x = 35x - 150.<br>Margin = 55x - (35x - 150) = 20x + 150 = 1100.<br>20x = 950 ➔ 100x = 950 × 5 = <strong>4750</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>माना कुल मतदाता = 100x।<br>वैध मत = 90x - 150।<br>विजेता के मत = 55x, विरोधी के मत = 35x - 150।<br>अंतर: 55x - (35x - 150) = 1100 ➔ 20x = 950 ➔ 100x = <strong>4750</strong>।"
+  },
+  {
+    "id": 65,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A hexagon is drawn inside a circle with a radius of 21 cm. Determine the area of the hexagon.",
+    "q_hi": "21 cm त्रिज्या वाले एक वृत्त के अंदर एक षट्भुज बनाया गया है। षट्भुज का क्षेत्रफल ज्ञात कीजिए।",
+    "opts_en": [
+      "611.5√9 cm²",
+      "661.5√3 cm²",
+      "621.5√7 cm²",
+      "641.5√3 cm²"
+    ],
+    "opts_hi": [
+      "611.5√9 cm²",
+      "661.5√3 cm²",
+      "621.5√7 cm²",
+      "641.5√3 cm²"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A regular hexagon inscribed in a circle of radius R has side a = R = 21 cm.<br>Area of regular hexagon = 6 × (√3 / 4) × a² = (3√3 / 2) × 21² = (3√3 / 2) × 441 = <strong>661.5√3 cm²</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>वृत्त के अंदर बने समषट्भुज की भुजा a = त्रिज्या R = 21 cm।<br>क्षेत्रफल = 6 × (√3 / 4) × (21)² = (3√3 / 2) × 441 = <strong>661.5√3 cm²</strong>।"
+  },
+  {
+    "id": 66,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A dealer sold two sets of headphones for ₹990 each. On one he gained 10% and on the other he lost 10%. Find the total loss or gain percentage.",
+    "q_hi": "एक विक्रेता ने दो हेडफ़ोन सेटों में से प्रत्येक को ₹990 में बेचा। एक पर उसे 10% का लाभ हुआ और दूसरे पर 10% की हानि हुई। कुल लाभ या हानि प्रतिशत ज्ञात कीजिए।",
+    "opts_en": [
+      "1% gain",
+      "1% loss",
+      "2% loss",
+      "No loss or gain"
+    ],
+    "opts_hi": [
+      "1% लाभ",
+      "1% हानि",
+      "2% हानि",
+      "न कोई हानि, न कोई लाभ"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>When two items are sold at the same selling price with equal gain and loss percentage x%, there is always a loss of (x/10)² %.<br>Here (10/10)² = 1² = <strong>1% loss</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>समान विक्रय मूल्य पर समान लाभ और हानि प्रतिशत (x%) होने पर हमेशा (x/10)² % की हानि होती है।<br>यहाँ (10/10)² = <strong>1% हानि</strong>।"
+  },
+  {
+    "id": 67,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A laptop has a marked price of ₹80,000. It is sold after giving successive discounts of 15%, 20% and 10%. Find the selling price.",
+    "q_hi": "एक लैपटॉप का अंकित मूल्य ₹80,000 है। इसे 15%, 20% और 10% की क्रमिक छूट देने के बाद बेचा जाता है। इसका विक्रय मूल्य ज्ञात कीजिए।",
+    "opts_en": [
+      "₹54,400",
+      "₹47,620",
+      "₹50,240",
+      "₹48,960"
+    ],
+    "opts_hi": [
+      "₹54,400",
+      "₹47,620",
+      "₹50,240",
+      "₹48,960"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>SP = 80,000 × (1 - 0.15) × (1 - 0.20) × (1 - 0.10)<br>= 80,000 × 0.85 × 0.80 × 0.90 = 80,000 × 0.612 = <strong>₹48,960</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>विक्रय मूल्य = 80,000 × 0.85 × 0.80 × 0.90 = 80,000 × 0.612 = <strong>₹48,960</strong>।"
+  },
+  {
+    "id": 68,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If sin A + cos A = 5/4, then find the value of tan A + cot A.",
+    "q_hi": "यदि sin A + cos A = 5/4 है, तो tan A + cot A का मान ज्ञात कीजिए।",
+    "opts_en": [
+      "32/9",
+      "25/16",
+      "9/32",
+      "16/25"
+    ],
+    "opts_hi": [
+      "32/9",
+      "25/16",
+      "9/32",
+      "16/25"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Square both sides: (sin A + cos A)² = 25/16 ➔ 1 + 2 sin A cos A = 25/16 ➔ 2 sin A cos A = 9/16 ➔ sin A cos A = 9/32.<br>Now tan A + cot A = (sin A / cos A) + (cos A / sin A) = 1 / (sin A cos A) = <strong>32/9</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>दोनों ओर वर्ग करने पर: 1 + 2 sin A cos A = 25/16 ➔ sin A cos A = 9/32।<br>tan A + cot A = 1 / (sin A cos A) = <strong>32/9</strong>।"
+  },
+  {
+    "id": 69,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If √2 = 1.414, then find the value of (4 + √2)/√2.",
+    "q_hi": "यदि √2 = 1.414 है, तो (4 + √2)/√2 का मान ज्ञात कीजिए।",
+    "opts_en": [
+      "2.124",
+      "2.342",
+      "3.167",
+      "3.828"
+    ],
+    "opts_hi": [
+      "2.124",
+      "2.342",
+      "3.167",
+      "3.828"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>(4 + √2)/√2 = (4/√2) + 1 = 2√2 + 1 = 2(1.414) + 1 = 2.828 + 1 = <strong>3.828</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>(4 + √2)/√2 = (4/√2) + 1 = 2√2 + 1 = 2(1.414) + 1 = <strong>3.828</strong>।"
+  },
+  {
+    "id": 70,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If x + 1/x = 3√2, then find the value of x/(x² - 1).",
+    "q_hi": "यदि x + 1/x = 3√2 है, तो x/(x² - 1) का मान ज्ञात कीजिए।",
+    "opts_en": [
+      "1/√14",
+      "1/√12",
+      "1/√18",
+      "1/√19"
+    ],
+    "opts_hi": [
+      "1/√14",
+      "1/√12",
+      "1/√18",
+      "1/√19"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Divide numerator and denominator by x: x/(x² - 1) = 1 / (x - 1/x).<br>(x - 1/x)² = (x + 1/x)² - 4 = (3√2)² - 4 = 18 - 4 = 14 ➔ x - 1/x = √14.<br>Hence value = <strong>1/√14</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>x/(x² - 1) = 1 / (x - 1/x)।<br>(x - 1/x)² = (3√2)² - 4 = 18 - 4 = 14 ➔ x - 1/x = √14।<br>अतः मान = <strong>1/√14</strong>।"
+  },
+  {
+    "id": 71,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "In a circle of radius 61 cm, two equal parallel chords lie on opposite sides of the centre. The distance between the chords is 22 cm. Find the length of each chord.",
+    "q_hi": "61 cm त्रिज्या वाले एक वृत्त में, दो समान समांतर जीवाएँ केंद्र के विपरीत पक्षों पर स्थित हैं। जीवाओं के बीच की दूरी 22 cm है। प्रत्येक जीवा की लंबाई ज्ञात कीजिए।",
+    "opts_en": [
+      "30 cm",
+      "60 cm",
+      "90 cm",
+      "120 cm"
+    ],
+    "opts_hi": [
+      "30 cm",
+      "60 cm",
+      "90 cm",
+      "120 cm"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Distance of each equal chord from centre = 22 / 2 = 11 cm.<br>Half chord = √(61² - 11²) = √(3721 - 121) = √3600 = 60 cm.<br>Full length of each chord = 2 × 60 = <strong>120 cm</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>केंद्र से प्रत्येक जीवा की दूरी = 22 / 2 = 11 cm।<br>आधी जीवा = √(61² - 11²) = √3600 = 60 cm।<br>प्रत्येक जीवा की पूरी लंबाई = 2 × 60 = <strong>120 cm</strong>।"
+  },
+  {
+    "id": 72,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A tangent is drawn from external point Q to a circle having a centre O, touching at T. OT = 6 cm and OQ = 10 cm. What is the area of triangle OTQ?",
+    "q_hi": "एक बाह्य बिंदु Q से केंद्र O वाले एक वृत्त पर एक स्पर्श रेखा खींची गई है, जो T पर स्पर्श करती है। OT = 6 cm और OQ = 10 cm है। त्रिभुज OTQ का क्षेत्रफल क्या है?",
+    "opts_en": [
+      "14 cm²",
+      "18 cm²",
+      "24 cm²",
+      "28 cm²"
+    ],
+    "opts_hi": [
+      "14 cm²",
+      "18 cm²",
+      "24 cm²",
+      "28 cm²"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Since radius OT is perpendicular to tangent QT, ∠OTQ = 90°.<br>QT = √(OQ² - OT²) = √(10² - 6²) = √64 = 8 cm.<br>Area of right △OTQ = (1/2) × OT × QT = (1/2) × 6 × 8 = <strong>24 cm²</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>स्पर्श रेखा व त्रिज्या के बीच 90° का कोण बनता है, अतः QT = √(10² - 6²) = 8 cm।<br>△OTQ का क्षेत्रफल = (1/2) × 6 × 8 = <strong>24 cm²</strong>।"
+  },
+  {
+    "id": 73,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Arcs of two circles with radii 15 cm and 20 cm subtend angles of 60° and 45° at their respective centres. What is the ratio of their arc lengths?",
+    "q_hi": "15 cm और 20 cm त्रिज्या वाले दो वृत्तों की चापें अपने-अपने केन्द्रों पर क्रमशः 60° और 45° के कोण बनाती हैं। उनकी चापों की लंबाइयों का अनुपात क्या है?",
+    "opts_en": [
+      "1:2",
+      "3:1",
+      "1:1",
+      "2:3"
+    ],
+    "opts_hi": [
+      "1:2",
+      "3:1",
+      "1:1",
+      "2:3"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Arc length l = 2πr(θ/360°).<br>l<sub>1</sub> / l<sub>2</sub> = (15 × 60) / (20 × 45) = 900 / 900 = <strong>1:1</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>चाप की लंबाई ∝ r × θ।<br>अनुपात = (15 × 60°) : (20 × 45°) = 900 : 900 = <strong>1:1</strong>।"
+  },
+  {
+    "id": 74,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Two circles with radii 5 cm and 3 cm have their centers separated by a distance of d cm. If the length of their direct common tangent is exactly twice the length of their transverse common tangent, find the value of d².",
+    "q_hi": "दो वृत्त जिनकी त्रिज्याएँ 5 cm और 3 cm हैं, उनके केन्द्रों के बीच की दूरी d cm है। यदि उनकी प्रत्यक्ष सामान्य स्पर्शरखा की लंबाई, उनकी तिर्यक (transverse) सामान्य स्पर्शरखा की लंबाई की ठीक दोगुनी है, तो d² का मान ज्ञात कीजिए।",
+    "opts_en": [
+      "84 cm",
+      "79 cm",
+      "51 cm",
+      "105 cm"
+    ],
+    "opts_hi": [
+      "84 cm",
+      "79 cm",
+      "51 cm",
+      "105 cm"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Direct Common Tangent (DCT) = √(d² - (5 - 3)²) = √(d² - 4).<br>Transverse Common Tangent (TCT) = √(d² - (5 + 3)²) = √(d² - 64).<br>Given DCT = 2 × TCT ➔ d² - 4 = 4(d² - 64) ➔ d² - 4 = 4d² - 256 ➔ 3d² = 252 ➔ d² = <strong>84</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>DCT² = d² - (5 - 3)² = d² - 4 और TCT² = d² - (5 + 3)² = d² - 64।<br>प्रश्नानुसार: d² - 4 = 4(d² - 64) ➔ 3d² = 252 ➔ d² = <strong>84</strong>।"
+  },
+  {
+    "id": 75,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A vessel contains 90 litres of a mixture of milk and water in the ratio 8:7. How many litres of the mixture should be removed and replaced with pure water so that the ratio of milk to water in the resulting mixture becomes 4:5?",
+    "q_hi": "एक पात्र में दूध और जल का 90 लीटर मिश्रण 8:7 के अनुपात में है। मिश्रण में से कितने लीटर निकालकर उसके स्थान पर उतनी ही मात्रा में शुद्ध जल डाला जाए ताकि परिणामी मिश्रण में दूध और जल का अनुपात 4:5 हो जाए?",
+    "opts_en": [
+      "15 litres",
+      "12 litres",
+      "6 litres",
+      "9 litres"
+    ],
+    "opts_hi": [
+      "15 लीटर",
+      "12 लीटर",
+      "6 लीटर",
+      "9 लीटर"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Initial milk in 90 L = (8/15) × 90 = 48 L.<br>Target milk in final 90 L (ratio 4:5) = (4/9) × 90 = 40 L.<br>Milk removed = 48 - 40 = 8 L.<br>Since milk fraction in mixture is 8/15, mixture removed = 8 / (8/15) = <strong>15 litres</strong>.",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>प्रारंभिक दूध = (8/15) × 90 = 48 लीटर।<br>अंतिम मिश्रण (4:5) में दूध = (4/9) × 90 = 40 लीटर।<br>निकाला गया दूध = 48 - 40 = 8 लीटर।<br>निकाला गया मिश्रण = 8 / (8/15) = <strong>15 लीटर</strong>।"
+  },
+  {
+    "id": 76,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Fill in the blank with the correctly spelt word.\nThe speaker's ______ tone alienated many listeners during the debate.",
+    "q_hi": "Fill in the blank with the correctly spelt word.\nThe speaker's ______ tone alienated many listeners during the debate.",
+    "opts_en": [
+      "supercilious",
+      "supercillious",
+      "supercileous",
+      "suppercillious"
+    ],
+    "opts_hi": [
+      "supercilious",
+      "supercillious",
+      "supercileous",
+      "suppercillious"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The correct spelling is <strong>supercilious</strong> (behaving or looking as though one thinks one is superior to others).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही वर्तनी <strong>supercilious</strong> है।"
+  },
+  {
+    "id": 77,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Fill in the blank with the correctly spelt word.\nThe scientist maintained ______ even when her theory was harshly criticized.",
+    "q_hi": "Fill in the blank with the correctly spelt word.\nThe scientist maintained ______ even when her theory was harshly criticized.",
+    "opts_en": [
+      "equanamity",
+      "equanimity",
+      "equinimity",
+      "equinammity"
+    ],
+    "opts_hi": [
+      "equanamity",
+      "equanimity",
+      "equinimity",
+      "equinammity"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The correct spelling is <strong>equanimity</strong> (mental calmness and composure, especially in a difficult situation).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही वर्तनी <strong>equanimity</strong> (धैर्य व मानसिक संतुलन) है।"
+  },
+  {
+    "id": 78,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Which of the following is the correct spelling of the word?",
+    "q_hi": "Which of the following is the correct spelling of the word?",
+    "opts_en": [
+      "Logorrhoea",
+      "Logorhoea",
+      "Loggorrhoea",
+      "Loggorrhea"
+    ],
+    "opts_hi": [
+      "Logorrhoea",
+      "Logorhoea",
+      "Loggorrhoea",
+      "Loggorrhea"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The correct spelling is <strong>Logorrhoea</strong> (talkativeness / excessive flow of words).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही वर्तनी <strong>Logorrhoea</strong> है।"
+  },
+  {
+    "id": 79,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "The Indian government has appointed a new diplomat to head the official residence and office representing India in France.\nWhat is the correct one-word substitute for \"the official residence and office representing India in France\"?",
+    "q_hi": "The Indian government has appointed a new diplomat to head the official residence and office representing India in France.\nWhat is the correct one-word substitute for \"the official residence and office representing India in France\"?",
+    "opts_en": [
+      "Consulate",
+      "Embassy",
+      "High Commission",
+      "Chancery"
+    ],
+    "opts_hi": [
+      "Consulate",
+      "Embassy",
+      "High Commission",
+      "Chancery"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The diplomatic mission and residence of a country's ambassador in a foreign country is an <strong>Embassy</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>विदेश में किसी देश के राजदूत के आधिकारिक कार्यालय और निवास को <strong>Embassy</strong> कहते हैं।"
+  },
+  {
+    "id": 80,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct active form of the given sentence.\nTomorrow, two hours of free time will be obtained by me.",
+    "q_hi": "Choose the correct active form of the given sentence.\nTomorrow, two hours of free time will be obtained by me.",
+    "opts_en": [
+      "Tomorrow, I will obtain two hours of free time.",
+      "Yesterday I obtained two hours of free time.",
+      "I am obtaining two hours of free time today.",
+      "I had obtained two hours of free time yesterday."
+    ],
+    "opts_hi": [
+      "Tomorrow, I will obtain two hours of free time.",
+      "Yesterday I obtained two hours of free time.",
+      "I am obtaining two hours of free time today.",
+      "I had obtained two hours of free time yesterday."
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Future simple passive 'will be obtained by me' converts into active voice: <strong>Tomorrow, I will obtain two hours of free time.</strong>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही सक्रिय वाच्य (Active Voice) है: <strong>Tomorrow, I will obtain two hours of free time.</strong>"
+  },
+  {
+    "id": 81,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Complete the sentence in indirect speech.\n\"Have you submitted the assignment yet?\" the teacher asked.\nThe teacher asked me ______ the assignment yet.",
+    "q_hi": "Complete the sentence in indirect speech.\n\"Have you submitted the assignment yet?\" the teacher asked.\nThe teacher asked me ______ the assignment yet.",
+    "opts_en": [
+      "if I submit",
+      "whether I had submitted",
+      "if I have submitted",
+      "whether had I submitted"
+    ],
+    "opts_hi": [
+      "if I submit",
+      "whether I had submitted",
+      "if I have submitted",
+      "whether had I submitted"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>In indirect speech, present perfect 'have submitted' shifts to past perfect 'had submitted' with statement word order: <strong>whether I had submitted</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>इनडायरेक्ट स्पीच में 'have submitted' बदलकर 'had submitted' हो जाता है: <strong>whether I had submitted</strong>।"
+  },
+  {
+    "id": 82,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Rearrange the parts of the sentence in the correct order.\nAs the 2024 Paris Olympics approached,\nP. raising concerns over diplomatic boycotts and the potential exclusion of certain nations,\nQ. global geopolitical tensions, including conflicts in Eastern Europe and trade disputes among superpowers,\nR. while the International Olympic Committee attempted to maintain neutrality and ensure an inclusive competition\nS. cast a shadow over the event's spirit of international unity and sportsmanship,",
+    "q_hi": "Rearrange the parts of the sentence in the correct order.\nAs the 2024 Paris Olympics approached,\nP. raising concerns over diplomatic boycotts and the potential exclusion of certain nations,\nQ. global geopolitical tensions, including conflicts in Eastern Europe and trade disputes among superpowers,\nR. while the International Olympic Committee attempted to maintain neutrality and ensure an inclusive competition\nS. cast a shadow over the event's spirit of international unity and sportsmanship,",
+    "opts_en": [
+      "PSQR",
+      "SRQP",
+      "RSPQ",
+      "QSPR"
+    ],
+    "opts_hi": [
+      "PSQR",
+      "SRQP",
+      "RSPQ",
+      "QSPR"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Subject Q ('global geopolitical tensions...') takes verb S ('cast a shadow...'), followed by P ('raising concerns...') and R ('while the International Olympic Committee...'). Order: <strong>QSPR</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही व्याकरणिक क्रम <strong>QSPR</strong> है।"
+  },
+  {
+    "id": 83,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "In response to persistent inflationary pressures,\nRearrange the parts of the sentence in the correct order.\nP. against the risk of prolonged stagnation\nQ. restrictive monetary policies were implemented,\nR. by raising interest rates and reducing liquidity\nS. forcing central banks to balance economic growth",
+    "q_hi": "In response to persistent inflationary pressures,\nRearrange the parts of the sentence in the correct order.\nP. against the risk of prolonged stagnation\nQ. restrictive monetary policies were implemented,\nR. by raising interest rates and reducing liquidity\nS. forcing central banks to balance economic growth",
+    "opts_en": [
+      "PRQS",
+      "QSRP",
+      "SQPR",
+      "RPSQ"
+    ],
+    "opts_hi": [
+      "PRQS",
+      "QSRP",
+      "SQPR",
+      "RPSQ"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Q ('restrictive monetary policies were implemented') ➔ S ('forcing central banks to balance economic growth') ➔ R ('by raising interest rates...') ➔ P ('against the risk of prolonged stagnation'). Order: <strong>QSRP</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही क्रम <strong>QSRP</strong> है।"
+  },
+  {
+    "id": 84,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Improve the sentence by selecting the appropriate preposition from the following options.\nShe received a gift ______ her best friend.",
+    "q_hi": "Improve the sentence by selecting the appropriate preposition from the following options.\nShe received a gift ______ her best friend.",
+    "opts_en": [
+      "on",
+      "from",
+      "of",
+      "in"
+    ],
+    "opts_hi": [
+      "on",
+      "from",
+      "of",
+      "in"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Receive something <strong>from</strong> someone indicates the source/giver.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>किसी व्यक्ति से उपहार प्राप्त करने के लिए <strong>from</strong> का प्रयोग होता है।"
+  },
+  {
+    "id": 85,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Which of the given options arranges the following sentences in the most logical sequence to form a meaningful paragraph?\n1. This led to the development of groundbreaking theories such as Heisenberg's uncertainty principle and Schrödinger's wave equation.\n2. In the early 20th century, physicists realized that classical mechanics could not explain certain atomic and subatomic phenomena.\n3. Quantum mechanics revolutionized technology, enabling advancements in semiconductors, lasers, and quantum computing.\n4. Scientists like Max Planck and Albert Einstein introduced the idea that energy is quantized, laying the foundation for quantum mechanics.\n5. Despite its success, the theory remains counterintuitive, challenging our understanding of reality at the fundamental level.",
+    "q_hi": "Which of the given options arranges the following sentences in the most logical sequence to form a meaningful paragraph?\n1. This led to the development of groundbreaking theories such as Heisenberg's uncertainty principle and Schrödinger's wave equation.\n2. In the early 20th century, physicists realized that classical mechanics could not explain certain atomic and subatomic phenomena.\n3. Quantum mechanics revolutionized technology, enabling advancements in semiconductors, lasers, and quantum computing.\n4. Scientists like Max Planck and Albert Einstein introduced the idea that energy is quantized, laying the foundation for quantum mechanics.\n5. Despite its success, the theory remains counterintuitive, challenging our understanding of reality at the fundamental level.",
+    "opts_en": [
+      "2-4-1-3-5",
+      "1-3-4-2-5",
+      "3-1-4-2-5",
+      "3-2-5-4-1"
+    ],
+    "opts_hi": [
+      "2-4-1-3-5",
+      "1-3-4-2-5",
+      "3-1-4-2-5",
+      "3-2-5-4-1"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>2 sets historical context ➔ 4 introduces quantization ➔ 1 mentions Heisenberg/Schrödinger ➔ 3 technological impact ➔ 5 counterintuitive nature. Sequence: <strong>2-4-1-3-5</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>ऐतिहासिक विकास के अनुसार सही अनुक्रम <strong>2-4-1-3-5</strong> है।"
+  },
+  {
+    "id": 86,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Which of the following pairs of homonyms can be used to fill in the blanks most suitably?\nHe had to ______ his brains trying to remember how he came to be on the shore strewn with ______ and driftwood.",
+    "q_hi": "Which of the following pairs of homonyms can be used to fill in the blanks most suitably?\nHe had to ______ his brains trying to remember how he came to be on the shore strewn with ______ and driftwood.",
+    "opts_en": [
+      "wrack, rack",
+      "crack, wrack",
+      "rack, wrack",
+      "wrack, wrack"
+    ],
+    "opts_hi": [
+      "wrack, rack",
+      "crack, wrack",
+      "rack, wrack",
+      "wrack, wrack"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Idiom is 'rack one's brains' (think hard) and 'wrack' means seaweed/debris washed ashore. Answer: <strong>rack, wrack</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही जोड़ा <strong>rack, wrack</strong> है।"
+  },
+  {
+    "id": 87,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct idiom for the word highlighted in bold.\n\"Mrs. Robinson has three children to support, and she doesn't make very much money at her job. She is barely keeping her head above water.\"",
+    "q_hi": "Choose the correct idiom for the word highlighted in bold.\n\"Mrs. Robinson has three children to support, and she doesn't make very much money at her job. She is barely keeping her head above water.\"",
+    "opts_en": [
+      "Struggling to survive financially",
+      "Feeling relaxed and stress-free",
+      "Learning how to swim",
+      "Living in a house near the water"
+    ],
+    "opts_hi": [
+      "Struggling to survive financially",
+      "Feeling relaxed and stress-free",
+      "Learning how to swim",
+      "Living in a house near the water"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Keeping one's head above water' means <strong>struggling to survive financially</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Keeping one's head above water' का अर्थ आर्थिक कठिनाई में किसी तरह गुजारा करना है।"
+  },
+  {
+    "id": 88,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nWhich of the following is the correct tense used in the sentence:\n\"Left unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes...\"?",
+    "q_hi": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nWhich of the following is the correct tense used in the sentence:\n\"Left unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes...\"?",
+    "opts_en": [
+      "Past Perfect",
+      "Present Simple",
+      "Future Perfect",
+      "Present Conditional"
+    ],
+    "opts_hi": [
+      "Past Perfect",
+      "Present Simple",
+      "Future Perfect",
+      "Present Conditional"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Modal 'can' + base verb 'precipitate' expresses a general truth/possibility in the <strong>Present Simple</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही काल <strong>Present Simple</strong> है।"
+  },
+  {
+    "id": 89,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nIdentify the grammatical function of the phrase \"Far from being a mere by product of demanding schedules\" in the first paragraph.",
+    "q_hi": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nIdentify the grammatical function of the phrase \"Far from being a mere by product of demanding schedules\" in the first paragraph.",
+    "opts_en": [
+      "It is the main subject of the sentence.",
+      "It is an introductory phrase modifying the main clause.",
+      "It is a dependent clause providing a condition.",
+      "It is a direct object of the verb."
+    ],
+    "opts_hi": [
+      "It is the main subject of the sentence.",
+      "It is an introductory phrase modifying the main clause.",
+      "It is a dependent clause providing a condition.",
+      "It is a direct object of the verb."
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>It acts as an <strong>introductory phrase modifying the main clause</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>यह मुख्य उपवाक्य को स्पष्ट करने वाला परिचयात्मक वाक्यांश (Introductory phrase) है।"
+  },
+  {
+    "id": 90,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nWhat is the meaning of the word \"insidious\" as used in the passage?",
+    "q_hi": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nWhat is the meaning of the word \"insidious\" as used in the passage?",
+    "opts_en": [
+      "Open and obvious",
+      "Gradually harmful and subtle",
+      "Harmless and fleeting",
+      "Quickly destructive and visible"
+    ],
+    "opts_hi": [
+      "Open and obvious",
+      "Gradually harmful and subtle",
+      "Harmless and fleeting",
+      "Quickly destructive and visible"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Insidious' means <strong>gradually harmful and subtle</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Insidious' का अर्थ धीरे-धीरे और सूक्ष्म रूप से नुकसान पहुँचाने वाला (Gradually harmful and subtle) है।"
+  },
+  {
+    "id": 91,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nThe word \"deleterious\" most nearly means.",
+    "q_hi": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nThe word \"deleterious\" most nearly means.",
+    "opts_en": [
+      "Advantageous",
+      "Harmful",
+      "Temporary",
+      "Curious"
+    ],
+    "opts_hi": [
+      "Advantageous",
+      "Harmful",
+      "Temporary",
+      "Curious"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Deleterious' means <strong>Harmful</strong> (damaging).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Deleterious' का अर्थ <strong>Harmful</strong> (हानिकारक) होता है।"
+  },
+  {
+    "id": 92,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nAccording to the passage, what is a key failure of organizations when addressing workplace stress?",
+    "q_hi": "Read the passage and answer the questions:\nIn contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.\nLeft unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.\nCounteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.\n\nAccording to the passage, what is a key failure of organizations when addressing workplace stress?",
+    "opts_en": [
+      "They overly emphasize work-life balance.",
+      "They rely on short-term or surface-level solutions.",
+      "They provide excessive flexibility, causing laziness.",
+      "They hire too many inexperienced employees."
+    ],
+    "opts_hi": [
+      "They overly emphasize work-life balance.",
+      "They rely on short-term or surface-level solutions.",
+      "They provide excessive flexibility, causing laziness.",
+      "They hire too many inexperienced employees."
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The passage states organizations rely on superficial/short-term interventions: <strong>They rely on short-term or surface-level solutions.</strong>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>गद्यांश के अनुसार संगठन सतही या अल्पकालिक समाधानों पर निर्भर रहते हैं।"
+  },
+  {
+    "id": 93,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate synonym of the given word: ESOTERIC",
+    "q_hi": "Select the most appropriate synonym of the given word: ESOTERIC",
+    "opts_en": [
+      "Obscure",
+      "Popular",
+      "Simple",
+      "Common"
+    ],
+    "opts_hi": [
+      "Obscure",
+      "Popular",
+      "Simple",
+      "Common"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Esoteric' means understood by or meant for only a small number of specialized people; synonym is <strong>Obscure</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Esoteric' का समानार्थी <strong>Obscure</strong> (गूढ़) है।"
+  },
+  {
+    "id": 94,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate antonym of the given word. Excoriate",
+    "q_hi": "Select the most appropriate antonym of the given word. Excoriate",
+    "opts_en": [
+      "Praise",
+      "Berate",
+      "Condemn",
+      "Rebuke"
+    ],
+    "opts_hi": [
+      "Praise",
+      "Berate",
+      "Condemn",
+      "Rebuke"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Excoriate' means to criticize severely; its antonym is <strong>Praise</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Excoriate' (कड़ी आलोचना करना) का विलोम <strong>Praise</strong> (प्रशंसा करना) है।"
+  },
+  {
+    "id": 95,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct meaning of idiom:\nBeard the lion in his den",
+    "q_hi": "Choose the correct meaning of idiom:\nBeard the lion in his den",
+    "opts_en": [
+      "Hide from danger",
+      "Flatter a powerful person",
+      "Feed captive animals",
+      "Confront someone powerful on their own ground"
+    ],
+    "opts_hi": [
+      "Hide from danger",
+      "Flatter a powerful person",
+      "Feed captive animals",
+      "Confront someone powerful on their own ground"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Beard the lion in his den' means <strong>confront someone powerful on their own ground</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>किसी शक्तिशाली व्यक्ति को उसी के क्षेत्र में चुनौती देना।"
+  },
+  {
+    "id": 96,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate antonym of the given word. Crepuscular",
+    "q_hi": "Select the most appropriate antonym of the given word. Crepuscular",
+    "opts_en": [
+      "Dusk",
+      "Diurnal",
+      "Dim",
+      "Twilight"
+    ],
+    "opts_hi": [
+      "Dusk",
+      "Diurnal",
+      "Dim",
+      "Twilight"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'Crepuscular' relates to twilight/dusk; its opposite is <strong>Diurnal</strong> (active in daytime).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Crepuscular' (गोधूलि/संध्याकालीन) का विलोम <strong>Diurnal</strong> (दिनचर) है।"
+  },
+  {
+    "id": 97,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the correct option:\nDespite the scholar's penchant for convoluted prose, his central thesis emerged with surprising ______ in the concluding chapter.",
+    "q_hi": "Select the correct option:\nDespite the scholar's penchant for convoluted prose, his central thesis emerged with surprising ______ in the concluding chapter.",
+    "opts_en": [
+      "lucidity",
+      "opacity",
+      "perversity",
+      "tenacity"
+    ],
+    "opts_hi": [
+      "lucidity",
+      "opacity",
+      "perversity",
+      "tenacity"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>In contrast to convoluted prose, the thesis emerged with <strong>lucidity</strong> (clarity).",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>जटिल गद्य के विपरीत निष्कर्ष स्पष्टता (<strong>lucidity</strong>) के साथ सामने आया।"
+  },
+  {
+    "id": 98,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Change the following from active to passive:\nThey ought to clean the park.",
+    "q_hi": "Change the following from active to passive:\nThey ought to clean the park.",
+    "opts_en": [
+      "The park ought to clean.",
+      "The park ought to be cleaned.",
+      "The park ought be cleaned.",
+      "The park ought to have been cleaned."
+    ],
+    "opts_hi": [
+      "The park ought to clean.",
+      "The park ought to be cleaned.",
+      "The park ought be cleaned.",
+      "The park ought to have been cleaned."
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Modal passive form is: <strong>The park ought to be cleaned.</strong>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही कर्मवाच्य (Passive) है: <strong>The park ought to be cleaned.</strong>"
+  },
+  {
+    "id": 99,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Find the part of the sentence that contains an error:\nIt is high time the minister (1)/ clarifies his stance on the matter (2)/ rather than leaving it (3)/ open to public speculation. (4)",
+    "q_hi": "Find the part of the sentence that contains an error:\nIt is high time the minister (1)/ clarifies his stance on the matter (2)/ rather than leaving it (3)/ open to public speculation. (4)",
+    "opts_en": [
+      "(1)",
+      "(2)",
+      "(3)",
+      "(4)"
+    ],
+    "opts_hi": [
+      "(1)",
+      "(2)",
+      "(3)",
+      "(4)"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>'It is high time + subject + past tense (clarified)' is required instead of 'clarifies'. Error is in part <strong>(2)</strong>.",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'It is high time' के बाद भूतकाल (clarified) का प्रयोग होता है, 'clarifies' का नहीं। त्रुटि भाग <strong>(2)</strong> में है।"
+  },
+  {
+    "id": 100,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Convert the sentence provided below from its passive voice structure to an active voice structure:\nThe decision is not expected to be reversed by the board despite ongoing protests.",
+    "q_hi": "Convert the sentence provided below from its passive voice structure to an active voice structure:\nThe decision is not expected to be reversed by the board despite ongoing protests.",
+    "opts_en": [
+      "Ongoing protests will force the board to reverse the decision.",
+      "The board is not expected to reverse the decision despite ongoing protests.",
+      "It is not expected that the board protests against the decision.",
+      "Protesters expect the board not to reverse the decision."
+    ],
+    "opts_hi": [
+      "Ongoing protests will force the board to reverse the decision.",
+      "The board is not expected to reverse the decision despite ongoing protests.",
+      "It is not expected that the board protests against the decision.",
+      "Protesters expect the board not to reverse the decision."
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Active voice: <strong>The board is not expected to reverse the decision despite ongoing protests.</strong>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सही सक्रिय वाच्य (Active Voice) है: <strong>The board is not expected to reverse the decision despite ongoing protests.</strong>"
+  }
+];
+
+const sectionTitles = [
+  "PART-A: Reasoning",
+  "PART-B: General Awareness",
+  "PART-C: Quantitative Aptitude",
+  "PART-D: English Comprehension"
+];
+
+let currentSection = 0;
+let currentQIndex = 0;
+let currentLang = 'hi';
+let userAnswers = new Array(questions.length).fill(null);
+let markedStatus = new Array(questions.length).fill(false);
+let timeSpentPerQ = new Array(questions.length).fill(0);
+let isTestCompleted = false;
+
+let sectionSecondsRemaining = 15 * 60;
+let sectionTimerInterval = null;
+let questionTimerInterval = null;
+let totalExamSecondsTaken = 0;
+
+let savedQuestionIds = JSON.parse(localStorage.getItem('ssc_30sep_s2_saved') || '[]');
+let trajectoryChartInstance = null;
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const rem = s % 60;
+  return `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+}
+
+function toggleLanguage() {
+  currentLang = (currentLang === 'en') ? 'hi' : 'en';
+  document.getElementById('lang-toggle-btn').innerText = (currentLang === 'en') ? 'हिन्दी' : 'English';
+  renderQuestion(currentQIndex);
+}
+
+function startTest() {
+  document.getElementById('lang-select-modal').style.display = 'flex';
+}
+
+function closeLangModalOnBackdrop(e) {
+  if (e.target.id === 'lang-select-modal') {
+    document.getElementById('lang-select-modal').style.display = 'none';
+  }
+}
+
+function beginTestWithLanguage(lang) {
+  currentLang = (lang === 'en') ? 'en' : 'hi';
+  document.getElementById('lang-toggle-btn').innerText = (currentLang === 'en') ? 'हिन्दी' : 'English';
+  document.getElementById('lang-select-modal').style.display = 'none';
+  document.getElementById('instruction-screen').style.display = 'none';
+  document.getElementById('test-screen').style.display = 'flex';
+  loadSection(0);
+}
+
+function loadSection(secIdx) {
+  currentSection = secIdx;
+  document.getElementById('current-section-title').innerText = sectionTitles[secIdx];
+  document.getElementById('drawer-active-sec-badge').innerText = `${sectionTitles[secIdx].split(': ')[1]} (Questions ${secIdx * 25 + 1} - ${secIdx * 25 + 25})`;
+
+  for (let i = 0; i < 4; i++) {
+    const tab = document.getElementById(`sec-tab-${i}`);
+    tab.className = 'section-tab';
+    if (i < currentSection) tab.classList.add('locked-done');
+    else if (i === currentSection) tab.classList.add('active');
+  }
+
+  sectionSecondsRemaining = 15 * 60;
+  startSectionTimer();
+  buildSectionFilteredPalette();
+  renderQuestion(secIdx * 25);
+}
+
+function startSectionTimer() {
+  clearInterval(sectionTimerInterval);
+  const display = document.getElementById('section-timer-display');
+  display.innerText = formatTime(sectionSecondsRemaining);
+  display.parentElement.classList.remove('low');
+
+  sectionTimerInterval = setInterval(() => {
+    totalExamSecondsTaken++;
+    if (sectionSecondsRemaining <= 0) {
+      clearInterval(sectionTimerInterval);
+      showTimeUp();
+      return;
+    }
+    sectionSecondsRemaining--;
+    display.innerText = formatTime(sectionSecondsRemaining);
+    display.parentElement.classList.toggle('low', sectionSecondsRemaining <= 60);
+  }, 1000);
+}
+
+function showTimeUp() {
+  closePalette(); closeSubmitModal();
+  const last = currentSection === 3;
+  document.getElementById('modal-heading-text').innerText = "Time is Up";
+  document.getElementById('modal-subtext').innerText = last 
+    ? 'All sections are finished. Your exam is submitting automatically.'
+    : `${sectionTitles[currentSection].split(': ')[1]} is now locked. Advancing to next section.`;
+  openSubmitModal();
+}
+
+function startQTimer() {
+  stopQTimer();
+  updateQTimerDisplay();
+  if (isTestCompleted) return;
+  questionTimerInterval = setInterval(() => {
+    timeSpentPerQ[currentQIndex]++;
+    updateQTimerDisplay();
+  }, 1000);
+}
+
+function stopQTimer() {
+  if (questionTimerInterval) { clearInterval(questionTimerInterval); questionTimerInterval = null; }
+}
+
+function updateQTimerDisplay() {
+  document.getElementById('per-q-timer-text').innerText = formatTime(timeSpentPerQ[currentQIndex]);
+}
+
+function renderQuestion(idx) {
+  currentQIndex = idx;
+  const q = questions[idx];
+  
+  if (isTestCompleted) {
+    for (let i = 0; i < 4; i++) {
+      document.getElementById(`sec-tab-${i}`).className = 'section-tab' + (i === q.sec ? ' active' : '');
+    }
+  }
+
+  document.getElementById('curr-q-no').innerText = idx + 1;
+  document.getElementById('exam-tag-text').innerText = q.tag;
+  const qTextBox = document.getElementById('question-text');
+  qTextBox.innerHTML = (currentLang === 'hi') ? q.q_hi : q.q_en;
+  if (q.q_img) {
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'q-img-wrap';
+    const imgEl = document.createElement('img');
+    imgEl.src = q.q_img;
+    imgEl.alt = 'Question Figure';
+    imgWrap.appendChild(imgEl);
+    if (q.q_img_extra) {
+      const imgExtraEl = document.createElement('img');
+      imgExtraEl.src = q.q_img_extra;
+      imgExtraEl.alt = 'Answer Figures';
+      imgWrap.appendChild(imgExtraEl);
+    }
+    qTextBox.appendChild(imgWrap);
+  }
+
+  startQTimer();
+  updateNavButtonsState();
+
+  const markBtn = document.getElementById('mark-btn');
+  if (markedStatus[idx]) {
+    markBtn.innerText = "Unmark Review";
+    markBtn.classList.add('marked');
+  } else {
+    markBtn.innerText = "Mark for Review";
+    markBtn.classList.remove('marked');
+  }
+
+  updateSaveBtnUI();
+
+  const optionsBox = document.getElementById('options-box');
+  optionsBox.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  const opts = (currentLang === 'hi') ? q.opts_hi : q.opts_en;
+
+  opts.forEach((optText, optIdx) => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'option-item';
+
+    if (!isTestCompleted) {
+      // Live Exam Mode: only highlight selected choice
+      if (userAnswers[idx] === optIdx) {
+        item.classList.add('selected-live');
+      }
+      item.onclick = () => selectOptionLive(optIdx);
+    } else {
+      // Review Mode: lock buttons and reveal correct/incorrect answers
+      item.classList.add('is-locked');
+      if (optIdx === q.ans) item.classList.add('correct-ans');
+      else if (userAnswers[idx] === optIdx) item.classList.add('wrong-ans');
+    }
+
+    const optContent = (q.opts_img && q.opts_img[optIdx])
+      ? `<span class="opt-img-wrap"><img src="${q.opts_img[optIdx]}" alt="Option ${letters[optIdx]}"></span>`
+      : `<span class="opt-text">${optText}</span>`;
+    item.innerHTML = `<span class="opt-key">${letters[optIdx]}</span>${optContent}`;
+    optionsBox.appendChild(item);
+  });
+
+  // Solution Box visibility: ONLY VISIBLE AFTER SUBMISSION
+  const expBox = document.getElementById('explanation-container');
+  if (isTestCompleted) {
+    expBox.style.display = 'block';
+    const expText = (currentLang === 'hi') ? q.exp_hi : q.exp_en;
+    expBox.innerHTML = `
+      <div class="exp-badge-correct">Official Answer Key: Option ${letters[q.ans]}</div>
+      <div class="exp-section-block">
+        <div class="exp-heading-label">Step-by-Step Explanation:</div>
+        ${expText}
+      </div>
+    `;
+  } else {
+    expBox.style.display = 'none';
+  }
+
+  updateSectionStats();
+  refreshPaletteClasses();
+}
+
+function selectOptionLive(optIdx) {
+  if (userAnswers[currentQIndex] === optIdx) {
+    userAnswers[currentQIndex] = null; // deselect if clicked again
+  } else {
+    userAnswers[currentQIndex] = optIdx;
+  }
+  renderQuestion(currentQIndex);
+}
+
+function toggleMarkReview() {
+  markedStatus[currentQIndex] = !markedStatus[currentQIndex];
+  renderQuestion(currentQIndex);
+}
+
+function toggleSaveQuestion() {
+  const q = questions[currentQIndex];
+  const uniqueId = `30sep_s2_q${q.id}`;
+  const existingIdx = savedQuestionIds.findIndex(item => item.uniqueId === uniqueId);
+  if (existingIdx === -1) {
+    savedQuestionIds.push({ uniqueId, ...q });
+  } else {
+    savedQuestionIds.splice(existingIdx, 1);
+  }
+  localStorage.setItem('ssc_30sep_s2_saved', JSON.stringify(savedQuestionIds));
+  updateSaveBtnUI();
+}
+
+function updateSaveBtnUI() {
+  const btn = document.getElementById('save-q-btn');
+  const q = questions[currentQIndex];
+  const isSaved = savedQuestionIds.some(item => item.uniqueId === `30sep_s2_q${q.id}`);
+  if (isSaved) {
+    btn.classList.add('saved-active');
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Saved`;
+  } else {
+    btn.classList.remove('saved-active');
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Save`;
+  }
+}
+
+function updateNavButtonsState() {
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const analysisBtn = document.getElementById('back-analysis-btn');
+  const markBtn = document.getElementById('mark-btn');
+
+  if (isTestCompleted) {
+    prevBtn.disabled = (currentQIndex === 0);
+    nextBtn.disabled = (currentQIndex === questions.length - 1);
+    nextBtn.innerText = "Next";
+    analysisBtn.style.display = "block";
+    markBtn.style.display = "none";
+    return;
+  }
+
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 24;
+
+  prevBtn.disabled = (currentQIndex <= secStart);
+  if (currentQIndex === secEnd) {
+    nextBtn.innerText = (currentSection === 3) ? "Submit Exam" : "Submit Section";
+  } else {
+    nextBtn.innerText = "Save & Next";
+  }
+}
+
+function saveAndNext() {
+  if (isTestCompleted) {
+    if (currentQIndex < questions.length - 1) renderQuestion(currentQIndex + 1);
+    return;
+  }
+  const secEnd = (currentSection * 25) + 24;
+  if (currentQIndex < secEnd) {
+    renderQuestion(currentQIndex + 1);
+  } else {
+    openSubmitModal();
+  }
+}
+
+function prevQuestion() {
+  if (isTestCompleted) {
+    if (currentQIndex > 0) renderQuestion(currentQIndex - 1);
+    return;
+  }
+  const secStart = currentSection * 25;
+  if (currentQIndex > secStart) renderQuestion(currentQIndex - 1);
+}
+
+function updateSectionStats() {
+  const secStart = currentSection * 25;
+  let count = 0;
+  for (let i = secStart; i < secStart + 25; i++) {
+    if (userAnswers[i] !== null) count++;
+  }
+  document.getElementById('section-answered-badge').innerText = count;
+  document.getElementById('section-prog-bar').style.width = (count / 25 * 100) + '%';
+}
+
+function buildSectionFilteredPalette() {
+  const grid = document.getElementById('palette-grid');
+  grid.innerHTML = '';
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 25;
+
+  for (let i = secStart; i < secEnd; i++) {
+    const item = document.createElement('div');
+    item.className = 'grid-item';
+    item.id = `palette-item-${i}`;
+    item.innerText = i + 1;
+    item.onclick = () => { renderQuestion(i); closePalette(); };
+    grid.appendChild(item);
+  }
+  refreshPaletteClasses();
+}
+
+function refreshPaletteClasses() {
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 25;
+
+  for (let i = secStart; i < secEnd; i++) {
+    const item = document.getElementById(`palette-item-${i}`);
+    if (!item) continue;
+    item.className = 'grid-item';
+
+    if (markedStatus[i]) item.classList.add('marked-review');
+    else if (userAnswers[i] !== null) item.classList.add('answered');
+
+    if (i === currentQIndex) item.classList.add('active-now');
+  }
+}
+
+function openPalette() { buildSectionFilteredPalette(); document.getElementById('palette-drawer').style.display = 'flex'; }
+function closePalette() { document.getElementById('palette-drawer').style.display = 'none'; }
+function closePaletteOnBackdrop(e) { if (e.target.id === 'palette-drawer') closePalette(); }
+
+function openSubmitModal() {
+  closePalette();
+  const secStart = currentSection * 25;
+  let attempted = 0, marked = 0;
+  for (let i = secStart; i < secStart + 25; i++) {
+    if (userAnswers[i] !== null) attempted++;
+    if (markedStatus[i]) marked++;
+  }
+
+  document.getElementById('modal-time-left').innerText = document.getElementById('section-timer-display').innerText;
+  document.getElementById('modal-attempted').innerText = attempted;
+  document.getElementById('modal-unattempted').innerText = 25 - attempted;
+  document.getElementById('modal-marked').innerText = marked;
+
+  if (currentSection === 3) {
+    document.getElementById('modal-heading-text').innerText = "Submit Complete Exam";
+    document.getElementById('modal-subtext').innerText = "Submitting will evaluate all 100 questions and show detailed solutions.";
+    document.getElementById('modal-yes-btn').innerText = 'Submit Test';
+  } else {
+    document.getElementById('modal-heading-text').innerText = `Lock ${sectionTitles[currentSection].split(': ')[1]}`;
+    document.getElementById('modal-subtext').innerText = "Once submitted, this section will be locked and cannot be reopened.";
+    document.getElementById('modal-yes-btn').innerText = 'Lock & Continue';
+  }
+  document.getElementById('submit-confirm-modal').style.display = 'flex';
+}
+
+function closeSubmitModal() { document.getElementById('submit-confirm-modal').style.display = 'none'; }
+
+function confirmSectionSubmit() {
+  closeSubmitModal();
+  if (currentSection < 3) {
+    loadSection(currentSection + 1);
+  } else {
+    finalizeFullTest();
+  }
+}
+
+function finalizeFullTest() {
+  clearInterval(sectionTimerInterval);
+  stopQTimer();
+  isTestCompleted = true;
+
+  let correct = 0, wrong = 0;
+  let secScores = [0, 0, 0, 0];
+
+  questions.forEach((q, idx) => {
+    if (userAnswers[idx] !== null) {
+      if (userAnswers[idx] === q.ans) {
+        correct++;
+        secScores[q.sec] += 2.0;
+      } else {
+        wrong++;
+        secScores[q.sec] -= 0.5;
+      }
+    }
+  });
+
+  const totalMarks = Math.max(0, (correct * 2) - (wrong * 0.5));
+  const accuracyRate = (correct + wrong > 0) ? Math.round((correct / (correct + wrong)) * 100) : 0;
+
+  document.getElementById('res-avg-score').innerText = `${accuracyRate}%`;
+  document.getElementById('res-total-marks').innerText = totalMarks.toFixed(1);
+  const studyMins = Math.max(1, Math.round(totalExamSecondsTaken / 60));
+  document.getElementById('res-study-time').innerText = `${studyMins}m`;
+
+  for (let s = 0; s < 4; s++) {
+    document.getElementById(`sec-score-${s}`).innerText = `${secScores[s].toFixed(1)} / 50`;
+    document.getElementById(`sec-bar-${s}`).style.width = (Math.max(0, secScores[s]) / 50 * 100) + '%';
+  }
+
+  document.getElementById('test-screen').style.display = 'none';
+  document.getElementById('dashboard-screen').style.display = 'flex';
+
+  setTimeout(() => {
+    renderDarkExactTrajectory(secScores);
+  }, 200);
+}
+
+function renderDarkExactTrajectory(scores) {
+  Chart.defaults.font.family = "'Hind', sans-serif";
+  const ctx = document.getElementById('trajectoryLineChart').getContext('2d');
+  if (trajectoryChartInstance) trajectoryChartInstance.destroy();
+
+  const gradient = ctx.createLinearGradient(0, 0, 0, 240);
+  gradient.addColorStop(0, 'rgba(0, 210, 255, 0.45)');
+  gradient.addColorStop(0.5, 'rgba(0, 210, 255, 0.18)');
+  gradient.addColorStop(1, 'rgba(0, 210, 255, 0.0)');
+
+  const displayScores = [scores[3], scores[0], scores[2], scores[1]];
+  const maxScore = Math.max(16, ...displayScores);
+  const suggestedMax = Math.ceil(maxScore * 1.15);
+
+  trajectoryChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['English', 'Reasoning', 'Quant', 'Gen Awareness'],
+      datasets: [{
+        label: 'Score',
+        data: displayScores,
+        borderColor: '#00d2ff',
+        borderWidth: 4.5,
+        backgroundColor: gradient,
+        fill: true,
+        tension: 0.45,
+        pointBackgroundColor: '#00d2ff',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 3.5,
+        pointRadius: 8.5,
+        pointHoverRadius: 11
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: '#94a3b8', font: { size: 11, weight: '700' } }
+        },
+        y: {
+          beginAtZero: true,
+          suggestedMax: suggestedMax,
+          ticks: { color: '#64748b', font: { size: 11, weight: '600' } },
+          grid: { color: '#1e2433' }
+        }
+      }
+    }
+  });
+}
+
+function closeDashboardToReview() {
+  document.getElementById('dashboard-screen').style.display = 'none';
+  document.getElementById('test-screen').style.display = 'flex';
+
+  for (let i = 0; i < 4; i++) {
+    const tab = document.getElementById(`sec-tab-${i}`);
+    tab.style.cursor = 'pointer';
+    tab.style.opacity = '1';
+    tab.onclick = () => renderQuestion(i * 25);
+  }
+
+  document.getElementById('current-section-title').innerText = "Solutions Review Mode";
+  document.getElementById('section-timer-display').innerText = "Review";
+
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function returnToDashboard() {
+  document.getElementById('test-screen').style.display = 'none';
+  document.getElementById('dashboard-screen').style.display = 'flex';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
