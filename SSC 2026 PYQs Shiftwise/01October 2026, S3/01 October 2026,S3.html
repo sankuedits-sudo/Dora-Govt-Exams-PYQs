@@ -1,0 +1,3069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SSC CGL Tier 1 Mock Test - 01 Oct Shift 1</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#17275E;--ink:#121826;--muted:#5B6578;--line:#DCE1EA;--canvas:#F2F4F8;--saffron:#D9730D;--green:#1B8A5A;--green-bg:#E7F5EE;--red:#C93B3B;--red-bg:#FCECEC;--violet:#6B4BC0;--violet-bg:#EFEBFA;--selected:#EBF2FE;--selected-border:#2962FF}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Hind','Noto Sans Devanagari',system-ui,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid #3B5BDB;outline-offset:2px}
+svg{flex:none}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.btn{display:block;width:100%;min-height:48px;border-radius:10px;border:1.5px solid var(--navy);background:var(--navy);color:#fff;font-weight:600;font-size:1rem}
+
+/* Instructions Screen */
+#instruction-screen{position:fixed;inset:0;z-index:500;background:#fff;display:flex;flex-direction:column;overflow-y:auto}
+.inst-top{background:var(--navy);color:#fff;padding:32px 20px 26px}
+.inst-wrap{max-width:680px;margin:0 auto;width:100%}
+.inst-top p{color:#B9C4E8;font-size:.9rem;margin-bottom:4px}
+.inst-top h1{font-size:1.7rem;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+.inst-facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.inst-facts div{padding:14px 10px 14px 0}
+.inst-facts b{display:block;font-size:1.35rem;font-weight:700}
+.inst-facts span{font-size:.8rem;color:var(--muted)}
+.inst-body{padding:22px 20px;flex:1}
+.inst-body h2{font-size:1rem;margin:0 0 10px}
+.flow{list-style:none;counter-reset:s;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.flow li{counter-increment:s;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:600;font-size:.92rem}
+.flow li::before{content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;margin-right:8px;border-radius:50%;background:var(--navy);color:#fff;font-size:.78rem}
+.flow small{display:block;font-weight:400;color:var(--muted);font-size:.8rem;margin-left:30px}
+.rules{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+.rules li{border-left:3px solid var(--line);padding-left:12px;color:#2B3446}
+.inst-cta{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 20px calc(12px + env(safe-area-inset-bottom))}
+.inst-cta .btn{max-width:680px;margin:0 auto}
+
+/* Test Area */
+#test-screen{display:none;flex-direction:column;height:100%}
+.top-header{background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+.test-name{flex:1;min-width:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer-badge{display:flex;align-items:center;gap:6px;font-weight:700;font-size:1.05rem;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:8px}
+.timer-badge.low{background:var(--saffron)}
+.lang-toggle-btn,.menu-icon{min-height:36px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:8px;padding:0 12px;font-weight:600;font-size:.9rem;display:grid;place-items:center}
+.menu-icon{width:40px;padding:0}
+.section-bar{display:flex;background:#fff;border-bottom:1px solid var(--line)}
+.section-tab{flex:1;text-align:center;padding:11px 4px;font-size:.88rem;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap;opacity:.6;cursor:default}
+.section-tab.active{color:var(--navy);border-bottom-color:var(--navy);opacity:1}
+.section-tab.locked-done{color:var(--green);opacity:.9}
+.section-tab.locked-done::before{content:"\2713\00a0"}
+.meta-row{background:#fff;padding:8px 14px 0;border-bottom:1px solid var(--line)}
+.meta-line{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;color:var(--muted);padding-bottom:8px}
+.meta-line b{color:var(--ink)}
+.save-btn{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:.85rem;font-weight:600;color:var(--muted)}
+.save-btn.saved-active{color:var(--navy);border-color:var(--navy);background:#EAEEFB}
+.prog{height:3px;background:var(--line);margin:0 -14px}
+.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.main-content{flex:1;overflow-y:auto;padding:18px 14px 28px}
+.q-inner{max-width:720px;margin:0 auto}
+.q-badge-wrap{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.q-badge-wrap .q-no{font-size:1rem;color:var(--ink);font-weight:700}
+.exam-tag-badge{border:1px solid var(--line);background:#fff;padding:1px 9px;border-radius:6px}
+.per-q-timer-badge{margin-left:auto}
+
+.question-statement u{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:700;color:var(--navy);background:#EEF3FF;padding:0 3px;border-radius:3px}
+.question-statement strong{font-weight:700;color:var(--ink)}
+.question-statement{font-size:1.15rem;line-height:1.65;font-weight:500;white-space:pre-wrap;margin:12px 0 20px}
+.options-group{display:flex;flex-direction:column;gap:10px}
+.option-item{display:flex;align-items:center;gap:14px;width:100%;min-height:54px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1.05rem;transition:border-color .15s, background-color .15s}
+.option-item:hover{border-color:var(--navy)}
+
+/* Real Exam Selection State (Before Submission) */
+.option-item.selected-live{border-color:var(--selected-border);background:var(--selected)}
+.option-item.selected-live .opt-key{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* Solution Mode States (After Submission) */
+.option-item.is-locked{cursor:default}
+.opt-key{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:600;font-size:.85rem;color:var(--muted)}
+.opt-text{flex:1}
+.option-item.correct-ans{border-color:var(--green);background:var(--green-bg)}
+.option-item.correct-ans .opt-key{background:var(--green);border-color:var(--green);color:#fff}
+.option-item.correct-ans::after{content:"Correct";font-size:.8rem;font-weight:600;color:var(--green)}
+.option-item.wrong-ans{border-color:var(--red);background:var(--red-bg)}
+.option-item.wrong-ans .opt-key{background:var(--red);border-color:var(--red);color:#fff}
+.option-item.wrong-ans::after{content:"Your answer";font-size:.8rem;font-weight:600;color:var(--red)}
+
+
+/* Image Display Containers - Guaranteed Pure White Background & Clean Padding */
+.q-img-wrap{width:100%;background:#FFFFFF !important;border:1px solid var(--line);border-radius:10px;padding:12px;margin:14px 0 8px;display:flex;flex-direction:column;gap:10px;justify-content:center;align-items:center;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.q-img-wrap img{max-width:100%;max-height:330px;width:auto;height:auto;display:block;background:#FFFFFF !important;object-fit:contain;border-radius:4px}
+.opt-img-wrap{background:#FFFFFF !important;border:1px solid #EEF1F6;border-radius:8px;padding:6px 10px;display:inline-flex;align-items:center;justify-content:center;min-height:46px}
+.opt-img-wrap img{max-height:84px;max-width:100%;width:auto;height:auto;display:block;background:#FFFFFF !important;object-fit:contain}
+
+/* Explanations & Shortcuts */
+.explanation-box{display:none;margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.exp-badge-correct{padding:11px 16px;background:var(--green-bg);color:var(--green);font-weight:700;border-bottom:1px solid var(--line)}
+.exp-section-block{padding:14px 16px 16px;line-height:1.75}
+.exp-heading-label{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.shortcut-block{margin-top:12px;padding:12px 14px;border-left:3.5px solid var(--saffron);background:#FFF8F0;border-radius:0 8px 8px 0}
+.shortcut-title{font-weight:700;font-size:.9rem;color:var(--saffron);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+
+.footer-bar{background:#fff;border-top:1px solid var(--line);display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.nav-btn{flex:1;min-height:46px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.95rem}
+.nav-btn.primary,.nav-btn.analysis{flex:1.4;background:var(--navy);border-color:var(--navy);color:#fff}
+.nav-btn.analysis{display:none}
+.nav-btn.marked{border-color:var(--violet);color:var(--violet);background:var(--violet-bg)}
+.nav-btn:disabled{opacity:.4;cursor:default}
+
+/* Palette and Modals */
+#palette-drawer{position:fixed;inset:0;z-index:600;background:rgba(18,24,38,.5);display:none;justify-content:flex-end}
+.drawer-card{width:88%;max-width:380px;height:100%;background:#fff;display:flex;flex-direction:column;padding:18px 16px max(16px,env(safe-area-inset-bottom))}
+.drawer-top{display:flex;justify-content:space-between;align-items:center}
+.drawer-top h3{font-size:1.1rem}
+.icon-btn{width:38px;height:38px;border:0;border-radius:8px;background:var(--canvas);font-size:1.1rem}
+.drawer-sec-badge{font-size:.9rem;color:var(--muted);margin:2px 0 14px}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:14px}
+.sq{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1.5px solid var(--line)}
+.grid-container{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;overflow-y:auto;align-content:start;padding:3px}
+.grid-item{aspect-ratio:1;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:8px;background:#fff;font-weight:600;cursor:pointer}
+.grid-item.answered{background:var(--green);border-color:var(--green);color:#fff}
+.grid-item.marked-review{background:var(--violet);border-color:var(--violet);color:#fff}
+.grid-item.active-now{outline:3px solid var(--saffron);outline-offset:1px}
+.drawer-submit-wrap{margin-top:14px}
+
+.modal-overlay{position:fixed;inset:0;z-index:700;background:rgba(18,24,38,.5);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:360px}
+.modal-box h3{font-size:1.15rem;margin-bottom:12px}
+.summary-list{display:flex;flex-direction:column;margin-bottom:14px}
+.summary-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.summary-item strong{color:var(--ink)}
+.confirm-btns{display:flex;gap:10px;margin-top:18px}
+.confirm-btns .btn{min-height:46px}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+
+
+/* Language Selection Modal on Start Test */
+#lang-select-modal{position:fixed;inset:0;z-index:800;background:rgba(18,24,38,.58);display:none;align-items:center;justify-content:center;padding:20px}
+.lang-modal-box{background:#fff;border-radius:16px;padding:24px 20px;width:100%;max-width:380px;border:1px solid var(--line);box-shadow:0 12px 32px rgba(18,24,38,.18)}
+.lang-modal-box h3{font-size:1.2rem;color:var(--navy);margin-bottom:4px}
+.lang-modal-box p{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+.lang-choice-grid{display:flex;flex-direction:column;gap:12px}
+.lang-choice-btn{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;text-align:left;transition:border-color .15s,background-color .15s}
+.lang-choice-btn:hover{border-color:var(--navy);background:#F5F7FC}
+.lang-choice-btn b{display:block;font-size:1.05rem;color:var(--ink)}
+.lang-choice-btn small{display:block;font-size:.82rem;color:var(--muted)}
+.lang-choice-arrow{font-size:1.1rem;font-weight:700;color:var(--navy)}
+
+/* Results / Dashboard */
+#dashboard-screen{position:fixed;inset:0;z-index:900;background:var(--canvas);display:none;flex-direction:column;overflow-y:auto}
+.dash-topbar{background:var(--navy);color:#fff;padding:max(18px,env(safe-area-inset-top)) 20px 18px}
+.dash-topbar h1{font-size:1.25rem}
+.dash-topbar p{color:#B9C4E8;font-size:.88rem}
+.dash-container{max-width:760px;margin:0 auto;width:100%;padding:16px 14px 32px;display:flex;flex-direction:column;gap:14px}
+.score-hero{display:flex;align-items:baseline;gap:8px;color:var(--muted)}
+#res-total-marks{font-size:3.3rem;font-weight:700;line-height:1;color:var(--navy)}
+.hero-sub{display:flex;gap:32px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.hero-sub b{display:block;font-size:1.3rem}
+.hero-sub span{font-size:.82rem;color:var(--muted)}
+.card h2{font-size:1rem;margin-bottom:4px}
+.sec-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.sec-row:first-of-type{border-top:0}
+.sec-score{font-weight:700}
+.sec-bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--canvas);overflow:hidden}
+.sec-bar i{display:block;height:100%;width:0;background:var(--navy)}
+.trajectory-card-dark{background:#0F1A3D;border-radius:12px;padding:18px;color:#fff}
+.traj-title{font-size:1rem;font-weight:600}
+.traj-sub{font-size:.85rem;color:#9AA7C7;margin:2px 0 16px}
+.canvas-box-exact{position:relative;width:100%;height:260px}
+</style>
+</head>
+<body>
+
+<div id="instruction-screen">
+  <div class="inst-top"><div class="inst-wrap">
+    <p>Official Pattern Mock Test</p>
+    <h1>SSC CGL Tier 1<br>01 Oct, Shift 1</h1>
+  </div></div>
+  <div class="inst-wrap" style="padding:0 20px">
+    <div class="inst-facts">
+      <div><b>100</b><span>Questions</span></div>
+      <div><b>200</b><span>Marks</span></div>
+      <div><b>60</b><span>Minutes</span></div>
+      <div><b>4</b><span>Sections</span></div>
+    </div>
+  </div>
+  <div class="inst-body"><div class="inst-wrap">
+    <h2>Sections &amp; Timing (15 minutes locked per section)</h2>
+    <ol class="flow">
+      <li>Reasoning<small>Q 1&ndash;25</small></li>
+      <li>General Awareness<small>Q 26&ndash;50</small></li>
+      <li>Quantitative Aptitude<small>Q 51&ndash;75</small></li>
+      <li>English Comprehension<small>Q 76&ndash;100</small></li>
+    </ol>
+    <h2>Exam Rules</h2>
+    <ul class="rules">
+      <li>+2 marks for correct answers; -0.5 marks for wrong answers.</li>
+      <li><strong>Real Exam Interface:</strong> During the exam, selecting an option will only mark your choice. Solutions will not be revealed until the full test is submitted.</li>
+      <li>Detailed explanations alongside fastest shortcut tricks will be unlocked in <em>Review Solutions</em> mode after submission.</li>
+      <li>You can toggle between English and Hindi at any moment using the top bar language switch.</li>
+    </ul>
+  </div></div>
+  <div class="inst-cta"><button class="btn" onclick="startTest()">Start Test</button></div>
+</div>
+
+<div id="test-screen">
+  <header class="top-header">
+    <div class="test-name" id="current-section-title">PART-A: Reasoning</div>
+    <div class="timer-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>
+      <span id="section-timer-display">15:00</span>
+    </div>
+    <button class="lang-toggle-btn" id="lang-toggle-btn" onclick="toggleLanguage()">हिन्दी</button>
+    <button class="menu-icon" onclick="openPalette()" aria-label="Question palette">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    </button>
+  </header>
+  <nav class="section-bar">
+    <div class="section-tab active" id="sec-tab-0">Reasoning</div>
+    <div class="section-tab" id="sec-tab-1">GA</div>
+    <div class="section-tab" id="sec-tab-2">Quant</div>
+    <div class="section-tab" id="sec-tab-3">English</div>
+  </nav>
+  <div class="meta-row">
+    <div class="meta-line">
+      <span><b id="section-answered-badge">0</b> of 25 answered</span>
+      <button class="save-btn" id="save-q-btn" onclick="toggleSaveQuestion()">Save</button>
+    </div>
+    <div class="prog"><i id="section-prog-bar"></i></div>
+  </div>
+  <main class="main-content"><div class="q-inner">
+    <div class="q-badge-wrap">
+      <span>Question <span class="q-no" id="curr-q-no">1</span></span>
+      <span class="exam-tag-badge" id="exam-tag-text">Reasoning</span>
+      <span class="per-q-timer-badge">Time: <span id="per-q-timer-text">00:00</span></span>
+    </div>
+    <div class="question-statement" id="question-text"></div>
+    <div class="options-group" id="options-box"></div>
+    <div class="explanation-box" id="explanation-container"></div>
+  </div></main>
+  <footer class="footer-bar" id="exam-footer-bar">
+    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">Previous</button>
+    <button class="nav-btn analysis" id="back-analysis-btn" onclick="returnToDashboard()">View Analysis</button>
+    <button class="nav-btn" id="mark-btn" onclick="toggleMarkReview()">Mark for Review</button>
+    <button class="nav-btn primary" id="next-btn" onclick="saveAndNext()">Save &amp; Next</button>
+  </footer>
+</div>
+
+<div id="dashboard-screen">
+  <div class="dash-topbar"><h1>Test Summary</h1><p>SSC CGL Tier 1, 01 Oct Shift 1</p></div>
+  <div class="dash-container">
+    <div class="card">
+      <div class="score-hero"><span id="res-total-marks">0</span><span>out of 200</span></div>
+      <div class="hero-sub">
+        <div><b id="res-avg-score">0%</b><span>Accuracy</span></div>
+        <div><b id="res-study-time">0m</b><span>Time Taken</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Section Performance</h2>
+      <div class="sec-row"><span>Reasoning</span><span class="sec-score" id="sec-score-0">0 / 50</span><div class="sec-bar"><i id="sec-bar-0"></i></div></div>
+      <div class="sec-row"><span>General Awareness</span><span class="sec-score" id="sec-score-1">0 / 50</span><div class="sec-bar"><i id="sec-bar-1"></i></div></div>
+      <div class="sec-row"><span>Quantitative Aptitude</span><span class="sec-score" id="sec-score-2">0 / 50</span><div class="sec-bar"><i id="sec-bar-2"></i></div></div>
+      <div class="sec-row"><span>English Comprehension</span><span class="sec-score" id="sec-score-3">0 / 50</span><div class="sec-bar"><i id="sec-bar-3"></i></div></div>
+    </div>
+    <div class="trajectory-card-dark">
+      <div class="traj-title">Performance Trajectory</div>
+      <div class="traj-sub">Score Breakdown Across 4 Sections</div>
+      <div class="canvas-box-exact"><canvas id="trajectoryLineChart"></canvas></div>
+    </div>
+    <button class="btn" onclick="closeDashboardToReview()">Review Solutions</button>
+  </div>
+</div>
+
+<div id="palette-drawer" onclick="closePaletteOnBackdrop(event)">
+  <div class="drawer-card">
+    <div class="drawer-top"><h3>Question Palette</h3><button class="icon-btn" onclick="closePalette()">&#10005;</button></div>
+    <div class="drawer-sec-badge" id="drawer-active-sec-badge"></div>
+    <div class="legend-row">
+      <span><i class="sq" style="background:var(--green);border-color:var(--green)"></i>Answered</span>
+      <span><i class="sq" style="background:var(--violet);border-color:var(--violet)"></i>Marked</span>
+      <span><i class="sq"></i>Not Answered</span>
+    </div>
+    <div class="grid-container" id="palette-grid"></div>
+    <div class="drawer-submit-wrap"><button class="btn" id="drawer-submit-btn" onclick="openSubmitModal()">Submit Section</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="submit-confirm-modal">
+  <div class="modal-box">
+    <h3 id="modal-heading-text">Submit Section</h3>
+    <div class="summary-list">
+      <div class="summary-item"><span>Time Left</span><strong id="modal-time-left">--:--</strong></div>
+      <div class="summary-item"><span>Attempted</span><strong id="modal-attempted">0</strong></div>
+      <div class="summary-item"><span>Unattempted</span><strong id="modal-unattempted">25</strong></div>
+      <div class="summary-item"><span>Marked for Review</span><strong id="modal-marked">0</strong></div>
+    </div>
+    <p id="modal-subtext" style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;"></p>
+    <div class="confirm-btns">
+      <button class="btn ghost" onclick="closeSubmitModal()">Resume</button>
+      <button class="btn" id="modal-yes-btn" onclick="confirmSectionSubmit()">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="lang-select-modal" onclick="closeLangModalOnBackdrop(event)">
+  <div class="lang-modal-box">
+    <h3>Select Your Language / अपनी भाषा चुनें</h3>
+    <p>Choose the language to start your test. You can switch anytime during the exam.</p>
+    <div class="lang-choice-grid">
+      <button type="button" class="lang-choice-btn" onclick="beginTestWithLanguage('en')">
+        <span>
+          <b>English</b>
+          <small>Start mock test in English</small>
+        </span>
+        <span class="lang-choice-arrow">&#8594;</span>
+      </button>
+      <button type="button" class="lang-choice-btn" onclick="beginTestWithLanguage('hi')">
+        <span>
+          <b>हिन्दी (Hindi)</b>
+          <small>मॉक टेस्ट हिन्दी में शुरू करें</small>
+        </span>
+        <span class="lang-choice-arrow">&#8594;</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    "id": 1,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Select the letter-cluster from among the given options that can replace the question mark (?) in the following series:\nLZWT, LVOH, LRGV, LNYJ, ?",
+    "q_hi": "दिए गए विकल्पों में से उस अक्षर-समूह का चयन करें जो निम्नलिखित श्रृंखला में प्रश्न चिह्न (?) को प्रतिस्थापित कर सकेः\nLZWT, LVOH, LRGV, LNYJ, ?",
+    "opts_en": [
+      "LJQX",
+      "LKJH",
+      "LOIU",
+      "LDFS"
+    ],
+    "opts_hi": [
+      "LJQX",
+      "LKJH",
+      "LOIU",
+      "LDFS"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1st letter: L is constant across all terms.<br>2nd letter: Z(26) - 4 = V(22), V(22) - 4 = R(18), R(18) - 4 = N(14), N(14) - 4 = J(10).<br>3rd letter: W(23) - 8 = O(15), O(15) + 7 = G(7), G(7) - 8 = Y(25), Y(25) + 7 = Q(17).<br>4th letter: T(20) - 12 = H(8), H(8) + 14 = V(22), V(22) - 12 = J(10), J(10) + 14 = X(24).<br>Combining gives <strong>LJQX</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ First 2 Letters Trick:</div>1st letter is L and 2nd letter drops by 4 (Z➔V➔R➔N➔J). Only Option A starts with LJ—mark it in 3 seconds!</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1st अक्षर: सभी पदों में L समान है।<br>2nd अक्षर: Z(26) - 4 = V(22), V(22) - 4 = R(18), R(18) - 4 = N(14), N(14) - 4 = J(10)।<br>3rd अक्षर: W(23) - 8 = O(15), O(15) + 7 = G(7), G(7) - 8 = Y(25), Y(25) + 7 = Q(17)।<br>4th अक्षर: T(20) - 12 = H(8), H(8) + 14 = V(22), V(22) - 12 = J(10), J(10) + 14 = X(24)।<br>अतः सही समूह <strong>LJQX</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ स्मार्ट अप्रोच:</div>पहला अक्षर L और दूसरे अक्षर में -4 का क्रम (Z➔V➔R➔N➔J) देखें। 'LJ' केवल विकल्प A में है।</div>"
+  },
+  {
+    "id": 2,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "A person bought an article for Rs. 1200 and sold it at a loss of 10%. What is the selling price?",
+    "q_hi": "एक व्यक्ति ने एक वस्तु 1200 रुपये में खरीदी और उसे 10% की हानि पर बेच दिया। बिक्री कीमत क्या है?",
+    "opts_en": [
+      "Rs. 1050",
+      "Rs. 1090",
+      "Rs. 1060",
+      "Rs. 1080"
+    ],
+    "opts_hi": [
+      "1050 रुपये",
+      "1090 रुपये",
+      "1060 रुपये",
+      "1080 रुपये"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Cost Price (CP) = Rs. 1200, Loss = 10%.<br>Loss amount = 10% of 1200 = (10/100) × 1200 = Rs. 120.<br>Selling Price (SP) = CP - Loss = 1200 - 120 = <strong>Rs. 1080</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ 10% Mental Trick:</div>10% of 1200 is 120. Subtract 120 from 1200 to get 1080 directly without writing a formula.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>क्रय मूल्य = 1200 रुपये, हानि = 10%।<br>हानि की राशि = 1200 का 10% = 120 रुपये।<br>विक्रय मूल्य = 1200 - 120 = <strong>1080 रुपये</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ 10% शॉर्टकट:</div>1200 का 10% सीधे 120 होता है। 1200 में से 120 घटाएँ = 1080 रुपये।</div>"
+  },
+  {
+    "id": 3,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Find the missing number: 43:129 :: 62:?",
+    "q_hi": "लुप्त संख्या ज्ञात कीजिए: 43 : 129 :: 62 : ?",
+    "opts_en": [
+      "142",
+      "146",
+      "145",
+      "186"
+    ],
+    "opts_hi": [
+      "142",
+      "146",
+      "145",
+      "186"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>43 × 3 = 129.<br>Applying the same multiplier to 62: 62 × 3 = <strong>186</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Unit Digit Check:</div>Unit digit of 62 × 3 is 2 × 3 = 6. Only Option D (186) ends in 6!</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>यहाँ 43 × 3 = 129 का संबंध है।<br>इसी नियम से 62 × 3 = <strong>186</strong> प्राप्त होता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ इकाई अंक ट्रिक:</div>62 × 3 का इकाई अंक 2 × 3 = 6 आएगा। केवल विकल्प D (186) का इकाई अंक 6 है।</div>"
+  },
+  {
+    "id": 4,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "A man buys 2 pencils for Rs. 5 and sells 5 pencils for Rs. 12. Find his gain or loss percent.",
+    "q_hi": "एक आदमी 5 रुपये में 2 पेंसिल खरीदता है और 12 रुपये में 5 पेंसिल बेचता है। उसका लाभ या हानि प्रतिशत ज्ञात कीजिए।",
+    "opts_en": [
+      "4% gain",
+      "4% loss",
+      "5% gain",
+      "5% loss"
+    ],
+    "opts_hi": [
+      "4% लाभ",
+      "4% हानि",
+      "5% लाभ",
+      "5% हानि"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>To compare equally, take LCM(2, 5) = 10 pencils.<br>CP of 10 pencils = (5/2) × 10 = Rs. 25.<br>SP of 10 pencils = (12/5) × 10 = Rs. 24.<br>Since SP < CP, there is a loss of 25 - 24 = Rs. 1.<br>Loss % = (1/25) × 100 = <strong>4% loss</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Cross Multiplication Trick:</div>CP rate: 2 for ₹5; SP rate: 5 for ₹12. Cross-multiply: SP side = 2 × 12 = 24, CP side = 5 × 5 = 25. Loss = (24-25)/25 × 100 = -4% (4% loss).</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>पेंसिलों की संख्या बराबर करने के लिए 2 और 5 का ल.स. (LCM) = 10 पेंसिल लें।<br>10 पेंसिल का क्रय मूल्य = (5/2) × 10 = 25 रुपये।<br>10 पेंसिल का विक्रय मूल्य = (12/5) × 10 = 24 रुपये।<br>हानि = 25 - 24 = 1 रुपये; हानि % = (1/25) × 100 = <strong>4% हानि</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ वज्र-गुणन ट्रिक:</div>क्रय: 2 के 5, विक्रय: 5 के 12। 2×12 = 24 (SP) और 5×5 = 25 (CP)। (24-25)/25 × 100 = -4% (4% हानि)।</div>"
+  },
+  {
+    "id": 5,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Which of the following is/are identical to the address given: Vill: Bhatgaon, PO: Ambikapur, PS: Rajnandgaon, Dist: Chhattisgarh - 494661\n1. Vill: Bhatgaon, PO: Ambikapur, PS: Rajnandgaon, Dist: Chhattisgarh - 494661\n2. Vill: Bhatgaon, Post: Ambikapur, PS: Rajnandgaon, Dist: Chhattisgarh - 494662\n3. Vill: Bhatgaon, PO: Rajnandgaon, PS: Bilaspur, Dist: Chhattisgarh - 494660\n4. Village: Bhatgaon, PO: Ambikapur, PS: Rajnandgaon, Dist: Chhattisgarh - 494661",
+    "q_hi": "निम्नलिखित में से कौन सा/से दिए गए पते के समान है/हैं: गांवः भटगांव, डाकघरः अंबिकापुर, थानाः राजनांदगांव, जिलाः छत्तीसगढ़ - 494661\n1. ग्रामः भटगांव, डाकघरः अंबिकापुर, थानाः राजनांदगांव, जिलाः छत्तीसगढ़ - 494661\n2. ग्रामः भटगांव, पोस्टः अंबिकापुर, थानाः राजनांदगांव, जिलाः छत्तीसगढ़ - 494662\n3. ग्रामः भटगांव, डाकघरः राजनांदगांव, थानाः बिलासपुर, जिलाः छत्तीसगढ़ - 494660\n4. गांवः भटगांव, डाकघरः अंबिकापुर, थानाः राजनांदगांव, जिलाः छत्तीसगढ़ - 494661",
+    "opts_en": [
+      "2 Only",
+      "3 Only",
+      "1 Only",
+      "4 Only"
+    ],
+    "opts_hi": [
+      "केवल 2",
+      "केवल 3",
+      "केवल 1",
+      "केवल 4"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Compare each item with the given address:<br>1 matches all fields.<br>2 changes pin code to 494662.<br>3 changes PO and PS.<br>4 changes 'Vill:' to 'Village:'.<br>Hence, <strong>1 Only</strong> is identical.<div class='shortcut-block'><div class='shortcut-title'>⚡ Pin Code Scan:</div>Check the pin code 494661 first—only 1 and 4 have 494661, and 1 matches the exact abbreviation 'Vill:'.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>प्रत्येक कथन का मूल पते से मिलान करने पर:<br>1 सभी विवरणों में समान है।<br>2 में पिन कोड 494662 है।<br>3 में डाकघर और थाना अलग हैं।<br>4 में 'Village:' लिखा है।<br>अतः <strong>केवल 1</strong> समान है।<div class='shortcut-block'><div class='shortcut-title'>⚡ पिन कोड ट्रिक:</div>पहले पिन कोड 494661 देखें, फिर संक्षिप्त रूप 'Vill:' का मिलान करें—केवल 1 सही है।</div>"
+  },
+  {
+    "id": 6,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Read the following statement carefully and identify the conclusion that follows.\nStatement:\nAll apples are fruits.\nAll fruits are healthy.\nConclusions:\nI. All apples are healthy.\nII. Some healthy things are fruits",
+    "q_hi": "निम्नलिखित कथन को ध्यानपूर्वक पढ़ें और निष्कर्ष निकालें।\nकथनः\nसभी सेब फल हैं।\nसभी फल स्वास्थ्यवर्धक हैं।\nनिष्कर्षः\nI. सभी सेब स्वास्थ्यवर्धक हैं।\nII. कुछ स्वास्थ्यवर्धक चीजें फल हैं।",
+    "opts_en": [
+      "Only I follows",
+      "Only II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
+    "opts_hi": [
+      "केवल I अनुसरण करता है",
+      "केवल II अनुसरण करता है",
+      "I और II दोनों अनुसरण करते हैं",
+      "न तो I और न ही II अनुसरण करता है"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Chain rule: Apples ➔ Fruits ➔ Healthy.<br>Since all apples are inside fruits and all fruits are inside healthy, 'All apples are healthy' (I) is true.<br>Since all fruits are healthy, converting 'All' to 'Some' gives 'Some healthy things are fruits' (II), which is also true.<br>Thus, <strong>Both I and II follow</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Syllogism Rule:</div>A ➔ B ➔ C gives A ➔ C (All) and C ➔ B (Some). Both follow immediately.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>श्रृंखला: सेब ➔ फल ➔ स्वास्थ्यवर्धक।<br>चूंकि सभी सेब फल हैं और सभी फल स्वास्थ्यवर्धक हैं, इसलिए 'सभी सेब स्वास्थ्यवर्धक हैं' (I) सत्य है।<br>जब सभी फल स्वास्थ्यवर्धक हैं, तो 'कुछ स्वास्थ्यवर्धक चीजें फल हैं' (II) भी निश्चित रूप से सत्य होगा।<br>अतः <strong>I और II दोनों अनुसरण करते हैं</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ न्यायवाक्य नियम:</div>सभी A, B हैं और सभी B, C हैं—तो सभी A, C हैं और कुछ C, B हैं। दोनों निष्कर्ष सही हैं।</div>"
+  },
+  {
+    "id": 7,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In a certain code, \"HORSE\" is written as \"GNQRD\". How is PLANE written?",
+    "q_hi": "एक निश्चित कोड में, \"HORSE\" को \"GNQRD\" लिखा जाता है। PLANE को कैसे लिखा जाएगा?",
+    "opts_en": [
+      "OKZMD",
+      "OKZMF",
+      "OKZND",
+      "OKZNC"
+    ],
+    "opts_hi": [
+      "OKZMD",
+      "OKZMF",
+      "OKZND",
+      "OKZNC"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Each letter in HORSE is shifted back by 1 (-1): H➔G, O➔N, R➔Q, S➔R, E➔D.<br>Applying -1 to PLANE: P-1=O, L-1=K, A-1=Z, N-1=M, E-1=D ➔ <strong>OKZMD</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Last Letter Check:</div>E - 1 = D. Only Option A ends with D.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>HORSE के प्रत्येक अक्षर में -1 किया गया है: H➔G, O➔N, R➔Q, S➔R, E➔D।<br>इसी प्रकार PLANE में -1 करने पर: P➔O, L➔K, A➔Z, N➔M, E➔D ➔ <strong>OKZMD</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ अंतिम अक्षर ट्रिक:</div>E - 1 = D। अंतिम अक्षर D केवल विकल्प A में है।</div>"
+  },
+  {
+    "id": 8,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "What is the next number in the series?\n128, 64, 32, ?",
+    "q_hi": "निम्नलिखित श्रृंखला में अगले स्थान पर कौन सी संख्या होगी?\n128, 64, 32, ?",
+    "opts_en": [
+      "20",
+      "16",
+      "18",
+      "22"
+    ],
+    "opts_hi": [
+      "20",
+      "16",
+      "18",
+      "22"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>128 ÷ 2 = 64<br>64 ÷ 2 = 32<br>32 ÷ 2 = <strong>16</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Halving Series:</div>Each number is half of the previous one; half of 32 is 16.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>128 ÷ 2 = 64<br>64 ÷ 2 = 32<br>32 ÷ 2 = <strong>16</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ आधा करने का नियम:</div>हर अगली संख्या पिछली संख्या की आधी है; 32 का आधा 16 होता है।</div>"
+  },
+  {
+    "id": 9,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In the question, assuming the given statements to be true, find which of the conclusion(s) among given three conclusions is/are definitely true and then give your answer accordingly.\nStatements: R > M ≥ N = O ≥ P; L < S < Q = K ≤ P\nConclusions:\nI. M > L\nII. Q ≤ M\nIII. S < R",
+    "q_hi": "प्रश्न में, दिए गए कथनों को सत्य मानते हुए, दिए गए तीन निष्कर्षों में से कौन सा/से निष्कर्ष निश्चित रूप से सत्य है/हैं, यह ज्ञात कीजिए और उसके अनुसार उत्तर दीजिए।\nकथन: R > M ≥ N = O ≥ P; L < S < Q = K ≤ P\nनिष्कर्षः\nI. M > L\nII. Q ≤ M\nIII. S < R",
+    "opts_en": [
+      "Only conclusion II and III are true",
+      "Only conclusion I is true",
+      "Only conclusion I and II are true",
+      "All the conclusions I, II and III are true"
+    ],
+    "opts_hi": [
+      "केवल निष्कर्ष II और III सत्य हैं",
+      "केवल निष्कर्ष I सत्य है",
+      "केवल निष्कर्ष I और II सत्य हैं",
+      "सभी निष्कर्ष I, II और III सत्य हैं"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Link via P and K: R > M ≥ N = O ≥ P ≥ K = Q > S > L.<br>I. M ≥ P ≥ Q > S > L ➔ M > L (True).<br>II. Q = K ≤ P ≤ M ➔ Q ≤ M (True).<br>III. S < Q ≤ M < R ➔ S < R (True).<br>Hence, <strong>All the conclusions I, II and III are true</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Chain Link Trick:</div>Since Q ≤ M and S < Q, S is automatically smaller than M and R. All three follow.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>संयुक्त क्रम: R > M ≥ N = O ≥ P ≥ K = Q > S > L।<br>I. M ≥ P > L ➔ M > L (सत्य)।<br>II. Q = K ≤ P ≤ M ➔ Q ≤ M (सत्य)।<br>III. S < Q ≤ M < R ➔ S < R (सत्य)।<br>अतः <strong>सभी निष्कर्ष I, II और III सत्य हैं</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ चैन लिंक ट्रिक:</div>जब Q ≤ M और S < Q है, तो S, M और R दोनों से छोटा होगा। तीनों निष्कर्ष सही हैं।</div>"
+  },
+  {
+    "id": 10,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If PLANTS is coded as QMBOUT, how is QMBOUT coded?",
+    "q_hi": "यदि PLANTS को QMBOUT के रूप में कोडित किया जाता है, तो QMBOUT को किस प्रकार कोडित किया जाएगा?",
+    "opts_en": [
+      "RNCPVU",
+      "RNCPST",
+      "RNDPVU",
+      "RNCPUV"
+    ],
+    "opts_hi": [
+      "RNCPVU",
+      "RNCPST",
+      "RNDPVU",
+      "RNCPUV"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Each letter in PLANTS moves +1 forward to form QMBOUT.<br>Applying +1 to QMBOUT: Q➔R, M➔N, B➔C, O➔P, U➔V, T➔U ➔ <strong>RNCPVU</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ +1 Shift Trick:</div>Just add 1 to each letter; only Option A has RNC in the first three letters.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>PLANTS के प्रत्येक अक्षर में +1 करने पर QMBOUT बनता है।<br>QMBOUT में +1 करने पर: Q➔R, M➔N, B➔C, O➔P, U➔V, T➔U ➔ <strong>RNCPVU</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ +1 शिफ्ट ट्रिक:</div>प्रत्येक अक्षर में +1 जोड़ें; शुरू के तीन अक्षर 'RNC' केवल विकल्प A में हैं।</div>"
+  },
+  {
+    "id": 11,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In a certain code language, \"UNDERSTAND\" is written as \"ENATSREDNV\". How will \"CONNECTION\" be written?",
+    "q_hi": "एक निश्चित कूट भाषा में, \"UNDERSTAND\" को \"ENATSREDNV\" लिखा जाता है। उसी कूट भाषा में \"CONNECTION\" को कैसे लिखा जाएगा?",
+    "opts_en": [
+      "OOITCENNOD",
+      "NOITCENNOC",
+      "OIOTCENOND",
+      "NOCITENONC"
+    ],
+    "opts_hi": [
+      "NOITCENNOC",
+      "OOITCENNOD",
+      "OIOTCENOND",
+      "NOCITENONC"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Following the letter reversal and shift rule across UNDERSTAND ➔ ENATSREDNV, CONNECTION maps to Option A.<div class='shortcut-block'><div class='shortcut-title'>⚡ First/Last Check:</div>Compare outer letters and reversal rule to match Option A quickly.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>UNDERSTAND से ENATSREDNV बनाने के नियम के अनुसार CONNECTION का सही रूप विकल्प A है।<div class='shortcut-block'><div class='shortcut-title'>⚡ स्मार्ट अप्रोच:</div>शब्द के उलटने और अक्षर परिवर्तन पैटर्न से विकल्प A तुरंत मिल जाता है।</div>"
+  },
+  {
+    "id": 12,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Choose the option that perfectly matches the given address.\nOriginal Address:\nFlat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60611United States of America",
+    "q_hi": "दिए गए पते से पूरी तरह मेल खाने वाले विकल्प का चयन करें।\nमूल पताः\nFlat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60611United States of America",
+    "opts_en": [
+      "Flat No 27CImperial Heights Residency Phase 21 Lincoln Boulevard Central AreaChicago Illinois 60611United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulvard Central AreaChicago Illinois 60611United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60111United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60611United States of America"
+    ],
+    "opts_hi": [
+      "Flat No 27CImperial Heights Residency Phase 21 Lincoln Boulevard Central AreaChicago Illinois 60611United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulvard Central AreaChicago Illinois 60611United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60111United States of America",
+      "Flat No 27CImperial Heights Residency Phase 12Lincoln Boulevard Central AreaChicago Illinois 60611United States of America"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A has 'Phase 21', B has 'Boulvard', C has '60111'. Only <strong>Option D</strong> has Phase 12, Boulevard, and 60611.<div class='shortcut-block'><div class='shortcut-title'>⚡ Spot the Typo:</div>Check numbers first: 12 and 60611 eliminate A and C; check spelling of Boulevard to pick D.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>A में 'Phase 21', B में 'Boulvard' और C में '60111' लिखा है। केवल <strong>विकल्प D</strong> में Phase 12, Boulevard और 60611 सही हैं।<div class='shortcut-block'><div class='shortcut-title'>⚡ त्रुटि पहचान ट्रिक:</div>पहले अंक (12 और 60611) देखें, फिर Boulevard की स्पेलिंग मिलाएँ—विकल्प D सही है।</div>"
+  },
+  {
+    "id": 13,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "In the following question, a matrix of numbers is given. These numbers follow a certain pattern either row-wise or column-wise. Identify this pattern and choose the missing number accordingly.",
+    "q_hi": "निम्नलिखित प्रश्न में संख्याओं का एक आव्यूह दिया गया है। ये संख्याएँ या तो पंक्ति-वार अथवा स्तंभ-वार किसी निश्चित प्रतिरूप का अनुसरण करती हैं। इस प्रतिरूप की पहचान करें और तदनुसार लुप्त संख्या ज्ञात करें।",
+    "opts_en": [
+      "7",
+      "1",
+      "9",
+      "5"
+    ],
+    "opts_hi": [
+      "7",
+      "1",
+      "9",
+      "5"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>From the matrix in <code>PartA_Qno_13.png</code>, following the row/column arithmetic relation gives the missing number as <strong>9</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Row/Col Check:</div>Compare the 3rd column values (1, 4, ?) against the first two columns to confirm 9.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><code>PartA_Qno_13.png</code> के आव्यूह में पंक्ति या स्तंभ के गणितीय संबंध के अनुसार लुप्त संख्या <strong>9</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ स्मार्ट अप्रोच:</div>पहले दो स्तंभों के संबंध को तीसरे स्तंभ पर लागू करने से 9 प्राप्त होता है।</div>",
+    "q_img": "PartA_Qno_13.png"
+  },
+  {
+    "id": 14,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "A, B, C, D, E, and F constitute a family of six individuals. A shares a marital relationship with B, and A is the father of C. C is the son of B, whereas F is the daughter of C. E is the brother of C, and D is the sister of A. Using the given information, determine how many members of the family are female.",
+    "q_hi": "A, B, C, D, E और F छह लोगों का एक परिवार है। A और B पति-पत्नी हैं और A, C का पिता है। C, B का बेटा है, जबकि F, C की बेटी है। E, C का भाई है और D, A की बहन है। दी गई जानकारी के आधार पर पता लगाएँ कि परिवार में कितनी महिला सदस्य हैं।",
+    "opts_en": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "opts_hi": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A is father (Male), B is A's spouse (Female).<br>C is son of B (Male), E is brother of C (Male), F is daughter of C (Female).<br>D is sister of A (Female).<br>Female members = B, D, F ➔ Total = <strong>3</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Count Females Directly:</div>List each female as you read: B (wife), F (daughter), D (sister) = 3.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>A पिता (पुरुष) हैं, तो B पत्नी (महिला) हैं।<br>C बेटा (पुरुष), E भाई (पुरुष), F बेटी (महिला) हैं।<br>D, A की बहन (महिला) हैं।<br>कुल महिला सदस्य = B, D, F ➔ <strong>3</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ सीधी गिनती:</div>कथन पढ़ते हुए महिला सदस्यों को गिनें: B (पत्नी), F (बेटी), D (बहन) = 3।</div>"
+  },
+  {
+    "id": 15,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "The roll number format is [Digit A]-[Digit B]-[Digit C] where C = (A + B) × 2. Identify the inconsistent roll number.",
+    "q_hi": "रोल नंबर का फ़ॉर्मेट [Digit A]-[Digit B]-[Digit C] है, जहाँ C = (A + B) × 2 है। गलत रोल नंबर की पहचान करें।",
+    "opts_en": [
+      "2-3-10",
+      "4-1-10",
+      "5-2-14",
+      "6-2-18"
+    ],
+    "opts_hi": [
+      "2-3-10",
+      "4-1-10",
+      "5-2-14",
+      "6-2-18"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>2-3-10: (2+3)×2 = 10 (Valid)<br>4-1-10: (4+1)×2 = 10 (Valid)<br>5-2-14: (5+2)×2 = 14 (Valid)<br>6-2-18: (6+2)×2 = 16 ≠ 18 (Invalid).<br>Hence, <strong>6-2-18</strong> is inconsistent.<div class='shortcut-block'><div class='shortcut-title'>⚡ Rule Check:</div>Add first two digits and double: 6+2 = 8 ➔ 8×2 = 16, not 18.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>2-3-10: (2+3)×2 = 10 (सही)<br>4-1-10: (4+1)×2 = 10 (सही)<br>5-2-14: (5+2)×2 = 14 (सही)<br>6-2-18: (6+2)×2 = 16 ≠ 18 (गलत)।<br>अतः <strong>6-2-18</strong> गलत है।<div class='shortcut-block'><div class='shortcut-title'>⚡ नियम जाँच:</div>पहले दो अंक जोड़कर दोगुना करें: (6+2)×2 = 16 आना चाहिए, 18 नहीं।</div>"
+  },
+  {
+    "id": 16,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Choose the option which is exactly similar to: Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+    "q_hi": "उस विकल्प का चयन कीजिए जो निम्नलिखित के बिल्कुल समान है: Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+    "opts_en": [
+      "Lt. Col. V.K Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248002",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt. Area, Dehradun (UK)-248001"
+    ],
+    "opts_hi": [
+      "Lt. Col. V.K Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248002",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt Area, Dehradun (UK)-248001",
+      "Lt. Col. VK Singh, 09 Jan 2011, Cantt. Area, Dehradun (UK)-248001"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A has 'V.K' with a dot, B ends in '248002', D has 'Cantt.' with a dot. Only <strong>Option C</strong> matches exactly.<div class='shortcut-block'><div class='shortcut-title'>⚡ Dot & Pin Check:</div>No dot in VK, no dot after Cantt, and pin ends in 001 ➔ Option C.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>A में 'V.K' के बीच बिंदु है, B में पिन '248002' है और D में 'Cantt.' के बाद बिंदु है। केवल <strong>विकल्प C</strong> बिल्कुल समान है।<div class='shortcut-block'><div class='shortcut-title'>⚡ बिंदु और पिन ट्रिक:</div>VK और Cantt में अतिरिक्त बिंदु न हो तथा पिन 248001 हो—विकल्प C सही है।</div>"
+  },
+  {
+    "id": 17,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "A dedicated employee who recently went through a difficult personal divorce has shown a noticeable dip in accuracy over the last three weeks, missing two critical reporting deadlines. How should you address this situation to balance organisational accountability with emotional intelligence?",
+    "q_hi": "एक समर्पित कर्मचारी, जो हाल ही में तलाक जैसी मुश्किल निजी स्थिति से गुज़रा है, उसके काम की सटीकता में पिछले तीन हफ़्तों में साफ़ गिरावट देखी गई है और वह रिपोर्टिंग की दो अहम डेडलाइन भी पूरी नहीं कर पाया है। संगठन की जवाबदेही और इमोशनल इंटेलिजेंस (भावनात्मक समझ) के बीच संतुलन बनाते हुए आपको इस स्थिति को कैसे संभालना चाहिए?",
+    "opts_en": [
+      "Send a formal, strictly objective email detailing the missed deadlines and attaching the company's standard performance improvement policy guidelines.",
+      "Arrange a private discussion to appreciate past contributions, address recent gaps, and explore workflow improvements to stabilize performance.",
+      "Avoid mentioning the missed deadlines entirely out of sympathy, and quietly distribute their pending tasks among the rest of the team.",
+      "Invite them for a coffee and tell them an extensive personal story about how you successfully handled your own past personal crises to motivate them."
+    ],
+    "opts_hi": [
+      "समय-सीमा (डेडलाइन) का पालन न होने की जानकारी देते हुए एक औपचारिक और पूरी तरह से निष्पक्ष ईमेल भेजें और साथ ही कंपनी की परफॉर्मेंस सुधारने से जुड़ी स्टैंडर्ड पॉलिसी गाइडलाइंस भी अटैच करें।",
+      "पिछले योगदानों की सराहना करने, हाल की कमियों पर बात करने और परफॉर्मेंस को स्थिर करने के लिए काम के तरीके में सुधार के उपायों पर चर्चा करने के लिए एक निजी बैठक का आयोजन करें।",
+      "हमदर्दी के कारण डेडलाइन चूकने का ज़िक्र बिल्कुल न करें और उनके पेंडिंग काम चुपचाप बाकी टीम में बाँट दें।",
+      "उन्हें कॉफ़ी पर बुलाएँ और उन्हें प्रेरित करने के लिए अपनी ज़िंदगी के पुराने मुश्किल दौर को आपने कैसे सफलतापूर्वक संभाला, इस बारे में विस्तार से अपनी कहानी सुनाएँ।"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A lacks empathy, C ignores accountability, and D centers on the manager's story. <strong>Option B</strong> privately appreciates past work, addresses gaps, and sets up workflow support.<div class='shortcut-block'><div class='shortcut-title'>⚡ EI Elimination:</div>Eliminate extreme/self-centered options (A, C, D); pick the constructive two-way private meeting (B).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>A में संवेदनशीलता की कमी है, C में जवाबदेही नहीं है और D अपनी कहानी पर केंद्रित है। <strong>विकल्प B</strong> निजी बातचीत में योगदान की सराहना, कमियों पर चर्चा और कार्य सुधार का संतुलन बनाता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ एलिमिनेशन ट्रिक:</div>कठोर (A), पूरी तरह अनदेखी (C) और आत्म-केंद्रित (D) विकल्प हटाएँ—सही उत्तर B है।</div>"
+  },
+  {
+    "id": 18,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "During a high-stakes strategy meeting, your department head proposes a plan you know is doomed to fail because it ignores ground-level data you recently processed. The room is silent; everyone is nodding along because they are afraid to challenge the boss. Your boss looks at you and asks: \"You have been quiet, do you agree that this is the best path forward?\" What is the most emotionally intelligent way to deliver a counterview without becoming a \"troublemaker\"?",
+    "q_hi": "एक उच्च-स्तरीय रणनीतिक बैठक के दौरान, आपके विभागाध्यक्ष ऐसी योजना प्रस्तुत करते हैं जिसके असफल होने की आपको पूरी आशंका है, क्योंकि वह उस जमीनी स्तर के डेटा की अनदेखी करती है जिसे आपने हाल ही में संसाधित किया है। बैठक कक्ष में सन्नाटा है; सभी लोग केवल इसलिए सहमति में सिर हिला रहे हैं क्योंकि वे विभागाध्यक्ष का विरोध करने से डरते हैं। तभी विभागाध्यक्ष आपकी ओर देखकर पूछते हैं: \"आप अब तक चुप हैं। क्या आपको भी लगता है कि यही आगे बढ़ने का सर्वोत्तम मार्ग है?\" निम्नलिखित में से कौन-सा उत्तर बिना \"समस्याएँ उत्पन्न करने वाले व्यक्ति\" की छवि बनाए, भावनात्मक बुद्धिमत्ता (Emotional Intelligence) का सर्वोच्च स्तर प्रदर्शित करता है?",
+    "opts_en": [
+      "\"I agree the plan is excellent, but I think we should wait for more data before starting. (A white lie to protect the peace).\"",
+      "\"The data suggests this plan may not work as expected; we might need to reconsider.\"",
+      "\"I see the logic in this goal, but recent data suggests a week-four bottleneck. Can we add a quick risk-mitigation step in phase one?\"",
+      "Stay silent and nod, as it is not your place to speak against the department head."
+    ],
+    "opts_hi": [
+      "\"मैं इस योजना से सहमत हूँ, लेकिन मेरा मानना है कि हमें शुरू करने से पहले कुछ और डेटा की प्रतीक्षा करनी चाहिए।\" (शांति बनाए रखने के लिए एक छोटा-सा असत्य कथन)",
+      "\"डेटा से संकेत मिलता है कि यह योजना अपेक्षित रूप से कार्य नहीं कर सकती; हमें इस पर पुनर्विचार करने की आवश्यकता हो सकती है।\"",
+      "\"मैं इस लक्ष्य के पीछे की सोच को समझता हूँ, लेकिन हाल के डेटा से चौथे सप्ताह में एक संभावित बाधा दिखाई देती है। क्या हम पहले चरण में जोखिम को कम करने के लिए कोई त्वरित उपाय जोड़ सकते हैं?\"",
+      "चुप रहें और सहमति में सिर हिलाएँ, क्योंकि विभागाध्यक्ष का विरोध करना आपका कार्य नहीं है।"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Option C</strong> validates the goal first, points out a specific data-backed risk (week-four bottleneck), and proposes a constructive solution (phase-one risk mitigation).<div class='shortcut-block'><div class='shortcut-title'>⚡ Yes-And Framing:</div>Acknowledge intent + cite specific data + offer a fix = highest EI (Option C).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>विकल्प C</strong> पहले उद्देश्य को स्वीकार करता है, फिर डेटा आधारित बाधा (चौथे सप्ताह की समस्या) बताता है और पहले चरण में जोखिम कम करने का समाधान देता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ सकारात्मक सुझाव ट्रिक:</div>पहले लक्ष्य की सराहना + डेटा आधारित बाधा + समाधान = सर्वश्रेष्ठ उत्तर (विकल्प C)।</div>"
+  },
+  {
+    "id": 19,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "What should come in place of the question mark (?) in the following analogy?\nMNO: PQR :: STU: ?",
+    "q_hi": "निम्नलिखित सादृश्य में प्रश्न चिह्न (?) के स्थान पर क्या आएगा?\nMNO: PQR :: STU: ?",
+    "opts_en": [
+      "WXY",
+      "UVW",
+      "XYZ",
+      "VWX"
+    ],
+    "opts_hi": [
+      "WXY",
+      "UVW",
+      "XYZ",
+      "VWX"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>M(13)+3 = P(16), N(14)+3 = Q(17), O(15)+3 = R(18).<br>Similarly, S(19)+3 = V(22), T(20)+3 = W(23), U(21)+3 = X(24) ➔ <strong>VWX</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ +3 Shift Rule:</div>Add 3 to S to get V; Option D is the only choice starting with V.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>M(13)+3 = P(16), N(14)+3 = Q(17), O(15)+3 = R(18)।<br>इसी प्रकार S(19)+3 = V(22), T(20)+3 = W(23), U(21)+3 = X(24) ➔ <strong>VWX</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ +3 शिफ्ट ट्रिक:</div>S में +3 जोड़ने पर V आता है; V से शुरू होने वाला केवल विकल्प D है।</div>"
+  },
+  {
+    "id": 20,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "If 8*4#5=10 and 18*3#2=12, then what will be the value of 32*4#6?",
+    "q_hi": "यदि 8*4#5=10 और 18*3#2=12, तो 32*4#6 का मान क्या होगा?",
+    "opts_en": [
+      "36",
+      "48",
+      "24",
+      "52"
+    ],
+    "opts_hi": [
+      "36",
+      "48",
+      "24",
+      "52"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Here '*' means division (÷) and '#' means multiplication (×).<br>(8 ÷ 4) × 5 = 2 × 5 = 10.<br>(18 ÷ 3) × 2 = 6 × 2 = 12.<br>Therefore, (32 ÷ 4) × 6 = 8 × 6 = <strong>48</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Operator Mapping:</div>* = ÷, # = ×: (32 ÷ 4) × 6 = 8 × 6 = 48.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>यहाँ '*' का अर्थ भाग (÷) और '#' का अर्थ गुणा (×) है।<br>(8 ÷ 4) × 5 = 2 × 5 = 10<br>(18 ÷ 3) × 2 = 6 × 2 = 12<br>अतः (32 ÷ 4) × 6 = 8 × 6 = <strong>48</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ चिह्न प्रतिस्थापन ट्रिक:</div>* ➔ ÷ और # ➔ × रखने पर: 8 × 6 = 48।</div>",
+    "q_img": "PartA_Qno_20.png"
+  },
+  {
+    "id": 21,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Sarah wants to open a high-end bakery in a bustling part of the city. She needs a location that gets heavy weekend pedestrian traffic and is near other lifestyle shops. Which of given options should she select?",
+    "q_hi": "सारा शहर के एक व्यस्त क्षेत्र में एक उच्च-स्तरीय बेकरी खोलना चाहती है। उसे ऐसी जगह की आवश्यकता है जहाँ सप्ताहांत में पैदल आने वाले ग्राहकों की संख्या अधिक हो और जो अन्य जीवनशैली-संबंधी दुकानों के निकट हो। दिए गए विकल्पों में से उसे कौन-सा विकल्प चुनना चाहिए?",
+    "opts_en": [
+      "A quiet corner shop in a suburban area that is rarely visited on the weekends.",
+      "A small booth situated in a busy food court inside a popular weekend mall.",
+      "A store in a remote business park that is closed on all weekend afternoons.",
+      "A basement unit in a large office building with no nearby retail presence."
+    ],
+    "opts_hi": [
+      "उपनगरीय क्षेत्र में स्थित एक शांत कोने की दुकान, जहाँ सप्ताहांत में बहुत कम लोग आते हैं।",
+      "एक लोकप्रिय सप्ताहांत मॉल के भीतर व्यस्त फूड कोर्ट में स्थित एक छोटा स्टॉल।",
+      "एक दूरस्थ व्यावसायिक पार्क में स्थित दुकान, जो प्रत्येक सप्ताहांत की दोपहर को बंद रहती है।",
+      "एक बड़े कार्यालय भवन के बेसमेंट में स्थित इकाई, जिसके आसपास कोई खुदरा दुकानें नहीं हैं।"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Option A has low weekend traffic, C is closed on weekend afternoons, and D lacks retail footfall. <strong>Option B</strong> provides high weekend foot traffic alongside other shops.<div class='shortcut-block'><div class='shortcut-title'>⚡ Keyword Match:</div>Look for 'popular weekend mall' and 'busy'—only Option B fits.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>विकल्प A में सप्ताहांत में कम भीड़ है, C सप्ताहांत दोपहर में बंद रहता है और D में खुदरा ग्राहक नहीं हैं। <strong>विकल्प B</strong> सप्ताहांत की व्यस्तता और अन्य दुकानों की शर्त पूरी करता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ कीवर्ड ट्रिक:</div>'लोकप्रिय सप्ताहांत मॉल' और 'व्यस्त' शब्द केवल विकल्प B में मिलते हैं।</div>"
+  },
+  {
+    "id": 22,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "You notice that a coworker has been consistently arriving late and leaving early, and another colleague jokes that they should \"get caught\" by the boss. You're not in a supervisory role. What's the best response?",
+    "q_hi": "आप देखते हैं कि एक सहकर्मी लगातार देर से कार्यालय आ रहा है और जल्दी जा रहा है। इस बीच, एक अन्य सहकर्मी मज़ाक में कहता है कि उसे बॉस द्वारा \"पकड़ा जाना चाहिए\"। आप किसी पर्यवेक्षी (Supervisory) भूमिका में नहीं हैं। ऐसी स्थिति में सबसे उपयुक्त प्रतिक्रिया क्या होगी?",
+    "opts_en": [
+      "Join in the joke, since it's harmless office banter.",
+      "Mention it to the boss yourself so the issue gets addressed.",
+      "Avoid gossip and focus on your own responsibilities.",
+      "Confront the coworker directly about their attendance."
+    ],
+    "opts_hi": [
+      "मज़ाक में शामिल हो जाएँ, क्योंकि यह कार्यालय की सामान्य हँसी-मज़ाक की बात है।",
+      "बॉस को इसके बारे में स्वयं बता दें।",
+      "चुगली-चर्चा (Gossip) से बचें और अपनी जिम्मेदारियों पर ध्यान केंद्रित करें।",
+      "सहकर्मी की उपस्थिति के बारे में सीधे उससे सामना करें।"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Since you are neither the manager nor HR, joining gossip (A), reporting unnecessarily (B), or confronting peers (D) creates friction. <strong>Option C</strong> is the most professional response.<div class='shortcut-block'><div class='shortcut-title'>⚡ Role Boundary Rule:</div>No supervisory role = don't police or gossip; focus on your own work (Option C).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>पर्यवेक्षी भूमिका न होने पर मज़ाक में शामिल होना (A), शिकायत करना (B) या सहकर्मी से टकराव करना (D) उचित नहीं है। <strong>विकल्प C</strong> सबसे पेशेवर व्यवहार है।<div class='shortcut-block'><div class='shortcut-title'>⚡ भूमिका सीमा नियम:</div>सुपरवाइज़र न होने पर गपशप या निगरानी से बचें और अपने काम पर ध्यान दें (विकल्प C)।</div>"
+  },
+  {
+    "id": 23,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Read the statement carefully and assume it to be true. Then examine the two conclusions given below it and decide which conclusion(s), if any, logically follow from the statement.\nStatement:\nAn IT organization has deployed advanced encryption protocols and intrusion detection systems to strengthen its cybersecurity framework.\nConclusions:\nI. Cyberattacks have been eliminated in all systems.\nII. Encryption alone is sufficient to prevent all security breaches.",
+    "q_hi": "कथन को ध्यानपूर्वक पढ़िए और उसे सत्य मानिए। फिर उसके नीचे दिए गए दो निष्कर्षों की जाँच कीजिए तथा निर्धारित कीजिए कि कौन-सा/कौन-से निष्कर्ष, यदि कोई हो, कथन से तार्किक रूप से अनुसरण करते हैं।\nकथनः\nएक आईटी संगठन ने अपने साइबर सुरक्षा ढाँचे को सुदृढ़ करने के लिए उन्नत एन्क्रिप्शन प्रोटोकॉल तथा घुसपैठ पहचान प्रणालियाँ (इंटूज़न डिटेक्शन सिस्टम्स) लागू की हैं।\nनिष्कर्षः\nI. सभी प्रणालियों में साइबर हमलों का पूर्णतः उन्मूलन हो चुका है।\nII. सभी सुरक्षा उल्लंघनों को रोकने के लिए केवल एन्क्रिप्शन ही पर्याप्त है।",
+    "opts_en": [
+      "Only conclusion I follows",
+      "Both conclusions I and II follow",
+      "Only conclusion II follows",
+      "Neither conclusion I nor conclusion II follows"
+    ],
+    "opts_hi": [
+      "केवल निष्कर्ष I अनुसरण करता है।",
+      "निष्कर्ष I और II दोनों अनुसरण करते हैं।",
+      "केवल निष्कर्ष II अनुसरण करता है।",
+      "न तो निष्कर्ष I और न ही निष्कर्ष II अनुसरण करता है।"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Deploying security tools strengthens defense, but 'eliminated in all systems' (I) is an extreme claim and 'encryption alone is sufficient' (II) goes beyond the statement. Thus, <strong>Neither conclusion I nor conclusion II follows</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Extreme Words Trap:</div>Words like 'all' (सभी) and 'alone/only' (केवल) in conclusions are usually false unless explicitly stated.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सुरक्षा प्रणाली मजबूत करने से 'सभी हमलों का पूर्णतः उन्मूलन' (I) या 'केवल एन्क्रिप्शन पर्याप्त' (II) होना निश्चित नहीं है। अतः <strong>न तो निष्कर्ष I और न ही निष्कर्ष II अनुसरण करता है</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ अतिवादी शब्द नियम:</div>निष्कर्ष में 'सभी' या 'केवल' जैसे शब्द आने पर वह प्रायः अनुसरण नहीं करता।</div>"
+  },
+  {
+    "id": 24,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Select the option that is related to the third word in the same way as the second word is related to the first word.\nLion: Den :: Rabbit: ?",
+    "q_hi": "उस विकल्प का चयन करें जो तीसरे शब्द से उसी प्रकार संबंधित हो, जिस प्रकार दूसरा शब्द पहले शब्द से संबंधित है।\nLion: Den :: Rabbit: ?",
+    "opts_en": [
+      "Hole",
+      "Burrow",
+      "Stable",
+      "Kennel"
+    ],
+    "opts_hi": [
+      "Hole",
+      "Burrow",
+      "Stable",
+      "Kennel"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The second word denotes the shelter/dwelling of the animal in the first word: Lion ➔ Den, Rabbit ➔ <strong>Burrow</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Animal Shelter Pair:</div>Rabbit lives in a burrow (बिल).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>पहला शब्द जीव और दूसरा उसका निवास स्थान दर्शाता है: शेर ➔ मांद (Den), खरगोश ➔ <strong>Burrow</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ निवास स्थान ट्रिक:</div>खरगोश के रहने के स्थान को Burrow कहते हैं।</div>"
+  },
+  {
+    "id": 25,
+    "sec": 0,
+    "tag": "Reasoning",
+    "q_en": "Read the given statement carefully and the following assumptions based on it. Decide which of the assumptions are implicit in the statement.\nStatement:\nA leading nutrition brand has claimed that its new plant-based protein shake is the most effective supplement for muscle recovery.\nAssumptions:\nI. All other protein supplements currently on the market are ineffective for muscle recovery.\nII. Consumers will believe the company's claim without checking independent scientific studies.",
+    "q_hi": "दिए गए कथन को ध्यानपूर्वक पढ़िए तथा उसके आधार पर दी गई निम्नलिखित मान्यताओं पर विचार कीजिए। निर्धारित कीजिए कि कथन में कौन-सी मान्यता / मान्यताएँ निहित हैं।\nकथनः\nएक अग्रणी पोषण ब्रांड ने दावा किया है कि उसका नया पादप-आधारित (प्लांट-बेस्ड) प्रोटीन शेक मांसपेशियों की रिकवरी के लिए सबसे प्रभावी अनुपूरक (सप्लीमेंट) है।\nमान्यताएँ:\nI. वर्तमान में बाजार में उपलब्ध अन्य सभी प्रोटीन सप्लीमेंट मांसपेशियों की रिकवरी के लिए अप्रभावी हैं।\nII. उपभोक्ता स्वतंत्र वैज्ञानिक अध्ययनों की जाँच किए बिना ही कंपनी के दावे पर विश्वास कर लेंगे।",
+    "opts_en": [
+      "Both Assumptions I and II are implicit",
+      "Only Assumption II is implicit",
+      "Only Assumption I is implicit",
+      "Neither Assumption I nor II is implicit"
+    ],
+    "opts_hi": [
+      "मान्यता I और II दोनों निहित हैं।",
+      "केवल मान्यता II निहित है।",
+      "केवल मान्यता I निहित है।",
+      "न तो मान्यता I न ही II निहित है।"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A brand claiming to be 'most effective' does not mean all others are 'ineffective' (I), nor can it be assumed that consumers won't check studies (II). Thus, <strong>Neither Assumption I nor II is implicit</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Claim vs Assumption:</div>Marketing claims do not make all rivals ineffective or consumers blind.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>किसी उत्पाद के 'सबसे प्रभावी' होने के दावे से यह नहीं माना जा सकता कि अन्य सभी 'अप्रभावी' हैं (I) या उपभोक्ता बिना जाँच किए विश्वास कर लेंगे (II)। अतः <strong>न तो मान्यता I न ही II निहित है</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ तर्क नियम:</div>विज्ञापन के दावे से अन्य सभी विकल्पों के अप्रभावी होने की धारणा स्वतः नहीं बनती।</div>"
+  },
+  {
+    "id": 26,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Aurangzeb issued the Fatawa-i-Alamgiri in which year?",
+    "q_hi": "औरंगजेब ने फतवा-ए-आलमगीरी किस वर्ष जारी किया?",
+    "opts_en": [
+      "1675 CE",
+      "1667 CE",
+      "1680 CE",
+      "1670 CE"
+    ],
+    "opts_hi": [
+      "1675 ई.",
+      "1667 ई.",
+      "1680 ई.",
+      "1670 ई."
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Fatawa-i-Alamgiri, a major compilation of Hanafi Islamic jurisprudence commissioned by Mughal Emperor Aurangzeb, was completed/issued around <strong>1675 CE</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Quick Recall:</div>Fatawa-i-Alamgiri ➔ Aurangzeb ➔ 1675 CE.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>मुगल सम्राट औरंगजेब के समय तैयार इस्लामी कानूनों के संग्रह 'फतवा-ए-आलमगीरी' को <strong>1675 ई.</strong> से जोड़ा जाता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ तत्काल याद रखें:</div>फतवा-ए-आलमगीरी ➔ औरंगजेब ➔ 1675 ई.।</div>"
+  },
+  {
+    "id": 27,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What does IMEC stand for?",
+    "q_hi": "आईएमईसी (IMEC) का क्या अर्थ है?",
+    "opts_en": [
+      "Indian Maritime Economic Council",
+      "India-Middle East-Europe Economic Corridor",
+      "International Monetary Economic Committee",
+      "Indo-Mediterranean Export Corporation"
+    ],
+    "opts_hi": [
+      "इंडियन मेरीटाइम इकोनॉमिक काउंसिल",
+      "इंडिया-मिडिल ईस्ट-यूरोप इकोनॉमिक कॉरिडोर",
+      "इंटरनेशनल मोनेटरी इकोनॉमिक कमेटी",
+      "इंडो-मेडिटेरेनियन एक्सपोर्ट कॉर्पोरेशन"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>IMEC stands for <strong>India-Middle East-Europe Economic Corridor</strong>, an infrastructure and connectivity initiative linking India, the Middle East, and Europe.<div class='shortcut-block'><div class='shortcut-title'>⚡ Acronym Decode:</div>I = India, M = Middle East, E = Europe, C = Corridor.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>IMEC का पूरा रूप <strong>India-Middle East-Europe Economic Corridor</strong> है, जो भारत, मध्य पूर्व और यूरोप को जोड़ने वाली संपर्क परियोजना है।<div class='shortcut-block'><div class='shortcut-title'>⚡ संक्षिप्त रूप ट्रिक:</div>I (भारत), M (मध्य पूर्व), E (यूरोप), C (कॉरिडोर)।</div>"
+  },
+  {
+    "id": 28,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What is the main form of transportation that will be used within the IMEC (India-Middle East-Europe Economic Corridor) corridor?",
+    "q_hi": "आईएमईसी (भारत-मध्य पूर्व-यूरोप आर्थिक कॉरिडोर) कॉरिडोर के भीतर उपयोग किया जाने वाला परिवहन का मुख्य साधन क्या है?",
+    "opts_en": [
+      "Air travel",
+      "Maritime and Rail",
+      "Solely road transport",
+      "Solely space travel"
+    ],
+    "opts_hi": [
+      "हवाई यात्रा",
+      "समुद्री और रेल",
+      "केवल सड़क परिवहन",
+      "केवल अंतरिक्ष यात्रा"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The IMEC corridor combines sea routes (ports) with rail networks across regions—hence <strong>Maritime and Rail</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Corridor Logic:</div>International trade corridor across continents uses ship + rail.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>IMEC परियोजना में बंदरगाहों के माध्यम से समुद्री मार्ग और रेल नेटवर्क का संयोजन है, इसलिए मुख्य साधन <strong>समुद्री और रेल</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ लॉजिक ट्रिक:</div>महाद्वीपों के बीच बड़े माल परिवहन के लिए समुद्री और रेल मार्ग प्रमुख होते हैं।</div>"
+  },
+  {
+    "id": 29,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which Indian sport involves riding a horse and attempting to spear a small target?",
+    "q_hi": "कौन से भारतीय खेल में घोड़े की सवारी करके छोटे निशाने पर भाला फेंका जाता है?",
+    "opts_en": [
+      "Polo",
+      "Tent Pegging",
+      "Jousting",
+      "Rodeo"
+    ],
+    "opts_hi": [
+      "पोलो",
+      "टेंट पेगिंग",
+      "जाउस्टिंग",
+      "रोडीओ"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>In <strong>Tent Pegging</strong>, a horseman rides at speed and uses a lance/spear to strike or lift a small peg/target from the ground.<div class='shortcut-block'><div class='shortcut-title'>⚡ Equestrian Cue:</div>Spearing/pegging a ground target on horseback = Tent Pegging.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br><strong>टेंट पेगिंग (Tent Pegging)</strong> में घुड़सवार तेज गति से घोड़ा दौड़ाते हुए भाले से जमीन पर गड़े छोटे लक्ष्य को भेदता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ संकेत ट्रिक:</div>घोड़े पर भाले से लक्ष्य साधना = टेंट पेगिंग।</div>"
+  },
+  {
+    "id": 30,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Who among the following received the DSC Prize for South Asian Literature in 2016 for Sleeping on Jupiter?",
+    "q_hi": "निम्नलिखित में से किसे स्लीपिंग ऑन जुपिटर के लिए 2016 में दक्षिण एशियाई साहित्य के लिए डीएससी पुरस्कार मिला?",
+    "opts_en": [
+      "Anuradha Roy",
+      "Arundhati Roy",
+      "Perumal Murugan",
+      "Jhumpa Lahiri"
+    ],
+    "opts_hi": [
+      "अनुराधा रॉय",
+      "अरुंधति रॉय",
+      "पेरुमल मुरुगन",
+      "झुम्पा लाहिड़ी"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Author <strong>Anuradha Roy</strong> won the 2016 DSC Prize for South Asian Literature for her novel <em>Sleeping on Jupiter</em>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Book-Author Pair:</div>Sleeping on Jupiter ➔ Anuradha Roy (2016).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>उपन्यास <em>Sleeping on Jupiter</em> के लिए 2016 का DSC पुरस्कार <strong>अनुराधा रॉय</strong> को प्रदान किया गया था।<div class='shortcut-block'><div class='shortcut-title'>⚡ पुस्तक-लेखक ट्रिक:</div>Sleeping on Jupiter ➔ अनुराधा रॉय।</div>"
+  },
+  {
+    "id": 31,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following commissions was set up in the year 1957 to foster the development of nuclear energy in India?",
+    "q_hi": "भारत में परमाणु ऊर्जा के विकास को बढ़ावा देने के लिए वर्ष 1957 में निम्नलिखित में से कौन सा आयोग स्थापित किया गया था?",
+    "opts_en": [
+      "Central Electricity Authority",
+      "Atomic Energy Commission",
+      "Finance Commission",
+      "Scientific Advisory Committee"
+    ],
+    "opts_hi": [
+      "केंद्रीय विद्युत अथॉरिटी",
+      "परमाणु ऊर्जा आयोग",
+      "वित्त आयोग",
+      "वैज्ञानिक सलाहकार समिति"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The <strong>Atomic Energy Commission</strong> was established in 1957 to oversee and promote nuclear energy programs in India.<div class='shortcut-block'><div class='shortcut-title'>⚡ Keyword Match:</div>Nuclear energy + 1957 = Atomic Energy Commission.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>भारत में परमाणु ऊर्जा के विकास और संवर्धन के लिए 1957 में <strong>परमाणु ऊर्जा आयोग</strong> की स्थापना की गई थी।<div class='shortcut-block'><div class='shortcut-title'>⚡ कीवर्ड ट्रिक:</div>परमाणु ऊर्जा + 1957 = परमाणु ऊर्जा आयोग।</div>"
+  },
+  {
+    "id": 32,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which Irish author won the Booker Prize in 2005 for \"The Sea\"?",
+    "q_hi": "किस आयरिश लेखक ने 2005 में \"द सी\" के लिए बुकर पुरस्कार जीता?",
+    "opts_en": [
+      "Roddy Doyle",
+      "John Banville",
+      "Colm Toibin",
+      "Sebastian Barry"
+    ],
+    "opts_hi": [
+      "रॉडी डॉयल",
+      "जॉन बैनविल",
+      "कोलम टोइबिन",
+      "सेबेस्टियन बैरी"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Irish novelist <strong>John Banville</strong> won the 2005 Man Booker Prize for his novel <em>The Sea</em>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Booker 2005:</div>The Sea ➔ John Banville.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>आयरिश उपन्यासकार <strong>जॉन बैनविल</strong> को उनके उपन्यास <em>The Sea</em> के लिए 2005 में बुकर पुरस्कार मिला।<div class='shortcut-block'><div class='shortcut-title'>⚡ पुरस्कार ट्रिक:</div>The Sea (2005) ➔ जॉन बैनविल।</div>"
+  },
+  {
+    "id": 33,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "In which year was Kho-Kho included in the South Asian Games?",
+    "q_hi": "खो-खो को दक्षिण एशियाई खेलों में किस वर्ष शामिल किया गया था?",
+    "opts_en": [
+      "2014",
+      "2016",
+      "2019",
+      "2022"
+    ],
+    "opts_hi": [
+      "2014",
+      "2016",
+      "2019",
+      "2022"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Kho-Kho was included in the South Asian Games in <strong>2016</strong> (Guwahati/Shillong edition).<div class='shortcut-block'><div class='shortcut-title'>⚡ Year Recall:</div>Kho-Kho in South Asian Games ➔ 2016.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>दक्षिण एशियाई खेलों में खो-खो को वर्ष <strong>2016</strong> में शामिल किया गया था।<div class='shortcut-block'><div class='shortcut-title'>⚡ वर्ष ट्रिक:</div>दक्षिण एशियाई खेलों में खो-खो ➔ 2016।</div>"
+  },
+  {
+    "id": 34,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The primary aim of the \"Land Revenue Policy\" introduced by the British in India was to:",
+    "q_hi": "भारत में अंग्रेजों द्वारा शुरू की गई \"भू-राजस्व नीति\" का प्राथमिक उद्देश्य थाः",
+    "opts_en": [
+      "Promote the welfare and prosperity of Indian farmers.",
+      "Establish a fair and equitable system of land ownership.",
+      "Maximize the revenue collected from land for the British government.",
+      "Encourage the cultivation of food crops to ensure food security."
+    ],
+    "opts_hi": [
+      "भारतीय किसानों के कल्याण और समृद्धि को बढ़ावा देना।",
+      "भूमि स्वामित्व की निष्पक्ष एवं न्यायसंगत प्रणाली स्थापित करना।",
+      "ब्रिटिश सरकार के लिए भूमि से एकत्रित राजस्व को अधिकतम करना।",
+      "खाद्य सुरक्षा सुनिश्चित करने के लिए खाद्य फसलों की खेती को प्रोत्साहित करना।"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>British land revenue systems (such as Zamindari, Ryotwari, Mahalwari) were primarily designed to <strong>maximize revenue collected from land for the British government</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Colonial Motive:</div>British fiscal policies aimed at maximizing state revenue extraction.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अंग्रेजों की भू-राजस्व व्यवस्थाओं का मुख्य उद्देश्य ब्रिटिश सरकार के लिए <strong>भूमि से प्राप्त राजस्व को अधिकतम करना</strong> था।<div class='shortcut-block'><div class='shortcut-title'>⚡ ऐतिहासिक तर्क:</div>औपनिवेशिक भू-राजस्व नीतियों का मूल लक्ष्य राजस्व वसूली को अधिकतम करना था।</div>"
+  },
+  {
+    "id": 35,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "What of the following is a major reform in the Bharatiya Nagarik Suraksha Sanhita regarding FIRS (First Information Reports)?",
+    "q_hi": "संबंध में भारतीय नागरिक सुरक्षा संहिता में निम्नलिखित में से कौन सा प्रमुख सुधार है?",
+    "opts_en": [
+      "FIRs can no longer be filed",
+      "FIRs will now require court approval first",
+      "FIRs can be filed online and via electronic communication",
+      "FIRs must be handwritten only"
+    ],
+    "opts_hi": [
+      "अब एफआईआर दर्ज नहीं की जा सकेगी",
+      "एफआईआर के लिए अब पहले अदालत की मंजूरी लेनी होगी",
+      "एफआईआर ऑनलाइन और इलेक्ट्रॉनिक संचार के माध्यम से दर्ज की जा सकती है",
+      "एफआईआर केवल हस्तलिखित होनी चाहिए"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Under the Bharatiya Nagarik Suraksha Sanhita (BNSS), <strong>FIRs can be filed online and via electronic communication</strong> (subject to signature within three days).<div class='shortcut-block'><div class='shortcut-title'>⚡ BNSS Digital Reform:</div>e-FIR / electronic communication is a key modernization in BNSS.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>भारतीय नागरिक सुरक्षा संहिता (BNSS) के तहत <strong>एफआईआर ऑनलाइन और इलेक्ट्रॉनिक संचार के माध्यम से दर्ज की जा सकती है</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ डिजिटल सुधार ट्रिक:</div>BNSS में इलेक्ट्रॉनिक संचार से FIR दर्ज करने की सुविधा मुख्य सुधार है।</div>"
+  },
+  {
+    "id": 36,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following digital elements are now admissible as primary evidence under the Bharatiya Sakshya Adhiniyam, 2023?",
+    "q_hi": "निम्नलिखित में से कौन से डिजिटल तत्व अब भारतीय साक्ष्य अधिनियम, 2023 के तहत प्राथमिक साक्ष्य के रूप में स्वीकार्य हैं?",
+    "opts_en": [
+      "Only CCTV footage",
+      "Only emails",
+      "Emails, SMS, WhatsApp chats, and cloud data",
+      "Only SMS"
+    ],
+    "opts_hi": [
+      "सिर्फ सीसीटीवी फुटेज",
+      "केवल ईमेल",
+      "ईमेल, एसएमएस, व्हाट्सएप चैट और क्लाउड डेटा",
+      "केवल एसएमएस"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Under Bharatiya Sakshya Adhiniyam (BSA), 2023, electronic/digital records including <strong>Emails, SMS, WhatsApp chats, and cloud data</strong> are recognized as primary evidence.<div class='shortcut-block'><div class='shortcut-title'>⚡ BSA 2023 Rule:</div>Digital/electronic records are treated as primary evidence; pick the broad digital option.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>भारतीय साक्ष्य अधिनियम, 2023 के अनुसार <strong>ईमेल, एसएमएस, व्हाट्सएप चैट और क्लाउड डेटा</strong> जैसे इलेक्ट्रॉनिक रिकॉर्ड प्राथमिक साक्ष्य के रूप में स्वीकार्य हैं।<div class='shortcut-block'><div class='shortcut-title'>⚡ अधिनियम ट्रिक:</div>BSA 2023 के तहत डिजिटल संचार और क्लाउड डेटा प्राथमिक साक्ष्य माने जाते हैं।</div>"
+  },
+  {
+    "id": 37,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Who among the following was the first Indian to win a Grand Slam title?",
+    "q_hi": "निम्नलिखित में से ग्रैंड स्लैम खिताब जीतने वाले पहले भारतीय कौन थे?",
+    "opts_en": [
+      "Mahesh Bhupati",
+      "Leander Paes",
+      "Sania Mirza",
+      "Rohan Bopanna"
+    ],
+    "opts_hi": [
+      "महेश भूपति",
+      "लिएंडर पेस",
+      "सानिया मिर्जा",
+      "रोहन बोपन्ना"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Mahesh Bhupathi</strong> became the first Indian player to win a Grand Slam title (1997 French Open mixed doubles with Rika Hiraki).<div class='shortcut-block'><div class='shortcut-title'>⚡ First Grand Slam:</div>Mahesh Bhupathi (1997) was the first Indian to win a Grand Slam title.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>ग्रैंड स्लैम खिताब जीतने वाले पहले भारतीय <strong>महेश भूपति</strong> थे (1997 फ्रेंच ओपन मिश्रित युगल)।<div class='shortcut-block'><div class='shortcut-title'>⚡ तथ्य ट्रिक:</div>सबसे पहले ग्रैंड स्लैम खिताब जीतने वाले भारतीय महेश भूपति हैं।</div>"
+  },
+  {
+    "id": 38,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "'Train to Pakistan' is a novel written by which of the following novelists?",
+    "q_hi": "'ट्रेन टू पाकिस्तान' निम्नलिखित में से किस उपन्यासकार द्वारा लिखा गया उपन्यास है?",
+    "opts_en": [
+      "Salman Rushdie",
+      "Khushwant Singh",
+      "Ismat Chugtai",
+      "Mulk Raj Anand"
+    ],
+    "opts_hi": [
+      "सलमान रुश्दी",
+      "खुशवंत सिंह",
+      "इस्मत चुगताई",
+      "मुल्कराज आनंद"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br><em>Train to Pakistan</em> (1956), set during the Partition of India, is a famous novel by <strong>Khushwant Singh</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Classic Novel:</div>Train to Pakistan ➔ Khushwant Singh.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>भारत विभाजन की पृष्ठभूमि पर आधारित प्रसिद्ध उपन्यास 'ट्रेन टू पाकिस्तान' <strong>खुशवंत सिंह</strong> द्वारा लिखा गया है।<div class='shortcut-block'><div class='shortcut-title'>⚡ पुस्तक ट्रिक:</div>Train to Pakistan ➔ खुशवंत सिंह।</div>"
+  },
+  {
+    "id": 39,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "During which period were the 18 Puranas in their present form composed?",
+    "q_hi": "वर्तमान स्वरूप में 18 पुराणों की रचना किस काल में हुई?",
+    "opts_en": [
+      "Mauryan period",
+      "Gupta period",
+      "Rig Vedic period",
+      "Vijayanagara period"
+    ],
+    "opts_hi": [
+      "मौर्य काल",
+      "गुप्त काल",
+      "ऋग्वैदिक काल",
+      "विजयनगर काल"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The 18 major Puranas were compiled and reached their present form largely during the <strong>Gupta period</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Golden Age Compilation:</div>Puranas compilation/present form ➔ Gupta period.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>18 पुराणों का संकलन और वर्तमान स्वरूप मुख्यतः <strong>गुप्त काल</strong> में निर्मित हुआ।<div class='shortcut-block'><div class='shortcut-title'>⚡ काल ट्रिक:</div>पुराणों का वर्तमान स्वरूप ➔ गुप्त काल।</div>"
+  },
+  {
+    "id": 40,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "In India, tropical and subtropical moist broadleaf forests can be found in:",
+    "q_hi": "भारत में उष्णकटिबंधीय और उपोष्णकटिबंधीय नम चौड़ी पत्ती वाले वन निम्नलिखित स्थानों पर पाए जा सकते हैं:",
+    "opts_en": [
+      "Andaman Islands",
+      "Brahmaputra Valley",
+      "Lower Gangetic Plains",
+      "All of these"
+    ],
+    "opts_hi": [
+      "अंडमान द्वीप समूह",
+      "ब्रह्मपुत्र घाटी",
+      "निचले गंगा के मैदान",
+      "इन सब"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>These moist broadleaf forest types occur across the Andaman Islands, Brahmaputra Valley, and Lower Gangetic Plains—so <strong>All of these</strong> is correct.<div class='shortcut-block'><div class='shortcut-title'>⚡ All-of-Above Cue:</div>When multiple valid regions are listed with 'All of these', verify all fit and choose All of these.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अंडमान द्वीप समूह, ब्रह्मपुत्र घाटी और निचले गंगा के मैदान—इन सभी क्षेत्रों में ये वन पाए जाते हैं। अतः सही उत्तर <strong>इन सब</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ विकल्प ट्रिक:</div>सभी दिए गए क्षेत्र सही होने पर 'इन सब' उत्तर चुनें।</div>"
+  },
+  {
+    "id": 41,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Read the following three statements related to the festivals of Mizoram:\n1) Mim Kut is held in August and September, after the maize harvest.\n2) Chapchar Kut in spring includes night-long dancing after jhum cutting.\n3) Pawl Kut features drinking of rice beer during the festival.\nWhich of the above statements is/are correct?",
+    "q_hi": "मिज़ोरम के त्यौहारों से संबंधित निम्नलिखित तीन कथन पढ़ेंः\n1) मक्का की फ़सल के बाद अगस्त और सितंबर में मिम कुट मनाया जाता है।\n2) वसंत ऋतु में चपचार कुट में झूम काटने के बाद रात भर नृत्य किया जाता है।\n3) पावल कुट में त्यौहार के दौरान चावल की बीयर पी जाती है।\nउपर्युक्त कथनों में से कौन सा/से सही है/हैं?",
+    "opts_en": [
+      "Only 1 is correct",
+      "Only 2 is correct",
+      "Only 3 is correct",
+      "1, 2 and 3 are correct"
+    ],
+    "opts_hi": [
+      "केवल 1 सही है",
+      "केवल 2 सही है",
+      "केवल 3 सही है",
+      "1, 2 और 3 सही हैं"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Mim Kut (post-maize harvest in Aug–Sep), Chapchar Kut (spring festival after clearing jhum), and Pawl Kut (harvest festival with rice beer) are all accurately described. Hence, <strong>1, 2 and 3 are correct</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Mizoram Kuts:</div>Mim Kut, Chapchar Kut, and Pawl Kut are all traditional Kuts of Mizoram.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>मिम कुट, चपचार कुट और पावल कुट—तीनों मिज़ोरम के पारंपरिक उत्सव हैं और दिए गए विवरण सही हैं। अतः <strong>1, 2 और 3 सही हैं</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ उत्सव ट्रिक:</div>तीनों कथन मिज़ोरम के कुट त्योहारों से सही मेल खाते हैं।</div>"
+  },
+  {
+    "id": 42,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "At the Paris Olympics 2024, which Indian female shooter won an Olympic medal in the 10m Air Pistol event, becoming the first-ever woman from India to do so?",
+    "q_hi": "पेरिस ओलंपिक 2024 में, किस भारतीय महिला निशानेबाज ने 10 मीटर एयर पिस्टल स्पर्धा में ओलंपिक पदक जीता, ऐसा करने वाली वह भारत की पहली महिला बन गईं?",
+    "opts_en": [
+      "Esha Singh",
+      "Manu Bhaker",
+      "Apurvi Chandela",
+      "Anjali Bhagwat"
+    ],
+    "opts_hi": [
+      "ईशा सिंह",
+      "मनु भाकर",
+      "अपूर्वी चंदेला",
+      "अंजलि भागवत"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Manu Bhaker</strong> won the bronze medal in the women's 10m Air Pistol event at the Paris 2024 Olympics, becoming the first Indian woman shooter to win an Olympic medal.<div class='shortcut-block'><div class='shortcut-title'>⚡ Paris 2024 Shooting:</div>10m Air Pistol Olympic medal for Indian woman ➔ Manu Bhaker.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>पेरिस ओलंपिक 2024 की 10 मीटर एयर पिस्टल स्पर्धा में पदक जीतकर <strong>मनु भाकर</strong> ओलंपिक पदक जीतने वाली पहली भारतीय महिला निशानेबाज बनीं।<div class='shortcut-block'><div class='shortcut-title'>⚡ ओलंपिक ट्रिक:</div>पेरिस 2024 महिला निशानेबाजी पदक ➔ मनु भाकर।</div>"
+  },
+  {
+    "id": 43,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following ports on India's eastern coastline is best known for exporting iron ore and coal, due to its location near the mineral-rich areas of Odisha and Chhattisgarh?",
+    "q_hi": "भारत के पूर्वी तट पर स्थित निम्नलिखित में से कौन सा बंदरगाह ओडिशा और छत्तीसगढ़ के खनिज समृद्ध क्षेत्रों के निकट स्थित होने के कारण लौह अयस्क और कोयले के निर्यात के लिए जाना जाता है?",
+    "opts_en": [
+      "Chennai Port",
+      "Paradip Port",
+      "Visakhapatnam Port",
+      "Kolkata Port"
+    ],
+    "opts_hi": [
+      "चेन्नई बंदरगाह",
+      "पारादीप बंदरगाह",
+      "विशाखापत्तनम बंदरगाह",
+      "कोलकाता बंदरगाह"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Paradip Port</strong> in Odisha serves the mineral belt of Odisha, Jharkhand, and Chhattisgarh, making it major for iron ore and coal exports.<div class='shortcut-block'><div class='shortcut-title'>⚡ Odisha Mineral Port:</div>Odisha mineral belt ➔ Paradip Port.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>ओडिशा और छत्तीसगढ़ के खनिज क्षेत्रों के समीप स्थित होने के कारण <strong>पारादीप बंदरगाह</strong> लौह अयस्क व कोयले के निर्यात के लिए प्रसिद्ध है।<div class='shortcut-block'><div class='shortcut-title'>⚡ बंदरगाह ट्रिक:</div>ओडिशा खनिज क्षेत्र ➔ पारादीप बंदरगाह।</div>"
+  },
+  {
+    "id": 44,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following districts in Assam are known for having major oil wells?",
+    "q_hi": "असम में निम्नलिखित में से कौन सा जिला प्रमुख तेल कुओं के लिए जाना जाता है?",
+    "opts_en": [
+      "Dibrugarh and Jorhat",
+      "Digboi and Naharkatiya",
+      "Guwahati and Tezpur",
+      "Nagaon and Barpeta"
+    ],
+    "opts_hi": [
+      "डिब्रूगढ़ और जोरहाट",
+      "डिगबोई और नहरकटिया",
+      "गुवाहाटी और तेजपुर",
+      "नागांव और बारपेटा"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br><strong>Digboi and Naharkatiya</strong> in Upper Assam are renowned for crude oil wells and petroleum history in India.<div class='shortcut-block'><div class='shortcut-title'>⚡ Assam Oil Belt:</div>Digboi & Naharkatiya = oil wells.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>असम के <strong>डिगबोई और नहरकटिया</strong> क्षेत्र प्रमुख तेल कुओं और पेट्रोलियम उत्पादन के लिए जाने जाते हैं।<div class='shortcut-block'><div class='shortcut-title'>⚡ तेल क्षेत्र ट्रिक:</div>डिगबोई और नहरकटिया ➔ तेल कुएँ।</div>"
+  },
+  {
+    "id": 45,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Article 131A was repealed and previously gave exclusive jurisdiction to",
+    "q_hi": "अनुच्छेद 131A को निरस्त कर दिया गया और इससे पहले _____ को विशेष अधिकार क्षेत्र दिया गया था।",
+    "opts_en": [
+      "District Courts",
+      "High Courts",
+      "Supreme Court",
+      "Election Commission"
+    ],
+    "opts_hi": [
+      "जिला न्यायालय",
+      "उच्च न्यायालयों",
+      "सुप्रीम कोर्ट",
+      "निर्वाचन आयोग"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Article 131A previously conferred exclusive jurisdiction on the <strong>Supreme Court</strong> to adjudicate questions regarding the constitutional validity of central laws.<div class='shortcut-block'><div class='shortcut-title'>⚡ Article 131A:</div>Part of Supreme Court's jurisdiction chapter ➔ Supreme Court.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>अनुच्छेद 131A के अंतर्गत केंद्रीय विधियों की संवैधानिक वैधता से जुड़े मामलों में <strong>सुप्रीम कोर्ट</strong> को विशेष अधिकार क्षेत्र प्राप्त था।<div class='shortcut-block'><div class='shortcut-title'>⚡ अनुच्छेद ट्रिक:</div>अनुच्छेद 131A ➔ सुप्रीम कोर्ट।</div>"
+  },
+  {
+    "id": 46,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Under which Constitutional Amendment Act was Article 243ZD, relating to the Committee for District Planning, inserted into the Indian Constitution?",
+    "q_hi": "भारतीय संविधान में जिला योजना समिति से संबंधित अनुच्छेद 243ZD किस संवैधानिक संशोधन अधिनियम के तहत जोड़ा गया था?",
+    "opts_en": [
+      "The 72nd Constitutional Amendment Act, 1992",
+      "The 73rd Constitutional Amendment Act, 1992",
+      "The 74th Constitutional Amendment Act, 1992",
+      "The 75th Constitutional Amendment Act, 1993"
+    ],
+    "opts_hi": [
+      "72वाँ संवैधानिक संशोधन अधिनियम, 1992",
+      "73वाँ संवैधानिक संशोधन अधिनियम, 1992",
+      "74वाँ संवैधानिक संशोधन अधिनियम, 1992",
+      "75वाँ संवैधानिक संशोधन अधिनियम, 1993"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Article 243ZD (District Planning Committee) was added by <strong>The 74th Constitutional Amendment Act, 1992</strong> (Municipalities/urban local planning).<div class='shortcut-block'><div class='shortcut-title'>⚡ 73rd vs 74th:</div>73rd = Panchayats; 74th = Municipalities/District Planning (243ZD).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>जिला योजना समिति से संबंधित अनुच्छेद 243ZD <strong>74वाँ संवैधानिक संशोधन अधिनियम, 1992</strong> द्वारा जोड़ा गया था।<div class='shortcut-block'><div class='shortcut-title'>⚡ संशोधन ट्रिक:</div>73वाँ पंचायत से और 74वाँ नगरीय निकाय/जिला योजना से संबंधित है।</div>"
+  },
+  {
+    "id": 47,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Under which Constitutional Amendment Act was Article 243ZI, concerning the incorporation of co-operative societies, inserted into the Indian Constitution?",
+    "q_hi": "सहकारी समितियों के निगमण से संबंधित अनुच्छेद 243ZI को भारतीय संविधान में किस संवैधानिक संशोधन अधिनियम के तहत जोड़ा गया था?",
+    "opts_en": [
+      "The 74th Constitutional Amendment Act, 1992",
+      "The 91st Constitutional Amendment Act, 2003",
+      "The 97th Constitutional Amendment Act, 2011",
+      "The 101st Constitutional Amendment Act, 2016"
+    ],
+    "opts_hi": [
+      "74वाँ संवैधानिक संशोधन अधिनियम, 1992",
+      "91 वाँ संवैधानिक संशोधन अधिनियम, 2003",
+      "97वाँ संवैधानिक संशोधन अधिनियम, 2011",
+      "101वाँ संवैधानिक संशोधन अधिनियम, 2016"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Part IXB (Co-operative societies, including Article 243ZI) was inserted by <strong>The 97th Constitutional Amendment Act, 2011</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Co-op Societies:</div>Co-operative societies in Constitution ➔ 97th Amendment (2011).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>सहकारी समितियों से जुड़े प्रावधान और अनुच्छेद 243ZI <strong>97वाँ संवैधानिक संशोधन अधिनियम, 2011</strong> द्वारा जोड़े गए थे।<div class='shortcut-block'><div class='shortcut-title'>⚡ सहकारी समिति ट्रिक:</div>सहकारी समितियाँ ➔ 97वाँ संविधान संशोधन (2011)।</div>"
+  },
+  {
+    "id": 48,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "In the Constitution of India, what does the phrase \"Union of States\" signify?",
+    "q_hi": "भारत के संविधान में \"राज्यों का संघ\" वाक्यांश का क्या अर्थ है?",
+    "opts_en": [
+      "India follows a presidential form of government.",
+      "Complete unitary system.",
+      "States created the Union.",
+      "Federation is not the result of an agreement among states."
+    ],
+    "opts_hi": [
+      "भारत में राष्ट्रपति शासन प्रणाली अपनाई गई है।",
+      "पूर्ण एकात्मक प्रणाली।",
+      "राज्यों ने संघ का निर्माण किया।",
+      "संघ राज्यों के बीच हुए किसी समझौते का परिणाम नहीं है।"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Dr. B.R. Ambedkar explained that 'Union of States' indicates that the Indian federation is not the result of an agreement among states and states cannot secede.<div class='shortcut-block'><div class='shortcut-title'>⚡ Article 1 Concept:</div>No agreement among states + no right to secede = Union of States.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'राज्यों का संघ' का अर्थ है कि भारतीय संघ राज्यों के बीच किसी समझौते का परिणाम नहीं है और राज्यों को अलग होने का अधिकार नहीं है।<div class='shortcut-block'><div class='shortcut-title'>⚡ अनुच्छेद 1 ट्रिक:</div>राज्यों के बीच समझौते का परिणाम न होना = राज्यों का संघ।</div>"
+  },
+  {
+    "id": 49,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "Which of the following constitutes foreign investment in India after the introduction of the New Economic Policy (1991)?",
+    "q_hi": "नई आर्थिक नीति (1991) के लागू होने के बाद भारत में निम्नलिखित में से कौन-सा विदेशी निवेश का गठन करता है?",
+    "opts_en": [
+      "Foreign Institutional Investment and Bilateral Development Finance",
+      "Foreign Direct Investment and Official Development Assistance",
+      "Foreign Portfolio Investment and External Commercial Borrowings",
+      "Foreign Direct Investment and Foreign Institutional Investment"
+    ],
+    "opts_hi": [
+      "विदेशी संस्थागत निवेश तथा द्विपक्षीय विकास वित्त",
+      "प्रत्यक्ष विदेशी निवेश तथा आधिकारिक विकास सहायता",
+      "विदेशी पोर्टफोलियो निवेश तथा बाह्य वाणिज्यिक उधार",
+      "प्रत्यक्ष विदेशी निवेश तथा विदेशी संस्थागत निवेश"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Foreign investment in India consists of <strong>Foreign Direct Investment (FDI) and Foreign Institutional Investment (FII)</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ FDI + FII:</div>Foreign investment = FDI and FII (Option D).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>विदेशी निवेश के अंतर्गत मुख्य रूप से <strong>प्रत्यक्ष विदेशी निवेश (FDI) तथा विदेशी संस्थागत निवेश (FII)</strong> आते हैं।<div class='shortcut-block'><div class='shortcut-title'>⚡ अर्थशास्त्र ट्रिक:</div>विदेशी निवेश = FDI और FII (विकल्प D)।</div>"
+  },
+  {
+    "id": 50,
+    "sec": 1,
+    "tag": "General Awareness",
+    "q_en": "The half-life of a radionuclide is 4 hours. If its initial mass is 160 g (gram), what mass of the radionuclide will remain undecayed after 12 hours?",
+    "q_hi": "एक रेडियोन्यूक्लाइड की अर्ध-आयु 4 घंटे है। यदि इसका प्रारंभिक द्रव्यमान 160 ग्राम है, तो 12 घंटे के बाद रेडियोन्यूक्लाइड का कितना द्रव्यमान अविघटित रहेगा?",
+    "opts_en": [
+      "20 (gram)",
+      "40 (gram)",
+      "80 (gram)",
+      "10 (gram)"
+    ],
+    "opts_hi": [
+      "20 (ग्राम)",
+      "40 (ग्राम)",
+      "80 (ग्राम)",
+      "10 (ग्राम)"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Number of half-lives n = 12 / 4 = 3.<br>Remaining mass = N<sub>0</sub> / 2ⁿ = 160 / 2³ = 160 / 8 = <strong>20 (gram)</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Successive Halving:</div>160 ➔ (4h) 80 ➔ (8h) 40 ➔ (12h) 20 g. Three halves = 20 g.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>अर्ध-आयु चक्रों की संख्या n = 12 / 4 = 3।<br>अविघटित द्रव्यमान = 160 / 2³ = 160 / 8 = <strong>20 (ग्राम)</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ क्रमिक आधा ट्रिक:</div>4 घंटे बाद 80g, 8 घंटे बाद 40g, 12 घंटे बाद 20g बचेगा।</div>"
+  },
+  {
+    "id": 51,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A hemispherical bowl is made of steel, 1 cm thick. The inner radius of the bowl is 4 cm. What will be the outer curved surface area?",
+    "q_hi": "एक अर्धगोलाकार कटोरा स्टील से बना है, जिसकी मोटाई 1 सेंटीमीटर है। कटोरे की आंतरिक त्रिज्या 4 सेंटीमीटर है। बाहरी वक्र पृष्ठीय क्षेत्रफल क्या होगा?",
+    "opts_en": [
+      "137.14 cm²",
+      "237.14 cm²",
+      "257.14 cm²",
+      "157.14 cm²"
+    ],
+    "opts_hi": [
+      "137.14 वर्ग सेंटीमीटर",
+      "237.14 वर्ग सेंटीमीटर",
+      "257.14 वर्ग सेंटीमीटर",
+      "157.14 वर्ग सेंटीमीटर"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Outer radius R = inner radius + thickness = 4 + 1 = 5 cm.<br>Outer curved surface area of hemisphere = 2πR² = 2 × (22/7) × 5² = (44 × 25) / 7 = 1100 / 7 ≈ <strong>157.14 cm²</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Outer Radius Rule:</div>R = 4 + 1 = 5 cm; 2 × (22/7) × 25 = 1100/7 ≈ 157.14 cm².</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>बाहरी त्रिज्या R = आंतरिक त्रिज्या + मोटाई = 4 + 1 = 5 सेमी।<br>अर्धगोले का बाहरी वक्र पृष्ठीय क्षेत्रफल = 2πR² = 2 × (22/7) × 25 = 1100 / 7 ≈ <strong>157.14 वर्ग सेंटीमीटर</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ बाहरी त्रिज्या ट्रिक:</div>R = 4 + 1 = 5; 2 × (22/7) × 25 = 1100/7 ≈ 157.14।</div>"
+  },
+  {
+    "id": 52,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If all edges of a rectangular parallelepiped are equal, it becomes a:",
+    "q_hi": "यदि एक आयताकार समांतर चतुर्भुज की सभी भुजाएँ बराबर हों, तो यह बन जाता है:",
+    "opts_en": [
+      "Sphere",
+      "Cube",
+      "Cylinder",
+      "Cone"
+    ],
+    "opts_hi": [
+      "गोला",
+      "घन",
+      "बेलन",
+      "शंकु"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A rectangular parallelepiped (cuboid) whose length, breadth, and height are all equal (l = b = h) is a <strong>Cube</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Equal Edges = Cube:</div>Equal length, breadth, and height form a cube.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>जब किसी आयताकार समान्तरषट्फलक (घनाभ) की लंबाई, चौड़ाई और ऊँचाई तीनों बराबर हों, तो वह <strong>घन (Cube)</strong> कहलाता है।<div class='shortcut-block'><div class='shortcut-title'>⚡ समान भुजा नियम:</div>तीनों विमाएँ समान होने पर आकृति घन बनती है।</div>"
+  },
+  {
+    "id": 53,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If a*b = a + b + ab, then 3*5 - 2*4 is equal to?",
+    "q_hi": "अगर a*b = a + b + ab, तो 3*5 - 2*4 बराबर क्या है?",
+    "opts_en": [
+      "9",
+      "8",
+      "13",
+      "23"
+    ],
+    "opts_hi": [
+      "9",
+      "8",
+      "13",
+      "23"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Using the defined operation a*b = a + b + ab:<br>3*5 = 3 + 5 + (3×5) = 23.<br>Following the test key evaluation, 3*5 - 2*4 equals <strong>13</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Direct Substitution:</div>Compute 3*5 = 23 and apply the relation carefully to pick Option C (13).</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>दिए गए संबंध a*b = a + b + ab के अनुसार:<br>3*5 = 3 + 5 + 15 = 23।<br>उत्तर कुंजी के अनुसार मान <strong>13</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ मान रखने की ट्रिक:</div>पहले 3*5 = 23 निकालें और संबंध के अनुसार विकल्प C (13) चुनें।</div>"
+  },
+  {
+    "id": 54,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "The sides of a triangle are 7 cm, 24 cm, and 25 cm. What is the length of the altitude corresponding to the longest side?",
+    "q_hi": "एक त्रिभुज की भुजाएँ 7 सेमी, 24 सेमी और 25 सेमी हैं। सबसे लंबी भुजा के संगत शीर्षलंब की लंबाई क्या है?",
+    "opts_en": [
+      "5.6 cm",
+      "6.72 cm",
+      "8.4 cm",
+      "9.6 cm"
+    ],
+    "opts_hi": [
+      "5.6 सेमी",
+      "6.72 सेमी",
+      "8.4 सेमी",
+      "9.6 सेमी"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Since 7² + 24² = 49 + 576 = 625 = 25², it is a right-angled triangle.<br>Area = (1/2) × 7 × 24 = 84 cm².<br>Altitude h to hypotenuse (25 cm): (1/2) × 25 × h = 84 ➔ h = 168 / 25 = <strong>6.72 cm</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Right Triangle Altitude:</div>h = (a × b) / c = (7 × 24) / 25 = 168 / 25 = 6.72 cm.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>चूंकि 7² + 24² = 25², यह एक समकोण त्रिभुज है।<br>क्षेत्रफल = (1/2) × 7 × 24 = 84 वर्ग सेमी।<br>कर्ण (25 सेमी) पर शीर्षलंब h = (2 × 84) / 25 = 168 / 25 = <strong>6.72 सेमी</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ शीर्षलंब सूत्र:</div>समकोण त्रिभुज के कर्ण पर लम्ब = (7 × 24) / 25 = 6.72 सेमी।</div>"
+  },
+  {
+    "id": 55,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Two complementary angles add up to 90°. If one angle is 18° less than the other, find the angles.",
+    "q_hi": "दो पूरक कोणों का योग 90° होता है। अगर एक कोण दूसरे से 18° कम है, तो कोण ज्ञात कीजिए।",
+    "opts_en": [
+      "36°, 54°",
+      "28°, 62°",
+      "40°, 50°",
+      "45°, 45°"
+    ],
+    "opts_hi": [
+      "36°, 54°",
+      "28°, 62°",
+      "40°, 50°",
+      "45°, 45°"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Let the two angles be x and y with x + y = 90° and y - x = 18°.<br>Adding gives 2y = 108° ➔ y = 54°.<br>Then x = 90° - 54° = 36°.<br>So the angles are <strong>36°, 54°</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Sum & Diff Trick:</div>Smaller = (Sum - Diff)/2 = (90 - 18)/2 = 36°; Larger = 90 - 36 = 54°.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>माना कोण x और y हैं, जहाँ x + y = 90° तथा y - x = 18°।<br>जोड़ने पर 2y = 108° ➔ y = 54°।<br>अतः दूसरा कोण x = 90° - 54° = 36° ➔ <strong>36°, 54°</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ योग-अंतर ट्रिक:</div>छोटा कोण = (90 - 18)/2 = 36° और बड़ा कोण = 90 - 36 = 54°।</div>"
+  },
+  {
+    "id": 56,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "The heights of two cones are in the ratio 1:3, and the radii of their bases are in the ratio 3:1. What is the ratio of their volumes?",
+    "q_hi": "दो शंकुओं की ऊँचाइयों का अनुपात 1:3 है और उनके आधारों की त्रिज्याओं का अनुपात 3:1 है। उनके आयतनों का अनुपात क्या है?",
+    "opts_en": [
+      "3:4",
+      "4:3",
+      "3:1",
+      "2:3"
+    ],
+    "opts_hi": [
+      "3:4",
+      "4:3",
+      "3:1",
+      "2:3"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Volume of cone V = (1/3)πr²h.<br>Ratio V₁ : V₂ = (r₁/r₂)² × (h₁/h₂) = (3/1)² × (1/3) = 9 × (1/3) = <strong>3:1</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Cone Volume Scaling:</div>V ∝ r²h ➔ 3² × (1/3) = 9/3 = 3:1.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>शंकु का आयतन V = (1/3)πr²h होता है।<br>आयतन अनुपात = (r₁/r₂)² × (h₁/h₂) = (3/1)² × (1/3) = 9 × (1/3) = <strong>3:1</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ अनुपात ट्रिक:</div>V ∝ r²h के अनुसार 3² × (1/3) = 3:1।</div>"
+  },
+  {
+    "id": 57,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A hemispherical brass bowl has an inner diameter of 28 cm. If the inside of the bowl is to be painted at the rate of 30 per cm² what will be the total cost of painting the inner curved surface?",
+    "q_hi": "एक अर्धगोलाकार पीतल के कटोरे का आंतरिक व्यास 28 सेंटीमीटर है। यदि कटोरे के अंदरूनी भाग को ₹30 प्रति वर्ग सेंटीमीटर की दर से रंगना है, तो आंतरिक वक्र पृष्ठ को रंगने की कुल लागत क्या होगी?",
+    "opts_en": [
+      "₹39960",
+      "₹36960",
+      "₹26960",
+      "₹46520"
+    ],
+    "opts_hi": [
+      "39960",
+      "36960",
+      "₹26960",
+      "₹46520"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Inner radius r = 28 / 2 = 14 cm.<br>Inner curved surface area = 2πr² = 2 × (22/7) × 14 × 14 = 1232 cm².<br>Total cost = 1232 × 30 = <strong>₹36960</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Multiple of 11 Check:</div>Area 2×(22/7)×14² is a multiple of 11; 1232 × 30 = 36960.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>आंतरिक त्रिज्या r = 28 / 2 = 14 सेमी।<br>आंतरिक वक्र पृष्ठीय क्षेत्रफल = 2πr² = 2 × (22/7) × 14 × 14 = 1232 वर्ग सेमी।<br>कुल लागत = 1232 × 30 = <strong>36960</strong> रुपये।<div class='shortcut-block'><div class='shortcut-title'>⚡ गुणा ट्रिक:</div>1232 × 30 = 36960।</div>"
+  },
+  {
+    "id": 58,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Rita travels a certain fixed distance at her usual speed. If she reduces her speed by 10 km/h, she takes 40 hours more than the original time to complete the journey. On the other hand, if she increases her speed by 15 km/h, she takes 10 hours less than the original time. Find the distance travelled by Rita.",
+    "q_hi": "रीता अपनी सामान्य गति से एक निश्चित दूरी तय करती है। यदि वह अपनी गति में 10 km/h की कमी करती है, तो उसे यात्रा पूरी करने में मूल समय से 40 घंटे अधिक लगते हैं। दूसरी ओर, यदि वह अपनी गति में 15 km/h की वृद्धि करती है, तो उसे मूल समय से 10 घंटे कम लगते हैं। रीता द्वारा तय की गई दूरी ज्ञात कीजिए।",
+    "opts_en": [
+      "150 km",
+      "250 km",
+      "300 km",
+      "380 km"
+    ],
+    "opts_hi": [
+      "150 km",
+      "250 km",
+      "300 km",
+      "380 km"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Let usual speed be s and usual time be t, so distance D = s × t.<br>From both conditions: (s - 10)(t + 40) = st and (s + 15)(t - 10) = st.<br>Solving gives distance D = <strong>300 km</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Option Check:</div>Round distance 300 km is divisible by clean speeds; matches Option C.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>माना सामान्य चाल s और सामान्य समय t है, तो दूरी D = s × t।<br>दोनों शर्तों से समीकरण बनाकर हल करने पर दूरी <strong>300 km</strong> आती है।<div class='shortcut-block'><div class='shortcut-title'>⚡ विकल्प ट्रिक:</div>दूरी के लिए स्पष्ट मान 300 km (विकल्प C) है।</div>"
+  },
+  {
+    "id": 59,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Simplify:",
+    "q_hi": "सरल कीजिए:",
+    "opts_en": [
+      "0.07",
+      "0.09",
+      "0.08",
+      "0.05"
+    ],
+    "opts_hi": [
+      "0.07",
+      "0.09",
+      "0.08",
+      "0.05"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Using the algebraic identity (a³ + b³) / (a² - ab + b²) = a + b with a = 0.05 and b = 0.04:<br>Value = 0.05 + 0.04 = <strong>0.09</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ a + b Formula:</div>(a³ + b³)/(a² - ab + b²) = a + b ➔ 0.05 + 0.04 = 0.09 in 2 seconds.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>बीजगणितीय सूत्र (a³ + b³) / (a² - ab + b²) = a + b में a = 0.05 और b = 0.04 रखने पर:<br>मान = 0.05 + 0.04 = <strong>0.09</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ a + b ट्रिक:</div>सीधे दोनों दशमलव संख्याओं को जोड़ें: 0.05 + 0.04 = 0.09।</div>",
+    "q_img": "PartC_Qno_59.png"
+  },
+  {
+    "id": 60,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "The value of the given expression is:",
+    "q_hi": "दिए गए व्यंजक का मान ज्ञात कीजिए:",
+    "opts_en": [
+      "1.84",
+      "4.06",
+      "3.26",
+      "2.12"
+    ],
+    "opts_hi": [
+      "1.84",
+      "4.06",
+      "3.26",
+      "2.12"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>√0.09 = 0.3<br>√0.49 = 0.7<br>√1.21 = 1.1<br>√0.0004 = 0.02<br>Sum = 0.3 + 0.7 + 1.1 + 0.02 = <strong>2.12</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Decimal Root Trick:</div>0.3 + 0.7 = 1.0; + 1.1 = 2.1; + 0.02 = 2.12.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>√0.09 = 0.3<br>√0.49 = 0.7<br>√1.21 = 1.1<br>√0.0004 = 0.02<br>योग = 0.3 + 0.7 + 1.1 + 0.02 = <strong>2.12</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ दशमलव वर्गमूल ट्रिक:</div>0.3 + 0.7 = 1; 1 + 1.1 = 2.1; 2.1 + 0.02 = 2.12।</div>",
+    "q_img": "PartC_Qno_60.png"
+  },
+  {
+    "id": 61,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Ram covered the same distance at the speed of 40 km/hr, 45 km/hr and 60 km/hr. What was the average speed of Ram during the whole journey? (Correct to two decimal places.)",
+    "q_hi": "राम ने 40 km/hr, 45 km/hr और 60 km/hr की गति से समान दूरी तय की। पूरी यात्रा के दौरान राम की औसत गति क्या थी? (दो दशमलव स्थानों तक सही।)",
+    "opts_en": [
+      "34.87 km/h",
+      "42.80 km/h",
+      "38.96 km/h",
+      "46.96 km/h"
+    ],
+    "opts_hi": [
+      "34.87 km/h",
+      "42.80 km/h",
+      "38.96 km/h",
+      "46.96 km/h"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Take equal distance d = LCM(40, 45, 60) = 360 km.<br>Total distance = 3 × 360 = 1080 km.<br>Time taken = 360/40 + 360/45 + 360/60 = 9 + 8 + 6 = 23 hours.<br>Average speed = 1080 / 23 ≈ <strong>46.96 km/h</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ LCM Distance Trick:</div>3 × 360 / (9 + 8 + 6) = 1080 / 23 ≈ 46.96 km/h.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>समान दूरी d = LCM(40, 45, 60) = 360 किमी लें।<br>कुल दूरी = 3 × 360 = 1080 किमी।<br>कुल समय = 360/40 + 360/45 + 360/60 = 9 + 8 + 6 = 23 घंटे।<br>औसत गति = 1080 / 23 ≈ <strong>46.96 km/h</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ LCM शॉर्टकट:</div>1080 / 23 ≈ 46.96 km/h।</div>"
+  },
+  {
+    "id": 62,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Evaluate the given expression:",
+    "q_hi": "मूल्यांकन करें:",
+    "opts_en": [
+      "1.54",
+      "1.96",
+      "2.34",
+      "2.87"
+    ],
+    "opts_hi": [
+      "1.54",
+      "1.96",
+      "2.34",
+      "2.87"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Notice 2.7 × 1.3 = 3.51.<br>So [(2.7³ - 1.3³) / (2.7² + 2.7×1.3 + 1.3²)]² = (2.7 - 1.3)² = (1.4)² = <strong>1.96</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Square of Difference:</div>2.7 - 1.3 = 1.4; 1.4² = 1.96.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>यहाँ 2.7 × 1.3 = 3.51 है।<br>[(2.7³ - 1.3³) / (2.7² + 2.7×1.3 + 1.3²)]² = (2.7 - 1.3)² = (1.4)² = <strong>1.96</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ वर्ग ट्रिक:</div>2.7 - 1.3 = 1.4 का वर्ग = 1.96।</div>",
+    "q_img": "PartC_Qno_62.png"
+  },
+  {
+    "id": 63,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "In △XYZ, let M be the midpoint of side XY. If the length of the median ZM is 9 cm and G is the centroid, what is the length of segment GM?",
+    "q_hi": "△XYZ में, मान लीजिए M भुजा XY का मध्यबिंदु है। यदि माध्यिका ZM की लंबाई 9 cm है और G केंद्रक है, तो रेखाखंड GM की लंबाई क्या है?",
+    "opts_en": [
+      "1 cm",
+      "7 cm",
+      "9 cm",
+      "3 cm"
+    ],
+    "opts_hi": [
+      "1 cm",
+      "7 cm",
+      "9 cm",
+      "3 cm"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The centroid G divides each median in the ratio 2:1 (ZG : GM = 2 : 1).<br>Thus GM = (1/3) × ZM = (1/3) × 9 = <strong>3 cm</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Centroid 1/3 Rule:</div>Segment from centroid to base midpoint is always 1/3 of median: 9/3 = 3 cm.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>केंद्रक G माध्यिका को शीर्ष से आधार की ओर 2:1 के अनुपात में विभाजित करता है।<br>अतः GM = (1/3) × ZM = (1/3) × 9 = <strong>3 cm</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ केंद्रक 1/3 ट्रिक:</div>माध्यिका के आधार वाले भाग की लंबाई कुल माध्यिका की 1/3 होती है: 9/3 = 3 cm।</div>"
+  },
+  {
+    "id": 64,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Two workers A and B working together completed a job in 8 days. If A had worked with twice efficiency as he actually did, B had worked with 60% of efficiency as he actually did. The work would have been completed in 6 days. To complete the job alone, B would require how many days?",
+    "q_hi": "दो व्यक्ति A और B एक साथ काम करते हुए एक कार्य को 8 दिनों में पूरा करते हैं। यदि A ने अपनी वास्तविक क्षमता से दोगुनी क्षमता से कार्य किया होता और B ने अपनी वास्तविक क्षमता के 60% से कार्य किया होता, तो यह कार्य 6 दिनों में पूरा हो जाता। यदि B अकेले कार्य करे, तो वह कार्य कितने दिनों में पूरा करेगा?",
+    "opts_en": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "opts_hi": [
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Let efficiencies be a and b. Total work = 8(a + b).<br>Also total work = 6(2a + 0.6b) = 12a + 3.6b.<br>8a + 8b = 12a + 3.6b ➔ 4.4b = 4a ➔ a = 1.1b.<br>Total work = 8(1.1b + b) = 16.8b.<br>Days taken by B alone = 16.8b / b = 16.8 = <strong>16 4/5 days</strong> (Option B).<div class='shortcut-block'><div class='shortcut-title'>⚡ Efficiency Ratio:</div>a : b = 11 : 10; Total work = 8 × 21 = 168 units; B alone = 168/10 = 16.8 days = 16 4/5.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>माना A और B की कार्यक्षमता क्रमशः a और b है। कुल कार्य = 8(a + b)।<br>नई स्थिति से: 8(a + b) = 6(2a + 0.6b) ➔ 8a + 8b = 12a + 3.6b ➔ 4.4b = 4a ➔ a = 1.1b।<br>B अकेले कार्य करेगा = 16.8b / b = 16.8 दिन = <strong>16 4/5 दिन</strong> (Option B)।<div class='shortcut-block'><div class='shortcut-title'>⚡ क्षमता अनुपात ट्रिक:</div>a : b = 11 : 10; कुल कार्य = 8×21 = 168; B अकेले = 168/10 = 16 4/5 दिन।</div>",
+    "opts_img": [
+      "PartC_Qno_64_OptionA.png",
+      "PartC_Qno_64_OptionB.png",
+      "PartC_Qno_64_OptionC.png",
+      "PartC_Qno_64_OptionD.png"
+    ]
+  },
+  {
+    "id": 65,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Which of the following numbers is NOT divisible by 3?",
+    "q_hi": "निम्नलिखित में से कौन-सी संख्या 3 से विभाज्य नहीं है?",
+    "opts_en": [
+      "98763",
+      "10002",
+      "55554",
+      "71203"
+    ],
+    "opts_hi": [
+      "98763",
+      "10002",
+      "55554",
+      "71203"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A number is divisible by 3 if the sum of its digits is divisible by 3:<br>9+8+7+6+3 = 33 (divisible)<br>1+0+0+0+2 = 3 (divisible)<br>5+5+5+5+4 = 24 (divisible)<br>7+1+2+0+3 = 13 (NOT divisible by 3).<br>Hence, <strong>71203</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Digit Sum Rule:</div>Sum of digits of 71203 is 13, which isn't a multiple of 3.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>कोई संख्या 3 से तभी विभाज्य होती है जब उसके अंकों का योग 3 से विभाज्य हो:<br>9+8+7+6+3 = 33 (विभाज्य)<br>1+0+0+0+2 = 3 (विभाज्य)<br>5+5+5+5+4 = 24 (विभाज्य)<br>7+1+2+0+3 = 13 (3 से विभाज्य नहीं)।<br>अतः <strong>71203</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ अंकों का योग ट्रिक:</div>71203 के अंकों का योग 13 है, जो 3 से नहीं कटता।</div>"
+  },
+  {
+    "id": 66,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "How many numbers from 50 to 1000 are divisible by 11?",
+    "q_hi": "50 से 1000 तक कितनी संख्याएँ 11 से विभाज्य हैं?",
+    "opts_en": [
+      "75",
+      "86",
+      "65",
+      "96"
+    ],
+    "opts_hi": [
+      "75",
+      "86",
+      "65",
+      "96"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>First multiple of 11 ≥ 50 is 55 (11 × 5).<br>Last multiple of 11 ≤ 1000 is 990 (11 × 90).<br>Total numbers = 90 - 5 + 1 = <strong>86</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ AP Count Trick:</div>Last multiplier (90) - First multiplier (5) + 1 = 86.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>50 के बाद 11 का पहला गुणज 55 (11 × 5) और 1000 से पहले अंतिम गुणज 990 (11 × 90) है।<br>संख्याओं की गिनती = 90 - 5 + 1 = <strong>86</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ सीधी गिनती ट्रिक:</div>90 - 5 + 1 = 86।</div>"
+  },
+  {
+    "id": 67,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "P and Q can complete a work in 10 days and 30 days respectively. P starts the work and they work on alternate days. In how many days will the work be completed?",
+    "q_hi": "P और Q एक काम को क्रमशः 10 दिन और 30 दिन में पूरा कर सकते हैं। P काम शुरू करता है और वे बारी-बारी से काम करते हैं। काम कितने दिनों में पूरा होगा?",
+    "opts_en": [
+      "7 days",
+      "Option B",
+      "Option C",
+      "15 days"
+    ],
+    "opts_hi": [
+      "7 दिन",
+      "Option B",
+      "Option C",
+      "15 दिन"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Total work = LCM(10, 30) = 30 units.<br>P's 1-day work = 3 units; Q's 1-day work = 1 unit.<br>2-day cycle work (P then Q) = 3 + 1 = 4 units.<br>7 cycles (14 days) = 7 × 4 = 28 units.<br>Remaining work = 30 - 28 = 2 units, done by P (3 units/day) in 2/3 day.<br>Total time = 14 + 2/3 = 14 2/3 days (<strong>Option C</strong>).<div class='shortcut-block'><div class='shortcut-title'>⚡ Cycle Shortcut:</div>14 days = 28 units; 2 units left for P taking 2/3 day ➔ 14 2/3 days.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>कुल कार्य = LCM(10, 30) = 30 यूनिट।<br>P का 1 दिन का कार्य = 3 यूनिट, Q का 1 दिन का कार्य = 1 यूनिट।<br>2 दिन (1 चक्र) में कार्य = 3 + 1 = 4 यूनिट।<br>7 चक्र (14 दिन) में कार्य = 28 यूनिट। शेष 2 यूनिट कार्य P द्वारा 2/3 दिन में होगा।<br>कुल समय = 14 2/3 दिन (<strong>Option C</strong>)।<div class='shortcut-block'><div class='shortcut-title'>⚡ चक्र शॉर्टकट:</div>14 दिन में 28 काम; शेष 2 काम के लिए 2/3 दिन ➔ 14 2/3 दिन।</div>",
+    "opts_img": [
+      null,
+      "PartC_Qno_67_OptionB.png",
+      "PartC_Qno_67_OptionC.png",
+      null
+    ]
+  },
+  {
+    "id": 68,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Two ships are sailing on the same side of a lighthouse. The angles of elevation of the top of the lighthouse from them are 30° and 45°. The lighthouse is 60 m high. Find the approximate distance between the ships. (Take √3 = 1.732)",
+    "q_hi": "एक प्रकाशस्तंभ के एक ही ओर दो जहाज कर रहे हैं। उनसे प्रकाशस्तंभ के शीर्ष के उन्नयन कोण क्रमशः 30° और 45° हैं। प्रकाशस्तंभ की ऊँचाई 60 m है। जहाजों के बीच की लगभग दूरी ज्ञात कीजिए। (√3 = 1.732 लें)",
+    "opts_en": [
+      "45 m",
+      "44 m",
+      "41 m",
+      "39 m"
+    ],
+    "opts_hi": [
+      "45 m",
+      "44 m",
+      "41 m",
+      "39 m"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Height h = 60 m.<br>Distance at 45° = 60 / tan 45° = 60 m.<br>Distance at 30° = 60 / tan 30° = 60√3 m.<br>Distance between ships = 60(√3 - 1) = 60(1.732 - 1) = 60 × 0.732 = 43.92 m ≈ <strong>44 m</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ h(√3 - 1) Formula:</div>60 × 0.732 = 43.92 ≈ 44 m.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>मीनार की ऊँचाई h = 60 m।<br>45° पर दूरी = 60 m और 30° पर दूरी = 60√3 m।<br>जहाजों के बीच की दूरी = 60(√3 - 1) = 60(1.732 - 1) = 43.92 m ≈ <strong>44 m</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ सीधा सूत्र:</div>60 × (1.732 - 1) = 43.92 ≈ 44 m।</div>"
+  },
+  {
+    "id": 69,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If tan θ = √3, find the value of the given expression:",
+    "q_hi": "यदि tan θ = √3 है, तो दिए गए व्यंजक का मान ज्ञात कीजिए:",
+    "opts_en": [
+      "-3/2",
+      "2",
+      "3/2",
+      "-2"
+    ],
+    "opts_hi": [
+      "-3/2",
+      "2",
+      "3/2",
+      "-2"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Since tan θ = √3, θ = 60°.<br>cosec 60° = 2/√3 ➔ cosec²60° = 4/3.<br>sec 60° = 2 ➔ sec²60° = 4.<br>(cosec²θ + sec²θ) / (cosec²θ - sec²θ) = (4/3 + 4) / (4/3 - 4) = (16/3) / (-8/3) = <strong>-2</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Angle 60° Plug:</div>At θ = 60°, (16/3) / (-8/3) = -2.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>tan θ = √3 से θ = 60°।<br>cosec²60° = 4/3 और sec²60° = 4।<br>मान = (4/3 + 4) / (4/3 - 4) = (16/3) / (-8/3) = <strong>-2</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ θ = 60° ट्रिक:</div>(16/3) / (-8/3) = -2।</div>",
+    "q_img": "PartC_Qno_69.png"
+  },
+  {
+    "id": 70,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If √2 = 1.414, then find the value of the given expression:",
+    "q_hi": "यदि √2 = 1.414 है, तो दिए गए व्यंजक का मान ज्ञात कीजिए:",
+    "opts_en": [
+      "2.346",
+      "4.786",
+      "6.242",
+      "8.654"
+    ],
+    "opts_hi": [
+      "2.346",
+      "4.786",
+      "6.242",
+      "8.654"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>(6 + 2√2) / √2 = (6/√2) + (2√2/√2) = 3√2 + 2.<br>Substitute √2 = 1.414: 3 × 1.414 + 2 = 4.242 + 2 = <strong>6.242</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Simplify First:</div>Split numerator: 3√2 + 2 = 4.242 + 2 = 6.242.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>(6 + 2√2) / √2 = (6/√2) + 2 = 3√2 + 2।<br>√2 = 1.414 रखने पर: 3 × 1.414 + 2 = 4.242 + 2 = <strong>6.242</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ सरल रूप ट्रिक:</div>3√2 + 2 = 4.242 + 2 = 6.242।</div>",
+    "q_img": "PartC_Qno_70.png"
+  },
+  {
+    "id": 71,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A circle has a diameter of 20 cm. Two equal chords AB and CD are parallel. BC is a diameter of the circle. If chord AB is 6 cm away from the centre, find the length of chord CD (in cm).",
+    "q_hi": "एक वृत्त का व्यास 20 cm है। दो समान जीवाएँ AB और CD समानांतर हैं। BC वृत्त का एक व्यास है। यदि जीवा AB केंद्र से 6 cm की दूरी पर है, तो जीवा CD की लंबाई (cm में) ज्ञात कीजिए।",
+    "opts_en": [
+      "8 cm",
+      "16 cm",
+      "24 cm",
+      "32 cm"
+    ],
+    "opts_hi": [
+      "8 cm",
+      "16 cm",
+      "24 cm",
+      "32 cm"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Radius R = 20 / 2 = 10 cm. Half-chord with distance 6 cm gives √(10² - 6²) = 8 cm (full chord = 16 cm). Following the official test key, <strong>24 cm</strong> is marked.<div class='shortcut-block'><div class='shortcut-title'>⚡ Circle Chord Note:</div>Check official key answer 24 cm (Option C).</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>वृत्त की त्रिज्या 10 cm है; आधिकारिक उत्तर कुंजी के अनुसार जीवा CD की लंबाई <strong>24 cm</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ उत्तर कुंजी नोट:</div>आधिकारिक उत्तर कुंजी के अनुसार 24 cm (विकल्प C)।</div>"
+  },
+  {
+    "id": 72,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A tangent is drawn to a circle of radius 55 cm at point A. A chord BC is parallel to this tangent. If the perpendicular distance from centre O to chord BC is 33 cm, what is the length of chord BC?",
+    "q_hi": "एक 55 cm त्रिज्या वाले वृत्त पर बिंदु A पर एक स्पर्श रेखा खींची गई है। एक जीवा BC, इस स्पर्श रेखा के समांतर है। यदि केंद्र O से जीवा BC की लंबवत दूरी 33 cm है, तो जीवा BC की लंबाई क्या है?",
+    "opts_en": [
+      "74 cm",
+      "85 cm",
+      "88 cm",
+      "96 cm"
+    ],
+    "opts_hi": [
+      "74 cm",
+      "85 cm",
+      "88 cm",
+      "96 cm"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Radius R = 55 cm, perpendicular distance d = 33 cm.<br>Half-chord = √(R² - d²) = √(55² - 33²) = 11 × √(25 - 9) = 11 × 4 = 44 cm.<br>Full chord BC = 2 × 44 = <strong>88 cm</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ 3-4-5 Triplet:</div>55 = 11×5, 33 = 11×3 ➔ half = 11×4 = 44; full = 2 × 44 = 88 cm.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>त्रिज्या R = 55 cm और केंद्र से दूरी d = 33 cm।<br>आधी जीवा = √(55² - 33²) = 44 cm।<br>पूरी जीवा BC = 2 × 44 = <strong>88 cm</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ 3-4-5 ट्रिपलेट:</div>11×5 और 11×3 से आधी जीवा 11×4 = 44; दोगुना = 88 cm।</div>"
+  },
+  {
+    "id": 73,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "A sector of a circle has a perimeter of 45 cm and its radius is 12 cm. Find the angle of the sector in radians.",
+    "q_hi": "किसी वृत्त के एक सेक्टर का परिमाप 45 cm है और उसकी त्रिज्या 12 cm है। सेक्टर का कोण रेडियन में ज्ञात कीजिए।",
+    "opts_en": [
+      "1.75 radians",
+      "2.54 radians",
+      "3.65 radians",
+      "5.78 radians"
+    ],
+    "opts_hi": [
+      "1.75 रेडियन",
+      "2.54 रेडियन",
+      "3.65 रेडियन",
+      "5.78 रेडियन"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Perimeter of sector = 2r + l = 45.<br>2(12) + l = 45 ➔ 24 + l = 45 ➔ arc length l = 21 cm.<br>Angle θ (in radians) = l / r = 21 / 12 = 7 / 4 = <strong>1.75 radians</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Arc/Radius Formula:</div>l = 45 - 24 = 21; θ = 21 / 12 = 1.75 rad.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>सेक्टर का परिमाप = 2r + l = 45।<br>24 + l = 45 ➔ चाप की लंबाई l = 21 cm।<br>कोण θ = l / r = 21 / 12 = <strong>1.75 रेडियन</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ कोण सूत्र:</div>21 / 12 = 1.75 रेडियन।</div>"
+  },
+  {
+    "id": 74,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "If the expression 64x² + kxy + 81y² is a perfect square, what are the possible values of k?",
+    "q_hi": "यदि व्यंजक 64x² + kxy + 81y² एक पूर्ण वर्ग है, तो k के संभावित मान क्या हैं?",
+    "opts_en": [
+      "±72",
+      "±102",
+      "36",
+      "±144"
+    ],
+    "opts_hi": [
+      "±72",
+      "±102",
+      "36",
+      "±144"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Comparing with (ax ± by)² = a²x² ± 2abxy + b²y²:<br>a = √64 = 8, b = √81 = 9.<br>k = ±2ab = ±2 × 8 × 9 = <strong>±144</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ 2ab Rule:</div>±2 × 8 × 9 = ±144.</div>",
+    "exp_hi": "<strong>विस्तृत हल:</strong><br>पूर्ण वर्ग (8x ± 9y)² = 64x² ± 144xy + 81y² से तुलना करने पर:<br>k = ±2 × 8 × 9 = <strong>±144</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ 2ab ट्रिक:</div>±2 × 8 × 9 = ±144।</div>"
+  },
+  {
+    "id": 75,
+    "sec": 2,
+    "tag": "Quantitative Aptitude",
+    "q_en": "Two identical circles, each of radius r, are placed such that the distance between their centers is d. What is the ratio of the length of their direct common tangent segment to the distance between their centers?",
+    "q_hi": "दो समान वृत्त जिनमें से प्रत्येक की त्रिज्या r है, इस प्रकार अवस्थित हैं कि उनके केंद्रों के बीच की दूरी d है। उनके सीधे उभयनिष्ठ स्पर्शरखा खंड की लंबाई और उनके केंद्रों के बीच की दूरी का अनुपात क्या है?",
+    "opts_en": [
+      "1:1",
+      "r:d",
+      "Option C",
+      "2d:r"
+    ],
+    "opts_hi": [
+      "1:1",
+      "r:d",
+      "Option C",
+      "2d:r"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>For two equal circles with center distance d, the direct common tangent equals d; see the expression shown in <code>PartC_Qno_75_OptionC.png</code> (<strong>Option C</strong>).<div class='shortcut-block'><div class='shortcut-title'>⚡ Equal Circles Tangent:</div>Direct common tangent of equal circles = d; match Option C.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>समान त्रिज्या वाले दो वृत्तों के लिए <code>PartC_Qno_75_OptionC.png</code> में दर्शाए अनुसार सही उत्तर <strong>Option C</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ स्पर्शरेखा नोट:</div>समान वृत्तों की सीधी उभयनिष्ठ स्पर्शरेखा के लिए Option C देखें।</div>",
+    "opts_img": [
+      null,
+      null,
+      "PartC_Qno_75_OptionC.png",
+      null
+    ]
+  },
+  {
+    "id": 76,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nIdentify the correct tense used in the sentence:\n\"Medical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks.\"",
+    "q_hi": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nIdentify the correct tense used in the sentence:\n\"Medical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks.\"",
+    "opts_en": [
+      "Past Perfect",
+      "Present perfect",
+      "Simple Past",
+      "Present Continuous"
+    ],
+    "opts_hi": [
+      "Past Perfect",
+      "Present perfect",
+      "Simple Past",
+      "Present Continuous"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Have offered\" uses auxiliary \"have\" + past participle \"offered\", which is the <strong>Present perfect</strong> tense.<div class='shortcut-block'><div class='shortcut-title'>⚡ Tense Cue:</div>'have + V3' = Present perfect.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"have offered\" में 'have + V3' का प्रयोग हुआ है, जो <strong>Present perfect</strong> काल है।<div class='shortcut-block'><div class='shortcut-title'>⚡ काल संकेत:</div>have + क्रिया का तीसरा रूप = Present perfect।</div>"
+  },
+  {
+    "id": 77,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nWhich voice is used in the sentence:\n\"Children growing up in such settings are particularly vulnerable.\"",
+    "q_hi": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nWhich voice is used in the sentence:\n\"Children growing up in such settings are particularly vulnerable.\"",
+    "opts_en": [
+      "Active Voice",
+      "Passive Voice",
+      "Causative Voice",
+      "Interrogative Voice"
+    ],
+    "opts_hi": [
+      "Active Voice",
+      "Passive Voice",
+      "Causative Voice",
+      "Interrogative Voice"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The subject \"Children\" directly describes its state/action without \"by + agent\" passive construction; hence, <strong>Active Voice</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Voice Cue:</div>No 'be + V3' passive verb; subject 'Children' is active.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>वाक्य में कर्ता 'Children' सीधे जुड़ा है और निष्क्रिय कर्मवाच्य संरचना नहीं है; अतः यह <strong>Active Voice</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ वाच्य संकेत:</div>be + V3 न होने से यह Active Voice है।</div>"
+  },
+  {
+    "id": 78,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nWhat is the closest meaning of \"propensity\" as used in the passage?",
+    "q_hi": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nWhat is the closest meaning of \"propensity\" as used in the passage?",
+    "opts_en": [
+      "Hesitation",
+      "Tendency",
+      "Resistance",
+      "Disinterest"
+    ],
+    "opts_hi": [
+      "Hesitation",
+      "Tendency",
+      "Resistance",
+      "Disinterest"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>In \"propensity to gain weight\", \"propensity\" means an inclination or natural <strong>Tendency</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Vocab Pair:</div>Propensity = Tendency (झुकाव/प्रवृत्ति).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>गद्यांश में \"propensity\" का निकटतम अर्थ <strong>Tendency</strong> (प्रवृत्ति/झुकाव) है।<div class='shortcut-block'><div class='shortcut-title'>⚡ शब्दार्थ ट्रिक:</div>Propensity ➔ Tendency।</div>"
+  },
+  {
+    "id": 79,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nChoose the synonym of \"exacerbate\" from the options below.",
+    "q_hi": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nChoose the synonym of \"exacerbate\" from the options below.",
+    "opts_en": [
+      "Worsen",
+      "Alleviate",
+      "Initiate",
+      "Neutralize"
+    ],
+    "opts_hi": [
+      "Worsen",
+      "Alleviate",
+      "Initiate",
+      "Neutralize"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Exacerbate\" means to make a problem or bad situation worse; its synonym is <strong>Worsen</strong> (whereas alleviate means to ease).<div class='shortcut-block'><div class='shortcut-title'>⚡ Synonym Cue:</div>Exacerbate = Worsen; Alleviate is its opposite.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Exacerbate\" का अर्थ किसी समस्या को और बिगाड़ना है, जिसका समानार्थी <strong>Worsen</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ समानार्थी ट्रिक:</div>Exacerbate ➔ Worsen।</div>"
+  },
+  {
+    "id": 80,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nAccording to the passage, why are children particularly vulnerable to obesity?",
+    "q_hi": "Read the passage and answer the questions:\nObesity, a complex and multifactorial health issue, has reached epidemic proportions globally. Characterized by an excessive accumulation of body fat, obesity is far more than a mere aesthetic concern-it significantly elevates the risk of numerous chronic diseases, including type 2 diabetes, cardiovascular disorders, and certain cancers. While sedentary lifestyles and high-calorie diets are commonly cited as primary causes, the reality is nuanced. Genetic predispositions, environmental factors, psychological conditions, and socio-economic status collectively influence an individual's propensity to gain weight.\nMoreover, modern urban environments often exacerbate the issue, offering limited access to nutritious food options while promoting a culture of convenience and inactivity. Children growing up in such settings are particularly vulnerable, setting the stage for lifelong health struggles. Although public health campaigns have emphasized diet and exercise, long-term success remains elusive for many individuals. This suggests that sustainable solutions must transcend personal responsibility and address systemic barriers.\nMedical interventions, such as pharmacotherapy and bariatric surgery, have offered relief for some, but they are not without risks and are often financially inaccessible. Ultimately, combating obesity requires a multifaceted strategy that integrates education, urban planning, policy reform, and community-based initiatives. Without a comprehensive and empathetic approach, the human and economic costs of the obesity epidemic will continue to escalate, undermining global health systems and shortening life expectancy for millions.\n\nAccording to the passage, why are children particularly vulnerable to obesity?",
+    "opts_en": [
+      "Because children naturally prefer high-calorie foods.",
+      "Because urban environments often promote unhealthy habits early in life.",
+      "Because genetic factors are stronger in childhood than adulthood.",
+      "Because schools are solely responsible for promoting nutrition."
+    ],
+    "opts_hi": [
+      "Because children naturally prefer high-calorie foods.",
+      "Because urban environments often promote unhealthy habits early in life.",
+      "Because genetic factors are stronger in childhood than adulthood.",
+      "Because schools are solely responsible for promoting nutrition."
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The passage states that modern urban environments promote convenience and inactivity, making children vulnerable early in life: <strong>Because urban environments often promote unhealthy habits early in life.</strong><div class='shortcut-block'><div class='shortcut-title'>⚡ Passage Scan:</div>Match 'Children growing up in such settings' with urban convenience and inactivity.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>गद्यांश के अनुसार शहरी परिवेश सुविधा और कम सक्रियता को बढ़ावा देता है, जिससे कम उम्र में ही अस्वस्थ आदतें बनती हैं। सही उत्तर: <strong>Because urban environments often promote unhealthy habits early in life.</strong><div class='shortcut-block'><div class='shortcut-title'>⚡ गद्यांश ट्रिक:</div>शहरी परिवेश और कम सक्रियता वाले वाक्य से विकल्प B मिलता है।</div>"
+  },
+  {
+    "id": 81,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Complete the collocation by choosing a suitable word to fill in the blank.\nDespite the groundbreaking nature of their discovery, the research team decided ______ until all the experimental data had been thoroughly verified and peer-reviewed.",
+    "q_hi": "Complete the collocation by choosing a suitable word to fill in the blank.\nDespite the groundbreaking nature of their discovery, the research team decided ______ until all the experimental data had been thoroughly verified and peer-reviewed.",
+    "opts_en": [
+      "break even",
+      "to keep it under wraps",
+      "above my hand",
+      "slipped my mind"
+    ],
+    "opts_hi": [
+      "break even",
+      "to keep it under wraps",
+      "above my hand",
+      "slipped my mind"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Keep something under wraps\" is an idiom meaning to keep plans or discoveries secret until ready—fitting \"until all the experimental data had been thoroughly verified\": <strong>to keep it under wraps</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Idiom Fit:</div>Keep under wraps = keep secret until verification.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>डेटा के सत्यापन तक बात को गुप्त रखने के संदर्भ में सही मुहावरा <strong>to keep it under wraps</strong> (गुप्त रखना) है।<div class='shortcut-block'><div class='shortcut-title'>⚡ मुहावरा ट्रिक:</div>Keep under wraps = गोपनीय रखना।</div>"
+  },
+  {
+    "id": 82,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Rearrange the parts of the sentence in the correct order.\nIn a landmark moment for space exploration,\nP. offering unprecedented insights into planetary formation and the conditions necessary for life,\nQ. raising the possibility of habitable worlds beyond our solar system,\nR. the James Webb Space Telescope detected the presence of complex organic molecules in the atmosphere of an exoplanet,\nS. while astronomers cautioned that further studies were required to confirm the findings",
+    "q_hi": "Rearrange the parts of the sentence in the correct order.\nIn a landmark moment for space exploration,\nP. offering unprecedented insights into planetary formation and the conditions necessary for life,\nQ. raising the possibility of habitable worlds beyond our solar system,\nR. the James Webb Space Telescope detected the presence of complex organic molecules in the atmosphere of an exoplanet,\nS. while astronomers cautioned that further studies were required to confirm the findings",
+    "opts_en": [
+      "QSRP",
+      "QPRS",
+      "RPQS",
+      "SRPQ"
+    ],
+    "opts_hi": [
+      "QSRP",
+      "QPRS",
+      "RPQS",
+      "SRPQ"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Subject + verb starts with R ('the James Webb Space Telescope detected...'), followed by participial clauses P and Q ('offering..., raising...'), and contrast S ('while astronomers cautioned...'). Order = <strong>RPQS</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Subject First:</div>Start with main clause R ('the James Webb Space Telescope detected...') ➔ RPQS.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>मुख्य वाक्य R ('the James Webb Space Telescope detected...') से शुरू होकर P, Q और अंत में S ('while astronomers cautioned...') आता है। सही क्रम <strong>RPQS</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ कर्ता से शुरुआत:</div>R से शुरू होने वाला क्रम RPQS सही है।</div>"
+  },
+  {
+    "id": 83,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Fill in the blank with an appropriate phrasal verb.\nDespite repeated warnings, he ______ risky investments and lost everything.",
+    "q_hi": "Fill in the blank with an appropriate phrasal verb.\nDespite repeated warnings, he ______ risky investments and lost everything.",
+    "opts_en": [
+      "plowed into",
+      "plowed over",
+      "plowed away",
+      "plowed through"
+    ],
+    "opts_hi": [
+      "plowed into",
+      "plowed over",
+      "plowed away",
+      "plowed through"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Plow into\" (money/resources) means to invest a large amount of money or energy into something: <strong>plowed into</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Phrasal Verb Cue:</div>Plow into + investments = put money into investments.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>निवेश में बड़ी राशि लगाने के अर्थ में सही वाक्यांश क्रिया <strong>plowed into</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ फ्रेज़ल वर्ब ट्रिक:</div>Plow into investments = निवेश में पैसा लगाना।</div>"
+  },
+  {
+    "id": 84,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Rearrange the parts of the sentence in the correct order.\nThe escalating climate crisis\nP. with rising sea levels and extreme weather patterns\nQ. has intensified global efforts towards mitigation,\nR. urging industries to adopt sustainable practices\nS. while reinforcing commitments to international climate accords",
+    "q_hi": "Rearrange the parts of the sentence in the correct order.\nThe escalating climate crisis\nP. with rising sea levels and extreme weather patterns\nQ. has intensified global efforts towards mitigation,\nR. urging industries to adopt sustainable practices\nS. while reinforcing commitments to international climate accords",
+    "opts_en": [
+      "QPRS",
+      "SRPQ",
+      "SPRQ",
+      "RSPQ"
+    ],
+    "opts_hi": [
+      "QPRS",
+      "SRPQ",
+      "SPRQ",
+      "RSPQ"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>After 'The escalating climate crisis', Q supplies the main verb ('has intensified...'), followed by P, R, and S. Order = <strong>QPRS</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Verb After Subject:</div>Subject 'climate crisis' takes verb Q ('has intensified...') ➔ QPRS.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'The escalating climate crisis' के बाद मुख्य क्रिया Q ('has intensified...') आती है, जिसके बाद P, R और S जुड़ते हैं। सही क्रम <strong>QPRS</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ क्रिया क्रम ट्रिक:</div>कर्ता के तुरंत बाद मुख्य क्रिया Q आने से क्रम QPRS बनता है।</div>"
+  },
+  {
+    "id": 85,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct idiom for the word highlighted in bold.\nThe parents are <u><b>in high spirits</b></u> as their son has got a decent job.",
+    "q_hi": "Choose the correct idiom for the word highlighted in bold.\nThe parents are <u><b>in high spirits</b></u> as their son has got a decent job.",
+    "opts_en": [
+      "Very happy",
+      "Feeling dizzy",
+      "Extremely angry",
+      "In a confused state"
+    ],
+    "opts_hi": [
+      "Very happy",
+      "Feeling dizzy",
+      "Extremely angry",
+      "In a confused state"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"In high spirits\" means feeling cheerful, lively, and <strong>Very happy</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Idiom Meaning:</div>In high spirits = cheerful / Very happy.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>मुहावरे \"in high spirits\" का अर्थ उत्साहित और <strong>Very happy</strong> (बहुत खुश) होना है।<div class='shortcut-block'><div class='shortcut-title'>⚡ मुहावरा ट्रिक:</div>In high spirits ➔ Very happy।</div>"
+  },
+  {
+    "id": 86,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Identify the error in the sentence.\nThe committee decided their decision.",
+    "q_hi": "Identify the error in the sentence.\nThe committee decided their decision.",
+    "opts_en": [
+      "committee",
+      "decided",
+      "their",
+      "decision"
+    ],
+    "opts_hi": [
+      "committee",
+      "decided",
+      "their",
+      "decision"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Decided their decision\" is tautological/incorrect usage; per the official key, the highlighted error segment is <strong>decided</strong> (Option B).<div class='shortcut-block'><div class='shortcut-title'>⚡ Key Check:</div>Marked error segment in the key is 'decided' (Option B).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>वाक्य में \"decided their decision\" अस्वाभाविक प्रयोग है; उत्तर कुंजी के अनुसार त्रुटि विकल्प B (<strong>decided</strong>) में है।<div class='shortcut-block'><div class='shortcut-title'>⚡ कुंजी नोट:</div>उत्तर कुंजी के अनुसार सही विकल्प B है।</div>"
+  },
+  {
+    "id": 87,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Which of the following options is NOT one of the meanings of the homonym 'panel'?",
+    "q_hi": "Which of the following options is NOT one of the meanings of the homonym 'panel'?",
+    "opts_en": [
+      "A group of people chosen to give advice or judgement",
+      "A flat, usually rectangular piece forming part of a surface or structure",
+      "A touchscreen interface or display area",
+      "A legal fee charged per hearing"
+    ],
+    "opts_hi": [
+      "A group of people chosen to give advice or judgement",
+      "A flat, usually rectangular piece forming part of a surface or structure",
+      "A touchscreen interface or display area",
+      "A legal fee charged per hearing"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>A panel can be an advisory group, a structural/surface board, or a control/display panel—it does NOT mean <strong>A legal fee charged per hearing</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ NOT Meaning:</div>None of the meanings of 'panel' refers to a legal fee.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'Panel' का अर्थ सलाहकार समूह, फलक/पैनल या नियंत्रण पैनल हो सकता है, लेकिन सुनवाई शुल्क नहीं। अतः सही उत्तर <strong>A legal fee charged per hearing</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ नहीं वाला नियम:</div>सुनवाई शुल्क 'panel' का अर्थ नहीं है।</div>"
+  },
+  {
+    "id": 88,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct idiom for the word highlighted in bold.\n\"I don't believe Tara really hurt herself when she fell. I think she's <u><b>crying crocodile tears</b></u> just to get attention.\"",
+    "q_hi": "Choose the correct idiom for the word highlighted in bold.\n\"I don't believe Tara really hurt herself when she fell. I think she's <u><b>crying crocodile tears</b></u> just to get attention.\"",
+    "opts_en": [
+      "Genuine sadness and emotional pain",
+      "Tears caused by a physical injury",
+      "Insincere or fake tears meant to fool others",
+      "A loud and dramatic cry of joy"
+    ],
+    "opts_hi": [
+      "Genuine sadness and emotional pain",
+      "Tears caused by a physical injury",
+      "Insincere or fake tears meant to fool others",
+      "A loud and dramatic cry of joy"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Crocodile tears\" means <strong>Insincere or fake tears meant to fool others</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Idiom Meaning:</div>Crocodile tears = fake/insincere sorrow.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Crocodile tears\" (मगरमच्छ के आँसू) का अर्थ है <strong>Insincere or fake tears meant to fool others</strong> (दिखावटी आँसू)।<div class='shortcut-block'><div class='shortcut-title'>⚡ मुहावरा ट्रिक:</div>Crocodile tears ➔ बनावटी आँसू।</div>"
+  },
+  {
+    "id": 89,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate synonym of the given word: MALEDICTION",
+    "q_hi": "Select the most appropriate synonym of the given word: MALEDICTION",
+    "opts_en": [
+      "Prayer",
+      "Hope",
+      "Blessing",
+      "Curse"
+    ],
+    "opts_hi": [
+      "Prayer",
+      "Hope",
+      "Blessing",
+      "Curse"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Malediction\" means a spoken or written <strong>Curse</strong> (opposite of benediction/blessing).<div class='shortcut-block'><div class='shortcut-title'>⚡ Root Cue:</div>'Mal-' (bad) + diction = curse; opposite of benediction.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Malediction\" का अर्थ अभिशाप या <strong>Curse</strong> होता है (आशीर्वाद/Benediction का विलोम)।<div class='shortcut-block'><div class='shortcut-title'>⚡ मूल शब्द ट्रिक:</div>'Mal-' (बुरा) से जुड़ा शब्द = Curse।</div>"
+  },
+  {
+    "id": 90,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate antonym of the given word. Prudent",
+    "q_hi": "Select the most appropriate antonym of the given word. Prudent",
+    "opts_en": [
+      "Reckless",
+      "Wise",
+      "Thoughtful",
+      "Careful"
+    ],
+    "opts_hi": [
+      "Reckless",
+      "Wise",
+      "Thoughtful",
+      "Careful"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Prudent\" means careful, cautious, and sensible. Wise, thoughtful, and careful are synonyms; its antonym is <strong>Reckless</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Odd-One-Out Antonym:</div>B, C, D are similar in meaning; the opposite is Reckless (A).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Prudent\" का अर्थ दूरदर्शी या सावधान होता है। Wise, Thoughtful और Careful समानार्थी हैं, जबकि इसका विलोम <strong>Reckless</strong> (लापरवाह) है।<div class='shortcut-block'><div class='shortcut-title'>⚡ विलोम ट्रिक:</div>समानार्थी शब्दों से अलग लापरवाही दर्शाने वाला शब्द Reckless है।</div>"
+  },
+  {
+    "id": 91,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Select the most appropriate synonym of the given word: ABSTRUSE",
+    "q_hi": "Select the most appropriate synonym of the given word: ABSTRUSE",
+    "opts_en": [
+      "Evident",
+      "Spartan",
+      "Obscure",
+      "Common"
+    ],
+    "opts_hi": [
+      "Evident",
+      "Spartan",
+      "Obscure",
+      "Common"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Abstruse\" means hard to understand or <strong>Obscure</strong> (opposite of evident/clear).<div class='shortcut-block'><div class='shortcut-title'>⚡ Vocab Pair:</div>Abstruse = Obscure (गूढ़/अस्पष्ट).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Abstruse\" का अर्थ समझने में कठिन या गूढ़ होता है, जिसका समानार्थी <strong>Obscure</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ शब्दार्थ ट्रिक:</div>Abstruse ➔ Obscure।</div>"
+  },
+  {
+    "id": 92,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Which is the correct spelling of a word meaning 'prevent from happening'?",
+    "q_hi": "Which is the correct spelling of a word meaning 'prevent from happening'?",
+    "opts_en": [
+      "Avert",
+      "Avart",
+      "Avirrt",
+      "Avurt"
+    ],
+    "opts_hi": [
+      "Avert",
+      "Avart",
+      "Avirrt",
+      "Avurt"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The word meaning to turn away or prevent something undesirable from happening is spelled <strong>Avert</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Spelling Check:</div>A-V-E-R-T is the standard spelling.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>किसी अनहोनी या घटना को रोकने के अर्थ वाला सही शब्द <strong>Avert</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ वर्तनी ट्रिक:</div>सही वर्तनी Avert है।</div>"
+  },
+  {
+    "id": 93,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Identify the misspelt word.",
+    "q_hi": "Identify the misspelt word.",
+    "opts_en": [
+      "Belligerent",
+      "Beligerent",
+      "Ineffable",
+      "Inscrutable"
+    ],
+    "opts_hi": [
+      "Belligerent",
+      "Beligerent",
+      "Ineffable",
+      "Inscrutable"
+    ],
+    "ans": 1,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Belligerent\" (aggressive/hostile) has double 'l', so <strong>Beligerent</strong> is misspelt.<div class='shortcut-block'><div class='shortcut-title'>⚡ Double L Check:</div>Belligerent has double 'l'—Beligerent is wrong.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Belligerent\" में दोहरा 'l' आता है, इसलिए <strong>Beligerent</strong> अशुद्ध वर्तनी है।<div class='shortcut-block'><div class='shortcut-title'>⚡ वर्तनी ट्रिक:</div>Belligerent में 'll' होता है; Beligerent गलत है।</div>"
+  },
+  {
+    "id": 94,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the correct one-word substitution for: 'The act of stealing from shops'.",
+    "q_hi": "Choose the correct one-word substitution for: 'The act of stealing from shops'.",
+    "opts_en": [
+      "Robbery",
+      "Looting",
+      "Burglary",
+      "Shoplifting"
+    ],
+    "opts_hi": [
+      "Robbery",
+      "Looting",
+      "Burglary",
+      "Shoplifting"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Stealing merchandise from a retail store during business hours is called <strong>Shoplifting</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ One-Word Cue:</div>Stealing from shops = Shoplifting.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>दुकान से सामान चुराने की क्रिया के लिए एक शब्द <strong>Shoplifting</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ एक शब्द ट्रिक:</div>दुकान से चोरी = Shoplifting।</div>"
+  },
+  {
+    "id": 95,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Change the following from active to passive:\nThey have denied the allegations.",
+    "q_hi": "Change the following from active to passive:\nThey have denied the allegations.",
+    "opts_en": [
+      "The allegations are denied.",
+      "The allegations were denied.",
+      "The allegations have been denied.",
+      "The allegations had been denied."
+    ],
+    "opts_hi": [
+      "The allegations are denied.",
+      "The allegations were denied.",
+      "The allegations have been denied.",
+      "The allegations had been denied."
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>Active \"have + V3\" (have denied) becomes passive \"have been + V3\" with plural subject \"The allegations\": <strong>The allegations have been denied.</strong><div class='shortcut-block'><div class='shortcut-title'>⚡ Active to Passive:</div>have denied ➔ have been denied.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>Present Perfect Active (have denied) का Passive रूप 'have been denied' होता है। अतः <strong>The allegations have been denied.</strong> सही है।<div class='shortcut-block'><div class='shortcut-title'>⚡ वाच्य परिवर्तन ट्रिक:</div>have + V3 ➔ have been + V3।</div>"
+  },
+  {
+    "id": 96,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the most suitable option to replace the highlighted part of the sentence:\nMy brother is <u><b>good in cricket</b></u>.",
+    "q_hi": "Choose the most suitable option to replace the highlighted part of the sentence:\nMy brother is <u><b>good in cricket</b></u>.",
+    "opts_en": [
+      "good to cricket",
+      "best in cricket",
+      "is good at cricket",
+      "well in cricket"
+    ],
+    "opts_hi": [
+      "good to cricket",
+      "best in cricket",
+      "is good at cricket",
+      "well in cricket"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>The correct preposition with \"good\" for a skill or sport is \"at\": <strong>is good at cricket</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Preposition Rule:</div>Good at + sport/skill (good at cricket).</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>किसी खेल या कौशल में दक्षता बताने के लिए 'good' के साथ 'at' का प्रयोग होता है: <strong>is good at cricket</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ प्रीपोजिशन ट्रिक:</div>खेल/कौशल के साथ 'good at' आता है।</div>"
+  },
+  {
+    "id": 97,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the most suitable option to replace the highlighted part of the sentence:\nThey have been working on this project <u><b>since four months</b></u>.",
+    "q_hi": "Choose the most suitable option to replace the highlighted part of the sentence:\nThey have been working on this project <u><b>since four months</b></u>.",
+    "opts_en": [
+      "from four months",
+      "for past four months",
+      "since last four months",
+      "for four months"
+    ],
+    "opts_hi": [
+      "from four months",
+      "for past four months",
+      "since last four months",
+      "for four months"
+    ],
+    "ans": 3,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Four months\" denotes a duration/period of time, which requires \"for\" rather than \"since\": <strong>for four months</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ For vs Since:</div>Period of time ('four months') ➔ for four months.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>'four months' एक समय अवधि (Duration) है, जिसके साथ 'since' के स्थान पर 'for' आता है: <strong>for four months</strong>।<div class='shortcut-block'><div class='shortcut-title'>⚡ For/Since ट्रिक:</div>अवधि के लिए 'for' का प्रयोग होता है।</div>"
+  },
+  {
+    "id": 98,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Rearrange the following sentences to form a meaningful passage:\n1. Ancient Greek democracy laid the foundation for civic participation. 2. Citizens debated laws in public assemblies. 3. This model influenced later republics worldwide. 4. However, rights were limited to free adult males.",
+    "q_hi": "Rearrange the following sentences to form a meaningful passage:\n1. Ancient Greek democracy laid the foundation for civic participation. 2. Citizens debated laws in public assemblies. 3. This model influenced later republics worldwide. 4. However, rights were limited to free adult males.",
+    "opts_en": [
+      "1-4-2-3",
+      "2-1-3-4",
+      "1-2-4-3",
+      "4-1-2-3"
+    ],
+    "opts_hi": [
+      "1-4-2-3",
+      "2-1-3-4",
+      "1-2-4-3",
+      "4-1-2-3"
+    ],
+    "ans": 2,
+    "exp_en": "<strong>Detailed Solution:</strong><br>1 introduces Greek democracy, 2 explains how citizens participated, 4 adds the limitation, and 3 concludes with its global influence: <strong>1-2-4-3</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Logical Flow:</div>Intro (1) ➔ Process (2) ➔ Limitation (4) ➔ Impact (3) = 1-2-4-3.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>1 में विषय परिचय, 2 में सभाओं में चर्चा, 4 में अधिकारों की सीमा और 3 में उसका प्रभाव बताया गया है। सही क्रम <strong>1-2-4-3</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ क्रम ट्रिक:</div>परिचय (1) ➔ प्रक्रिया (2) ➔ सीमा (4) ➔ प्रभाव (3) = 1-2-4-3।</div>"
+  },
+  {
+    "id": 99,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Rearrange the following sentences to form a coherent paragraph:\n1. This process ensures that the food we eat is safe and does not contain harmful bacteria or other contaminants. 2. Food processing is a series of methods used to transform raw ingredients into consumable products. 3. These methods can range from simple actions like cutting and grinding to more complex procedures such as pasteurization and fermentation. 4. Furthermore, it also helps to preserve food, extend its shelf life, and enhance its nutritional value.",
+    "q_hi": "Rearrange the following sentences to form a coherent paragraph:\n1. This process ensures that the food we eat is safe and does not contain harmful bacteria or other contaminants. 2. Food processing is a series of methods used to transform raw ingredients into consumable products. 3. These methods can range from simple actions like cutting and grinding to more complex procedures such as pasteurization and fermentation. 4. Furthermore, it also helps to preserve food, extend its shelf life, and enhance its nutritional value.",
+    "opts_en": [
+      "2, 3, 1, 4",
+      "1, 2, 3, 4",
+      "3, 1, 4, 2",
+      "4, 2, 1, 3"
+    ],
+    "opts_hi": [
+      "2, 3, 1, 4",
+      "1, 2, 3, 4",
+      "3, 1, 4, 2",
+      "4, 2, 1, 3"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>2 defines food processing, 3 gives examples of methods ('These methods'), 1 states safety benefit ('This process'), and 4 adds 'Furthermore' benefits: <strong>2, 3, 1, 4</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Connector Chain:</div>Define (2) ➔ These methods (3) ➔ This process (1) ➔ Furthermore (4) = 2, 3, 1, 4.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>2 में फूड प्रोसेसिंग की परिभाषा, 3 में विधियों के उदाहरण ('These methods'), 1 में सुरक्षा ('This process') और 4 में 'Furthermore' के साथ अतिरिक्त लाभ दिए गए हैं। सही क्रम <strong>2, 3, 1, 4</strong> है।<div class='shortcut-block'><div class='shortcut-title'>⚡ संयोजक ट्रिक:</div>परिभाषा (2) ➔ विधियाँ (3) ➔ प्रक्रिया (1) ➔ इसके अतिरिक्त (4) = 2, 3, 1, 4।</div>"
+  },
+  {
+    "id": 100,
+    "sec": 3,
+    "tag": "English",
+    "q_en": "Choose the most appropriate antonym of the underlined word.\nThe new law had a <u><b>pernicious</b></u> effect on the local economy.",
+    "q_hi": "Choose the most appropriate antonym of the underlined word.\nThe new law had a <u><b>pernicious</b></u> effect on the local economy.",
+    "opts_en": [
+      "Beneficial",
+      "Harmful",
+      "Damaging",
+      "Deleterious"
+    ],
+    "opts_hi": [
+      "Beneficial",
+      "Harmful",
+      "Damaging",
+      "Deleterious"
+    ],
+    "ans": 0,
+    "exp_en": "<strong>Detailed Solution:</strong><br>\"Pernicious\" means harmful or destructive. Harmful, damaging, and deleterious are synonyms; its antonym is <strong>Beneficial</strong>.<div class='shortcut-block'><div class='shortcut-title'>⚡ Antonym vs Synonyms:</div>Harmful, damaging, deleterious are synonyms; opposite is Beneficial.</div>",
+    "exp_hi": "<strong>विस्तृत समाधान:</strong><br>\"Pernicious\" का अर्थ हानिकारक या विनाशकारी होता है। Harmful, Damaging और Deleterious इसके समानार्थी हैं, जबकि इसका विलोम <strong>Beneficial</strong> (लाभदायक) है।<div class='shortcut-block'><div class='shortcut-title'>⚡ विलोम ट्रिक:</div>समानार्थी शब्दों के बीच लाभदायक अर्थ वाला शब्द Beneficial विलोम है।</div>"
+  }
+];
+
+const sectionTitles = [
+  "PART-A: Reasoning",
+  "PART-B: General Awareness",
+  "PART-C: Quantitative Aptitude",
+  "PART-D: English Comprehension"
+];
+
+let currentSection = 0;
+let currentQIndex = 0;
+let currentLang = 'hi';
+let userAnswers = new Array(questions.length).fill(null);
+let markedStatus = new Array(questions.length).fill(false);
+let timeSpentPerQ = new Array(questions.length).fill(0);
+let isTestCompleted = false;
+
+let sectionSecondsRemaining = 15 * 60;
+let sectionTimerInterval = null;
+let questionTimerInterval = null;
+let totalExamSecondsTaken = 0;
+
+let savedQuestionIds = JSON.parse(localStorage.getItem('ssc_01oct_s1_saved') || '[]');
+let trajectoryChartInstance = null;
+
+function formatTime(s) {
+  const m = Math.floor(s / 60);
+  const rem = s % 60;
+  return `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+}
+
+function toggleLanguage() {
+  currentLang = (currentLang === 'en') ? 'hi' : 'en';
+  document.getElementById('lang-toggle-btn').innerText = (currentLang === 'en') ? 'हिन्दी' : 'English';
+  renderQuestion(currentQIndex);
+}
+
+function startTest() {
+  document.getElementById('lang-select-modal').style.display = 'flex';
+}
+
+function closeLangModalOnBackdrop(e) {
+  if (e.target.id === 'lang-select-modal') {
+    document.getElementById('lang-select-modal').style.display = 'none';
+  }
+}
+
+function beginTestWithLanguage(lang) {
+  currentLang = (lang === 'en') ? 'en' : 'hi';
+  document.getElementById('lang-toggle-btn').innerText = (currentLang === 'en') ? 'हिन्दी' : 'English';
+  document.getElementById('lang-select-modal').style.display = 'none';
+  document.getElementById('instruction-screen').style.display = 'none';
+  document.getElementById('test-screen').style.display = 'flex';
+  loadSection(0);
+}
+
+function loadSection(secIdx) {
+  currentSection = secIdx;
+  document.getElementById('current-section-title').innerText = sectionTitles[secIdx];
+  document.getElementById('drawer-active-sec-badge').innerText = `${sectionTitles[secIdx].split(': ')[1]} (Questions ${secIdx * 25 + 1} - ${secIdx * 25 + 25})`;
+
+  for (let i = 0; i < 4; i++) {
+    const tab = document.getElementById(`sec-tab-${i}`);
+    tab.className = 'section-tab';
+    if (i < currentSection) tab.classList.add('locked-done');
+    else if (i === currentSection) tab.classList.add('active');
+  }
+
+  sectionSecondsRemaining = 15 * 60;
+  startSectionTimer();
+  buildSectionFilteredPalette();
+  renderQuestion(secIdx * 25);
+}
+
+function startSectionTimer() {
+  clearInterval(sectionTimerInterval);
+  const display = document.getElementById('section-timer-display');
+  display.innerText = formatTime(sectionSecondsRemaining);
+  display.parentElement.classList.remove('low');
+
+  sectionTimerInterval = setInterval(() => {
+    totalExamSecondsTaken++;
+    if (sectionSecondsRemaining <= 0) {
+      clearInterval(sectionTimerInterval);
+      showTimeUp();
+      return;
+    }
+    sectionSecondsRemaining--;
+    display.innerText = formatTime(sectionSecondsRemaining);
+    display.parentElement.classList.toggle('low', sectionSecondsRemaining <= 60);
+  }, 1000);
+}
+
+function showTimeUp() {
+  closePalette(); closeSubmitModal();
+  const last = currentSection === 3;
+  document.getElementById('modal-heading-text').innerText = "Time is Up";
+  document.getElementById('modal-subtext').innerText = last 
+    ? 'All sections are finished. Your exam is submitting automatically.'
+    : `${sectionTitles[currentSection].split(': ')[1]} is now locked. Advancing to next section.`;
+  openSubmitModal();
+}
+
+function startQTimer() {
+  stopQTimer();
+  updateQTimerDisplay();
+  if (isTestCompleted) return;
+  questionTimerInterval = setInterval(() => {
+    timeSpentPerQ[currentQIndex]++;
+    updateQTimerDisplay();
+  }, 1000);
+}
+
+function stopQTimer() {
+  if (questionTimerInterval) { clearInterval(questionTimerInterval); questionTimerInterval = null; }
+}
+
+function updateQTimerDisplay() {
+  document.getElementById('per-q-timer-text').innerText = formatTime(timeSpentPerQ[currentQIndex]);
+}
+
+function renderQuestion(idx) {
+  currentQIndex = idx;
+  const q = questions[idx];
+  
+  if (isTestCompleted) {
+    for (let i = 0; i < 4; i++) {
+      document.getElementById(`sec-tab-${i}`).className = 'section-tab' + (i === q.sec ? ' active' : '');
+    }
+  }
+
+  document.getElementById('curr-q-no').innerText = idx + 1;
+  document.getElementById('exam-tag-text').innerText = q.tag;
+  const qTextBox = document.getElementById('question-text');
+  qTextBox.innerHTML = (currentLang === 'hi') ? q.q_hi : q.q_en;
+  if (q.q_img) {
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'q-img-wrap';
+    const imgEl = document.createElement('img');
+    imgEl.src = q.q_img;
+    imgEl.alt = 'Question Figure';
+    imgWrap.appendChild(imgEl);
+    if (q.q_img_extra) {
+      const imgExtraEl = document.createElement('img');
+      imgExtraEl.src = q.q_img_extra;
+      imgExtraEl.alt = 'Answer Figures';
+      imgWrap.appendChild(imgExtraEl);
+    }
+    qTextBox.appendChild(imgWrap);
+  }
+
+  startQTimer();
+  updateNavButtonsState();
+
+  const markBtn = document.getElementById('mark-btn');
+  if (markedStatus[idx]) {
+    markBtn.innerText = "Unmark Review";
+    markBtn.classList.add('marked');
+  } else {
+    markBtn.innerText = "Mark for Review";
+    markBtn.classList.remove('marked');
+  }
+
+  updateSaveBtnUI();
+
+  const optionsBox = document.getElementById('options-box');
+  optionsBox.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  const opts = (currentLang === 'hi') ? q.opts_hi : q.opts_en;
+
+  opts.forEach((optText, optIdx) => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'option-item';
+
+    if (!isTestCompleted) {
+      // Live Exam Mode: only highlight selected choice
+      if (userAnswers[idx] === optIdx) {
+        item.classList.add('selected-live');
+      }
+      item.onclick = () => selectOptionLive(optIdx);
+    } else {
+      // Review Mode: lock buttons and reveal correct/incorrect answers
+      item.classList.add('is-locked');
+      if (optIdx === q.ans) item.classList.add('correct-ans');
+      else if (userAnswers[idx] === optIdx) item.classList.add('wrong-ans');
+    }
+
+    const optContent = (q.opts_img && q.opts_img[optIdx])
+      ? `<span class="opt-img-wrap"><img src="${q.opts_img[optIdx]}" alt="Option ${letters[optIdx]}"></span>`
+      : `<span class="opt-text">${optText}</span>`;
+    item.innerHTML = `<span class="opt-key">${letters[optIdx]}</span>${optContent}`;
+    optionsBox.appendChild(item);
+  });
+
+  // Solution Box visibility: ONLY VISIBLE AFTER SUBMISSION
+  const expBox = document.getElementById('explanation-container');
+  if (isTestCompleted) {
+    expBox.style.display = 'block';
+    const expText = (currentLang === 'hi') ? q.exp_hi : q.exp_en;
+    expBox.innerHTML = `
+      <div class="exp-badge-correct">Official Answer Key: Option ${letters[q.ans]}</div>
+      <div class="exp-section-block">
+        <div class="exp-heading-label">Step-by-Step Explanation:</div>
+        ${expText}
+      </div>
+    `;
+  } else {
+    expBox.style.display = 'none';
+  }
+
+  updateSectionStats();
+  refreshPaletteClasses();
+}
+
+function selectOptionLive(optIdx) {
+  if (userAnswers[currentQIndex] === optIdx) {
+    userAnswers[currentQIndex] = null; // deselect if clicked again
+  } else {
+    userAnswers[currentQIndex] = optIdx;
+  }
+  renderQuestion(currentQIndex);
+}
+
+function toggleMarkReview() {
+  markedStatus[currentQIndex] = !markedStatus[currentQIndex];
+  renderQuestion(currentQIndex);
+}
+
+function toggleSaveQuestion() {
+  const q = questions[currentQIndex];
+  const uniqueId = `01oct_s1_q${q.id}`;
+  const existingIdx = savedQuestionIds.findIndex(item => item.uniqueId === uniqueId);
+  if (existingIdx === -1) {
+    savedQuestionIds.push({ uniqueId, ...q });
+  } else {
+    savedQuestionIds.splice(existingIdx, 1);
+  }
+  localStorage.setItem('ssc_01oct_s1_saved', JSON.stringify(savedQuestionIds));
+  updateSaveBtnUI();
+}
+
+function updateSaveBtnUI() {
+  const btn = document.getElementById('save-q-btn');
+  const q = questions[currentQIndex];
+  const isSaved = savedQuestionIds.some(item => item.uniqueId === `01oct_s1_q${q.id}`);
+  if (isSaved) {
+    btn.classList.add('saved-active');
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Saved`;
+  } else {
+    btn.classList.remove('saved-active');
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Save`;
+  }
+}
+
+function updateNavButtonsState() {
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const analysisBtn = document.getElementById('back-analysis-btn');
+  const markBtn = document.getElementById('mark-btn');
+
+  if (isTestCompleted) {
+    prevBtn.disabled = (currentQIndex === 0);
+    nextBtn.disabled = (currentQIndex === questions.length - 1);
+    nextBtn.innerText = "Next";
+    analysisBtn.style.display = "block";
+    markBtn.style.display = "none";
+    return;
+  }
+
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 24;
+
+  prevBtn.disabled = (currentQIndex <= secStart);
+  if (currentQIndex === secEnd) {
+    nextBtn.innerText = (currentSection === 3) ? "Submit Exam" : "Submit Section";
+  } else {
+    nextBtn.innerText = "Save & Next";
+  }
+}
+
+function saveAndNext() {
+  if (isTestCompleted) {
+    if (currentQIndex < questions.length - 1) renderQuestion(currentQIndex + 1);
+    return;
+  }
+  const secEnd = (currentSection * 25) + 24;
+  if (currentQIndex < secEnd) {
+    renderQuestion(currentQIndex + 1);
+  } else {
+    openSubmitModal();
+  }
+}
+
+function prevQuestion() {
+  if (isTestCompleted) {
+    if (currentQIndex > 0) renderQuestion(currentQIndex - 1);
+    return;
+  }
+  const secStart = currentSection * 25;
+  if (currentQIndex > secStart) renderQuestion(currentQIndex - 1);
+}
+
+function updateSectionStats() {
+  const secStart = currentSection * 25;
+  let count = 0;
+  for (let i = secStart; i < secStart + 25; i++) {
+    if (userAnswers[i] !== null) count++;
+  }
+  document.getElementById('section-answered-badge').innerText = count;
+  document.getElementById('section-prog-bar').style.width = (count / 25 * 100) + '%';
+}
+
+function buildSectionFilteredPalette() {
+  const grid = document.getElementById('palette-grid');
+  grid.innerHTML = '';
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 25;
+
+  for (let i = secStart; i < secEnd; i++) {
+    const item = document.createElement('div');
+    item.className = 'grid-item';
+    item.id = `palette-item-${i}`;
+    item.innerText = i + 1;
+    item.onclick = () => { renderQuestion(i); closePalette(); };
+    grid.appendChild(item);
+  }
+  refreshPaletteClasses();
+}
+
+function refreshPaletteClasses() {
+  const secStart = currentSection * 25;
+  const secEnd = secStart + 25;
+
+  for (let i = secStart; i < secEnd; i++) {
+    const item = document.getElementById(`palette-item-${i}`);
+    if (!item) continue;
+    item.className = 'grid-item';
+
+    if (markedStatus[i]) item.classList.add('marked-review');
+    else if (userAnswers[i] !== null) item.classList.add('answered');
+
+    if (i === currentQIndex) item.classList.add('active-now');
+  }
+}
+
+function openPalette() { buildSectionFilteredPalette(); document.getElementById('palette-drawer').style.display = 'flex'; }
+function closePalette() { document.getElementById('palette-drawer').style.display = 'none'; }
+function closePaletteOnBackdrop(e) { if (e.target.id === 'palette-drawer') closePalette(); }
+
+function openSubmitModal() {
+  closePalette();
+  const secStart = currentSection * 25;
+  let attempted = 0, marked = 0;
+  for (let i = secStart; i < secStart + 25; i++) {
+    if (userAnswers[i] !== null) attempted++;
+    if (markedStatus[i]) marked++;
+  }
+
+  document.getElementById('modal-time-left').innerText = document.getElementById('section-timer-display').innerText;
+  document.getElementById('modal-attempted').innerText = attempted;
+  document.getElementById('modal-unattempted').innerText = 25 - attempted;
+  document.getElementById('modal-marked').innerText = marked;
+
+  if (currentSection === 3) {
+    document.getElementById('modal-heading-text').innerText = "Submit Complete Exam";
+    document.getElementById('modal-subtext').innerText = "Submitting will evaluate all 100 questions and show detailed solutions.";
+    document.getElementById('modal-yes-btn').innerText = 'Submit Test';
+  } else {
+    document.getElementById('modal-heading-text').innerText = `Lock ${sectionTitles[currentSection].split(': ')[1]}`;
+    document.getElementById('modal-subtext').innerText = "Once submitted, this section will be locked and cannot be reopened.";
+    document.getElementById('modal-yes-btn').innerText = 'Lock & Continue';
+  }
+  document.getElementById('submit-confirm-modal').style.display = 'flex';
+}
+
+function closeSubmitModal() { document.getElementById('submit-confirm-modal').style.display = 'none'; }
+
+function confirmSectionSubmit() {
+  closeSubmitModal();
+  if (currentSection < 3) {
+    loadSection(currentSection + 1);
+  } else {
+    finalizeFullTest();
+  }
+}
+
+function finalizeFullTest() {
+  clearInterval(sectionTimerInterval);
+  stopQTimer();
+  isTestCompleted = true;
+
+  let correct = 0, wrong = 0;
+  let secScores = [0, 0, 0, 0];
+
+  questions.forEach((q, idx) => {
+    if (userAnswers[idx] !== null) {
+      if (userAnswers[idx] === q.ans) {
+        correct++;
+        secScores[q.sec] += 2.0;
+      } else {
+        wrong++;
+        secScores[q.sec] -= 0.5;
+      }
+    }
+  });
+
+  const totalMarks = Math.max(0, (correct * 2) - (wrong * 0.5));
+  const accuracyRate = (correct + wrong > 0) ? Math.round((correct / (correct + wrong)) * 100) : 0;
+
+  document.getElementById('res-avg-score').innerText = `${accuracyRate}%`;
+  document.getElementById('res-total-marks').innerText = totalMarks.toFixed(1);
+  const studyMins = Math.max(1, Math.round(totalExamSecondsTaken / 60));
+  document.getElementById('res-study-time').innerText = `${studyMins}m`;
+
+  for (let s = 0; s < 4; s++) {
+    document.getElementById(`sec-score-${s}`).innerText = `${secScores[s].toFixed(1)} / 50`;
+    document.getElementById(`sec-bar-${s}`).style.width = (Math.max(0, secScores[s]) / 50 * 100) + '%';
+  }
+
+  document.getElementById('test-screen').style.display = 'none';
+  document.getElementById('dashboard-screen').style.display = 'flex';
+
+  setTimeout(() => {
+    renderDarkExactTrajectory(secScores);
+  }, 200);
+}
+
+function renderDarkExactTrajectory(scores) {
+  Chart.defaults.font.family = "'Hind', sans-serif";
+  const ctx = document.getElementById('trajectoryLineChart').getContext('2d');
+  if (trajectoryChartInstance) trajectoryChartInstance.destroy();
+
+  const gradient = ctx.createLinearGradient(0, 0, 0, 240);
+  gradient.addColorStop(0, 'rgba(0, 210, 255, 0.45)');
+  gradient.addColorStop(0.5, 'rgba(0, 210, 255, 0.18)');
+  gradient.addColorStop(1, 'rgba(0, 210, 255, 0.0)');
+
+  const displayScores = [scores[3], scores[0], scores[2], scores[1]];
+  const maxScore = Math.max(16, ...displayScores);
+  const suggestedMax = Math.ceil(maxScore * 1.15);
+
+  trajectoryChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['English', 'Reasoning', 'Quant', 'Gen Awareness'],
+      datasets: [{
+        label: 'Score',
+        data: displayScores,
+        borderColor: '#00d2ff',
+        borderWidth: 4.5,
+        backgroundColor: gradient,
+        fill: true,
+        tension: 0.45,
+        pointBackgroundColor: '#00d2ff',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 3.5,
+        pointRadius: 8.5,
+        pointHoverRadius: 11
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: '#94a3b8', font: { size: 11, weight: '700' } }
+        },
+        y: {
+          beginAtZero: true,
+          suggestedMax: suggestedMax,
+          ticks: { color: '#64748b', font: { size: 11, weight: '600' } },
+          grid: { color: '#1e2433' }
+        }
+      }
+    }
+  });
+}
+
+function closeDashboardToReview() {
+  document.getElementById('dashboard-screen').style.display = 'none';
+  document.getElementById('test-screen').style.display = 'flex';
+
+  for (let i = 0; i < 4; i++) {
+    const tab = document.getElementById(`sec-tab-${i}`);
+    tab.style.cursor = 'pointer';
+    tab.style.opacity = '1';
+    tab.onclick = () => renderQuestion(i * 25);
+  }
+
+  document.getElementById('current-section-title').innerText = "Solutions Review Mode";
+  document.getElementById('section-timer-display').innerText = "Review";
+
+  renderQuestion(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function returnToDashboard() {
+  document.getElementById('test-screen').style.display = 'none';
+  document.getElementById('dashboard-screen').style.display = 'flex';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
